@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="display:flex;gap:clamp(20px,5vw,40px);justify-content:center;flex-wrap:wrap;">
+  <div style="display:flex;flex-direction:column;align-items:center;min-width:58px;"><span style="{{ numStyle }}">{{ d }}</span><span style="{{ labelStyle }}">{{ daysLabel }}</span></div>
+  <div style="{{ ruleStyle }}"></div>
+  <div style="display:flex;flex-direction:column;align-items:center;min-width:58px;"><span style="{{ numStyle }}">{{ h }}</span><span style="{{ labelStyle }}">{{ hoursLabel }}</span></div>
+  <div style="{{ ruleStyle }}"></div>
+  <div style="display:flex;flex-direction:column;align-items:center;min-width:58px;"><span style="{{ numStyle }}">{{ m }}</span><span style="{{ labelStyle }}">{{ minutesLabel }}</span></div>
+  <div style="{{ ruleStyle }}"></div>
+  <div style="display:flex;flex-direction:column;align-items:center;min-width:58px;"><span style="{{ numStyle }}">{{ s }}</span><span style="{{ labelStyle }}">{{ secondsLabel }}</span></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:620,&quot;height&quot;:120},&quot;target&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;2027-06-19T18:30:00+03:00&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;daysLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Days&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;hoursLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Hours&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;minutesLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Minutes&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;secondsLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Seconds&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;numColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#2A3338&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;labelColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#43545A&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;ruleColor&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;rgba(60,71,76,0.22)&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { now: Date.now() };
+  componentDidMount() { this._t = setInterval(() => this.setState({ now: Date.now() }), 1000); }
+  componentWillUnmount() { clearInterval(this._t); }
+  renderVals() {
+    const target = Date.parse(this.props.target || '2027-06-19T18:30:00+03:00');
+    let diff = Math.max(0, target - this.state.now);
+    const d = Math.floor(diff / 86400000); diff -= d * 86400000;
+    const h = Math.floor(diff / 3600000); diff -= h * 3600000;
+    const m = Math.floor(diff / 60000); diff -= m * 60000;
+    const s = Math.floor(diff / 1000);
+    const pad = n => String(n).padStart(2, '0');
+    const numColor = this.props.numColor || '#2A3338';
+    const labelColor = this.props.labelColor || '#43545A';
+    const ruleColor = this.props.ruleColor || 'rgba(60,71,76,0.22)';
+    return {
+      d: String(d), h: pad(h), m: pad(m), s: pad(s),
+      daysLabel: this.props.daysLabel || 'Days',
+      hoursLabel: this.props.hoursLabel || 'Hours',
+      minutesLabel: this.props.minutesLabel || 'Minutes',
+      secondsLabel: this.props.secondsLabel || 'Seconds',
+      numStyle: `font-family:'Playfair Display';font-size:clamp(34px,6vw,48px);line-height:1;color:${numColor};`,
+      labelStyle: `font-size:10px;letter-spacing:0.24em;text-transform:uppercase;margin-top:9px;color:${labelColor};`,
+      ruleStyle: `width:1px;background:${ruleColor};`,
+    };
+  }
+}
+</script>
+</body>
+</html>
