@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script type="text/babel" src="./ios-frame.jsx"></script>
+<style>
+@media (max-width: 500px) {
+  .mp-frame { width: 100vw !important; height: 100vh !important; max-width: none !important; }
+}
+</style>
+</helmet>
+<div style="display:flex;flex-direction:column;align-items:center;min-height:100vh;background:#e8e4dc;padding:40px 40px 0">
+<h1 style="font-family:Georgia,serif;font-size:22px;color:#3a3a2e;text-align:center;margin:0 0 24px;width:100%">Tatiana &amp; Daniel</h1>
+<div class="mp-frame" style="display:flex;justify-content:center">
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="390px,844px">
+<iframe src="./Tatiana & Daniel.dc.html" style="width:100%;height:100%;border:0;display:block"></iframe>
+</x-import>
+</div>
+</div>
+</x-dc>
+</body>
+</html>

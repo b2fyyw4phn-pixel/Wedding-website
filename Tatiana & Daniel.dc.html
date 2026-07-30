@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Mulish:wght@300;400;500;600;700&family=Pinyon+Script&display=swap&subset=cyrillic,cyrillic-ext,latin,latin-ext" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:#F3EFE6;-webkit-font-smoothing:antialiased;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+  @keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(7px);}}
+  input::placeholder,textarea::placeholder{color:#A8A496;}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:#6E7152 !important;}
+</style>
+<script src="image-slot.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+</helmet>
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+    <rect width="400" height="300" fill="#2b2622"/>
+    <text x="200" y="140" font-family="Georgia,serif" font-size="34" fill="#F7F4ED" text-anchor="middle">T &amp; D</text>
+    <text x="200" y="175" font-family="Georgia,serif" font-size="14" letter-spacing="3" fill="#EBD3B4" text-anchor="middle">ATHENS · 2027</text>
+  </svg>
+</template>
+
+<div style="font-family:'Mulish',sans-serif;color:#2F343A;background:#F3EFE6;min-height:100vh;">
+
+  <!-- ===================== NAV ===================== -->
+  <div style="position:sticky;top:0;z-index:60;backdrop-filter:blur(12px);background:rgba(243,239,230,0.82);border-bottom:1px solid rgba(220,213,199,0.7);">
+    <div style="max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:15px 26px;">
+      <button onClick="{{ goHome }}" style="background:none;border:none;cursor:pointer;padding:0;display:flex;align-items:center;"><img src="images/logo-td-black.svg" alt="Tatiana & Daniel" style="height:52px;width:auto;display:block;" /></button>
+
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;align-items:center;gap:34px;">
+          <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="5">
+            <button onClick="{{ item.onClick }}" style="{{ item.style }}">{{ item.label }}</button>
+          </sc-for>
+          <div style="width:1px;height:18px;background:#D8D0C0;"></div>
+          <div style="display:flex;align-items:center;gap:7px;">
+            <button onClick="{{ setEN }}" style="{{ enStyle }}">EN</button>
+            <span style="color:#C8C0AF;font-size:11px;">/</span>
+            <button onClick="{{ setRU }}" style="{{ ruStyle }}">RU</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:center;gap:18px;">
+          <div style="display:flex;align-items:center;gap:7px;">
+            <button onClick="{{ setEN }}" style="{{ enStyle }}">EN</button>
+            <span style="color:#C8C0AF;font-size:11px;">/</span>
+            <button onClick="{{ setRU }}" style="{{ ruStyle }}">RU</button>
+          </div>
+          <button onClick="{{ toggleMenu }}" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:6px 2px;">
+            <span style="width:22px;height:1.5px;background:#2F343A;display:block;"></span>
+            <span style="width:22px;height:1.5px;background:#2F343A;display:block;"></span>
+            <span style="width:22px;height:1.5px;background:#2F343A;display:block;"></span>
+          </button>
+        </div>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="border-top:1px solid rgba(220,213,199,0.7);padding:8px 26px 18px;display:flex;flex-direction:column;">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="5">
+          <button onClick="{{ item.onClick }}" style="{{ item.mobileStyle }}">{{ item.label }}</button>
+        </sc-for>
+      </div>
+    </sc-if>
+  </div>
+
+  <!-- ===================== HOME ===================== -->
+  <sc-if value="{{ showHome }}" hint-placeholder-val="{{ true }}">
+  <div data-screen-label="Home">
+
+    <!-- HERO -->
+    <section style="position:relative;min-height:94vh;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;background-color:#1b1d1a;background-image:url('images/couple.jpg');background-size:cover;background-position:center 24%;">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,18,15,0.52) 0%,rgba(18,20,17,0.08) 28%,rgba(18,20,17,0.12) 56%,rgba(14,16,13,0.74) 100%);pointer-events:none;"></div>
+      <div style="position:absolute;inset:22px;border:1px solid rgba(247,244,237,0.5);pointer-events:none;"></div>
+
+      <div style="position:absolute;top:clamp(40px,7vh,86px);left:0;right:0;text-align:center;padding:0 26px;">
+        <span style="{{ toplineStyle }}">{{ hero.topline }}</span>
+      </div>
+
+      <div style="position:relative;text-align:center;padding:0 26px 7vh;max-width:1000px;">
+        <h1 style="font-family:'Playfair Display';font-weight:500;font-size:clamp(48px,9vw,104px);line-height:1.0;color:#F7F4ED;text-shadow:0 2px 38px rgba(0,0,0,0.5);">{{ name1 }} <span style="font-style:italic;font-weight:400;color:#EBD3B4;">&amp;</span> {{ name2 }}</h1>
+        <div style="font-size:clamp(11px,2.4vw,13px);letter-spacing:0.3em;text-transform:uppercase;color:rgba(247,244,237,0.92);margin-top:20px;text-shadow:0 1px 16px rgba(0,0,0,0.45);">{{ hero.date }}</div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section style="background:#F7F4ED;padding:clamp(46px,6vw,66px) 26px;border-bottom:1px solid #E6DFD1;">
+      <div style="text-align:center;max-width:760px;margin:0 auto;">
+        <div style="font-size:11px;letter-spacing:0.4em;text-transform:uppercase;color:#6E7152;margin-bottom:28px;">{{ hero.countdownLabel }}</div>
+        <dc-import name="Countdown" target="2027-06-19T18:30:00+03:00" days-label="{{ countdown.days }}" hours-label="{{ countdown.hours }}" minutes-label="{{ countdown.minutes }}" seconds-label="{{ countdown.seconds }}" hint-size="100%,110px"></dc-import>
+      </div>
+    </section>
+
+    <!-- DETAILS BAND -->
+    <section style="background:#F7F4ED;padding:clamp(58px,8vw,96px) 26px;border-bottom:1px solid #E6DFD1;">
+      <div style="max-width:900px;margin:0 auto;text-align:center;">
+        <div style="font-size:14px;letter-spacing:0.42em;text-transform:uppercase;color:#6E7152;margin-bottom:40px;">{{ details.label }}</div>
+        <div style="{{ detailsBandStyle }}">
+          <div style="text-align:center;min-width:240px;">
+            <div style="font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:#9A9484;margin-bottom:14px;">{{ details.whenLabel }}</div>
+            <div style="font-family:'Playfair Display';font-weight:500;font-size:clamp(26px,3.6vw,34px);color:#2F343A;line-height:1.15;">{{ details.date }}</div>
+          </div>
+          <div style="{{ detailsDividerStyle }}"></div>
+          <div style="text-align:center;min-width:240px;">
+            <div style="font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:#9A9484;margin-bottom:14px;">{{ details.whereLabel }}</div>
+            <div style="font-family:'Playfair Display';font-weight:500;font-size:clamp(26px,3.6vw,34px);color:#2F343A;line-height:1.15;">{{ details.venue }}</div>
+            <div style="font-size:14px;color:#6B7178;margin-top:10px;">{{ details.loc }}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FULL-BLEED VENUE BAND -->
+    <section style="position:relative;width:100%;height:clamp(340px,52vw,560px);overflow:hidden;background-color:#1b2a33;background-image:url('images/peninsula.jpg');background-size:cover;background-position:center 42%;border-bottom:1px solid #E6DFD1;">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,24,30,0.42) 0%,rgba(14,24,30,0.30) 50%,rgba(12,20,26,0.50) 100%);"></div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section style="background:#F3EFE6;padding:clamp(58px,8vw,100px) 26px;">
+      <div style="max-width:760px;margin:0 auto;">
+        <div style="text-align:center;margin-bottom:30px;">
+          <sc-if value="{{ schedule.eyebrow }}" hint-placeholder-val="{{ true }}">
+            <div style="font-size:12px;letter-spacing:0.42em;text-transform:uppercase;color:#6E7152;margin-bottom:16px;">{{ schedule.eyebrow }}</div>
+          </sc-if>
+          <h2 style="font-family:'Playfair Display';font-weight:500;font-size:clamp(32px,5vw,48px);color:#2F343A;">{{ schedule.title }}</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ schedule.items }}" as="it" hint-placeholder-count="7">
+            <div style="{{ scheduleRowStyle }}">
+              <div style="{{ scheduleTimeStyle }}">{{ it.time }}</div>
+              <div style="{{ scheduleDividerStyle }}"></div>
+              <div>
+                <div style="font-family:'Playfair Display';font-size:23px;color:#2F343A;margin-bottom:7px;">{{ it.title }}</div>
+                <div style="font-size:15px;line-height:1.65;color:#6B7178;">{{ it.desc }}</div>
+                <sc-if value="{{ it.note }}" hint-placeholder-val="{{ false }}">
+                  <div style="margin-top:12px;font-size:13.5px;line-height:1.55;color:#A85440;font-style:italic;">{{ it.note }}</div>
+                </sc-if>
+                <sc-if value="{{ it.meta }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;flex-direction:column;gap:7px;margin-top:16px;">
+                    <sc-for list="{{ it.meta }}" as="mm" hint-placeholder-count="2">
+                      <div style="display:flex;gap:12px;align-items:baseline;">
+                        <span style="letter-spacing:0.16em;text-transform:uppercase;color:#9AA17B;font-size:10.5px;flex-shrink:0;width:84px;">{{ mm.label }}</span>
+                        <span style="color:#5C6168;font-size:13.5px;line-height:1.5;">{{ mm.value }}</span>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEASERS -->
+
+  </div>
+  </sc-if>
+
+  <!-- ===================== DRESS CODE ===================== -->
+  <sc-if value="{{ showDress }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Dress Code">
+    <div style="background:#F7F4ED;padding:clamp(32px,4vw,48px) 26px clamp(40px,5vw,56px);text-align:center;border-bottom:1px solid #E6DFD1;">
+      <img src="images/logo-td-black.svg" alt="Tatiana & Daniel" style="height:108px;width:auto;display:block;margin:0 auto 18px;" />
+      <h1 style="font-family:'Playfair Display';font-weight:500;font-size:clamp(40px,7vw,72px);color:#2F343A;">{{ dress.title }}</h1>
+      <p style="font-size:16px;line-height:1.75;color:#5C6168;max-width:560px;margin:24px auto 0;">{{ dress.intro }}</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:18px;max-width:640px;margin:36px auto 0;text-align:left;">
+        <div style="background:#FCFAF3;border:1px solid #E6DFD1;border-top:3px solid #9AA17B;padding:24px 26px;box-shadow:0 12px 30px -24px rgba(47,52,58,0.5);">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:#6E7152;margin-bottom:10px;">{{ dress.palette.label }}</div>
+          <div style="font-family:'Playfair Display';font-weight:500;font-size:21px;color:#2F343A;margin-bottom:11px;line-height:1.2;">{{ dress.palette.value }}</div>
+          <p style="font-size:13.5px;line-height:1.65;color:#5C6168;">{{ dress.palette.desc }}</p>
+        </div>
+        <div style="background:#FCFAF3;border:1px solid #E6DFD1;border-top:3px solid #9AA17B;padding:24px 26px;box-shadow:0 12px 30px -24px rgba(47,52,58,0.5);">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:#6E7152;margin-bottom:10px;">{{ dress.fabrics.label }}</div>
+          <div style="font-family:'Playfair Display';font-weight:500;font-size:21px;color:#2F343A;margin-bottom:11px;line-height:1.2;">{{ dress.fabrics.value }}</div>
+          <p style="font-size:13.5px;line-height:1.65;color:#5C6168;">{{ dress.fabrics.desc }}</p>
+        </div>
+      </div>
+    </div>
+    <!-- SECTION 1 · BRUNCH -->
+    <div style="background:#F3EFE6;padding:clamp(48px,7vw,80px) 26px clamp(44px,6vw,72px);">
+      <div style="max-width:1000px;margin:0 auto;">
+        <div style="text-align:center;max-width:640px;margin:0 auto;">
+          <div style="font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:#9AA17B;margin-bottom:14px;">{{ dress.brunch.kicker }}</div>
+          <h2 style="font-family:'Playfair Display';font-weight:500;font-size:clamp(30px,4.4vw,42px);color:#2F343A;">{{ dress.brunch.name }}</h2>
+          <div style="display:inline-block;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#6E7152;border:1px solid #C8CBB4;padding:7px 16px;margin-top:16px;">{{ dress.brunch.code }}</div>
+          <p style="font-size:15.5px;line-height:1.75;color:#5C6168;margin-top:20px;">{{ dress.brunch.desc }}</p>
+        </div>
+        <div style="max-width:640px;margin:24px auto 40px;padding:16px 24px;background:#F4EAE7;border-left:2px solid #B26152;text-align:center;">
+          <p style="font-size:14.5px;line-height:1.6;color:#7A4034;">{{ dress.brunch.note }}</p>
+        </div>
+        <div style="{{ dressTwoColStyle }}">
+          <!-- HER -->
+          <div>
+            <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px;">
+              <span style="font-family:'Playfair Display';font-style:italic;font-size:24px;color:#2F343A;white-space:nowrap;">{{ dress.herLabel }}</span>
+              <span style="flex:1;height:1px;background:#DCD5C7;"></span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-her-yellow-dress.jpg" alt="Yellow ruffle sundress" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-her-bluedress.jpg" alt="Light blue midi sundress" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-her-olive.jpg" alt="Olive linen waistcoat and trousers" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-her-pink.jpg" alt="Blush strapless jumpsuit" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-her-yellow-set.jpg" alt="Pale yellow waistcoat and shorts" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-her-blue.jpg" alt="Light blue waistcoat and wide-leg trousers" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            </div>
+          </div>
+          <!-- HIM -->
+          <div>
+            <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px;">
+              <span style="font-family:'Playfair Display';font-style:italic;font-size:24px;color:#2F343A;white-space:nowrap;">{{ dress.himLabel }}</span>
+              <span style="flex:1;height:1px;background:#DCD5C7;"></span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-him-blue.jpg" alt="Blue linen shirt and chinos" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-him-bluelinen.jpg" alt="Light blue linen shirt and white trousers" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-him-navyshirt.jpg" alt="Navy linen shirt and stone chinos" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-him-bluechino.jpg" alt="Light blue shirt and beige chinos" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-him-brown.jpg" alt="Brown linen shirt and white pleated trousers" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-him-navyknitpolo.jpg" alt="Navy knit polo and cream trousers" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2 · WEDDING -->
+    <div style="background:#F7F4ED;padding:clamp(48px,7vw,80px) 26px clamp(56px,8vw,100px);border-top:1px solid #E6DFD1;">
+      <div style="max-width:1000px;margin:0 auto;">
+        <div style="text-align:center;max-width:660px;margin:0 auto;">
+          <div style="font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:#9AA17B;margin-bottom:14px;">{{ dress.wedding.kicker }}</div>
+          <h2 style="font-family:'Playfair Display';font-weight:500;font-size:clamp(30px,4.4vw,42px);color:#2F343A;">{{ dress.wedding.name }}</h2>
+          <div style="display:inline-block;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#6E7152;border:1px solid #C8CBB4;padding:7px 16px;margin-top:16px;">{{ dress.wedding.code }}</div>
+          <p style="font-size:15.5px;line-height:1.75;color:#5C6168;margin-top:20px;">{{ dress.wedding.desc }}</p>
+        </div>
+        <div style="max-width:640px;margin:0 auto 14px;padding:16px 24px;background:#F4EAE7;border-left:2px solid #B26152;text-align:center;">
+          <p style="font-size:14.5px;line-height:1.6;color:#7A4034;">{{ dress.wedding.note }}</p>
+        </div>
+
+        <!-- FOR HER -->
+        <div style="margin-bottom:clamp(40px,5vw,60px);">
+          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:22px;">
+            <span style="font-family:'Playfair Display';font-style:italic;font-size:28px;color:#2F343A;white-space:nowrap;">{{ dress.herLabel }}</span>
+            <span style="flex:1;height:1px;background:#DCD5C7;"></span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <span style="display:inline-flex;align-items:center;gap:7px;white-space:nowrap;background:#6E7152;color:#F7F4ED;font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;padding:6px 13px;">✓ {{ dress.wedding.perfectLabel }}</span>
+          </div>
+          <p style="font-size:15px;line-height:1.7;color:#5C6168;margin-bottom:16px;">{{ dress.wedding.herPerfect }}</p>
+          <div style="{{ wedGrid6Style }}">
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-her-green.jpg" alt="Green satin halter gown" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-her-blue.jpg" alt="Pale blue halter gown" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-her-rose.jpg" alt="Rose satin halter midi dress" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-her-yellow.jpg" alt="Pale yellow gown with sash" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-her-burgundy.jpg" alt="Burgundy strapless jumpsuit" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-her-sage.jpg" alt="Sage tailored trouser suit" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;margin:26px 0 8px;">
+            <span style="display:inline-flex;align-items:center;gap:7px;white-space:nowrap;background:#B7ADA0;color:#FFFEFB;font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;padding:6px 13px;">✕ {{ dress.wedding.avoidLabel }}</span>
+          </div>
+          <p style="font-size:15px;line-height:1.7;color:#5C6168;margin-bottom:16px;">{{ dress.wedding.herAvoid }}</p>
+          <div style="{{ wedGrid6Style }}">
+            <div style="aspect-ratio:3/4;overflow:hidden;position:relative;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-avoid-her-white.jpg" alt="White sundress — please avoid" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;filter:saturate(0.85);" /><span style="position:absolute;inset:0;background:rgba(99,93,84,0.18);"></span></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;position:relative;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-avoid-her-green.jpg" alt="Casual green mini dress — please avoid" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;filter:saturate(0.85);" /><span style="position:absolute;inset:0;background:rgba(99,93,84,0.18);"></span></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;position:relative;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-avoid-her-yellow.jpg" alt="Casual yellow sundress — please avoid" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;filter:saturate(0.85);" /><span style="position:absolute;inset:0;background:rgba(99,93,84,0.18);"></span></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;position:relative;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-avoid-her-pink.jpg" alt="Casual pink maxi sundress — please avoid" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;filter:saturate(0.85);" /><span style="position:absolute;inset:0;background:rgba(99,93,84,0.18);"></span></div>
+          </div>
+        </div>
+
+        <!-- FOR HIM -->
+        <div>
+          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:22px;">
+            <span style="font-family:'Playfair Display';font-style:italic;font-size:28px;color:#2F343A;white-space:nowrap;">{{ dress.himLabel }}</span>
+            <span style="flex:1;height:1px;background:#DCD5C7;"></span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <span style="display:inline-flex;align-items:center;gap:7px;white-space:nowrap;background:#6E7152;color:#F7F4ED;font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;padding:6px 13px;">✓ {{ dress.wedding.perfectLabel }}</span>
+          </div>
+          <p style="font-size:15px;line-height:1.7;color:#5C6168;margin-bottom:16px;">{{ dress.wedding.himPerfect }}</p>
+          <div style="{{ wedGrid6Style }}">
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-him-tan.jpg" alt="Tan summer suit" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-him-sage.jpg" alt="Sage green suit" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-him-navy.jpg" alt="Navy suit with tie" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-him-navy3.jpg" alt="Navy three-piece suit" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-him-grey.jpg" alt="Grey suit with navy tie" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-him-tux.jpg" alt="Black tuxedo with bow tie" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;margin:26px 0 8px;">
+            <span style="display:inline-flex;align-items:center;gap:7px;white-space:nowrap;background:#B7ADA0;color:#FFFEFB;font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;padding:6px 13px;">✕ {{ dress.wedding.avoidLabel }}</span>
+          </div>
+          <p style="font-size:15px;line-height:1.7;color:#5C6168;margin-bottom:16px;">{{ dress.wedding.himAvoid }}</p>
+          <div style="{{ wedGrid6Style }}">
+            <div style="aspect-ratio:3/4;overflow:hidden;position:relative;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-avoid-him-shorts.jpg" alt="Polo and white shorts — please avoid" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;filter:saturate(0.85);" /><span style="position:absolute;inset:0;background:rgba(99,93,84,0.18);"></span></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;position:relative;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-avoid-him-jeans.jpg" alt="Shirt with jeans and sneakers — please avoid" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;filter:saturate(0.85);" /><span style="position:absolute;inset:0;background:rgba(99,93,84,0.18);"></span></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;position:relative;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-avoid-him-chinos.jpg" alt="Casual shirt and chinos with sneakers — please avoid" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;filter:saturate(0.85);" /><span style="position:absolute;inset:0;background:rgba(99,93,84,0.18);"></span></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;position:relative;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/ev-avoid-him-polo.jpg" alt="Polo and chinos with sneakers — please avoid" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;filter:saturate(0.85);" /><span style="position:absolute;inset:0;background:rgba(99,93,84,0.18);"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ===================== TRAVEL & STAY ===================== -->
+  <sc-if value="{{ showTravel }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Travel & Stay">
+    <div style="background:#F7F4ED;padding:clamp(70px,9vw,120px) 26px clamp(40px,5vw,56px);text-align:center;border-bottom:1px solid #E6DFD1;">
+      <sc-if value="{{ travel.eyebrow }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:12px;letter-spacing:0.42em;text-transform:uppercase;color:#6E7152;margin-bottom:18px;">{{ travel.eyebrow }}</div>
+      </sc-if>
+      <h1 style="font-family:'Playfair Display';font-weight:500;font-size:clamp(40px,7vw,72px);color:#2F343A;">{{ travel.title }}</h1>
+      <sc-if value="{{ travel.intro }}" hint-placeholder-val="{{ false }}">
+        <p style="font-size:16px;line-height:1.75;color:#5C6168;max-width:560px;margin:24px auto 0;">{{ travel.intro }}</p>
+      </sc-if>
+    </div>
+    <div style="background:#F3EFE6;padding:clamp(48px,7vw,84px) 26px clamp(56px,7vw,90px);">
+      <div style="max-width:880px;margin:0 auto;">
+
+        <!-- WHERE TO STAY -->
+        <div style="text-align:center;margin-bottom:14px;">
+          <sc-if value="{{ travel.stay.kicker }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:11px;letter-spacing:0.34em;text-transform:uppercase;color:#9AA17B;margin-bottom:14px;">{{ travel.stay.kicker }}</div>
+          </sc-if>
+          <h2 style="font-family:'Playfair Display';font-weight:500;font-size:clamp(28px,4vw,40px);color:#2F343A;">{{ travel.stay.heading }}</h2>
+        </div>
+        <sc-if value="{{ travel.stay.intro }}" hint-placeholder-val="{{ false }}">
+          <p style="font-size:15.5px;line-height:1.75;color:#5C6168;max-width:660px;margin:0 auto 36px;text-align:center;">{{ travel.stay.intro }}</p>
+        </sc-if>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;">
+          <sc-for list="{{ travel.stay.groups }}" as="g" hint-placeholder-count="2">
+            <div style="background:#FCFAF3;border:1px solid #E6DFD1;padding:clamp(26px,3.5vw,34px);display:flex;flex-direction:column;">
+              <div style="font-size:10.5px;letter-spacing:0.24em;text-transform:uppercase;color:#6E7152;margin-bottom:6px;">{{ g.label }}</div>
+              <h3 style="font-family:'Playfair Display';font-weight:500;font-size:23px;color:#2F343A;margin-bottom:12px;">{{ g.sub }}</h3>
+              <p style="font-size:14.5px;line-height:1.7;color:#5C6168;margin-bottom:20px;">{{ g.desc }}</p>
+              <div style="display:flex;flex-direction:column;gap:14px;border-top:1px solid #ECE6DA;padding-top:18px;">
+                <sc-for list="{{ g.areas }}" as="a" hint-placeholder-count="3">
+                  <div>
+                    <div style="font-family:'Playfair Display';font-size:17px;color:#2F343A;">{{ a.name }}</div>
+                    <div style="font-size:14px;line-height:1.55;color:#7A7E76;margin-top:2px;">{{ a.desc }}</div>
+                  </div>
+                </sc-for>
+              </div>
+              <sc-if value="{{ g.note }}" hint-placeholder-val="{{ false }}">
+                <p style="font-size:13.5px;line-height:1.6;color:#8A8578;font-style:italic;margin-top:18px;">{{ g.note }}</p>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="max-width:760px;margin:18px auto 0;padding:16px 24px;background:#F4EAE7;border-left:2px solid #B26152;">
+          <p style="font-size:14.5px;line-height:1.65;color:#7A4034;"><strong style="font-weight:700;">{{ travel.warningLabel }}</strong> {{ travel.warning }}</p>
+        </div>
+
+        <div style="max-width:760px;margin:14px auto 0;padding:20px 24px;background:#EFF1E8;border-left:2px solid #6E7152;">
+          <sc-if value="{{ travel.hotel.tag }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:10.5px;letter-spacing:0.22em;text-transform:uppercase;color:#6E7152;margin-bottom:8px;">{{ travel.hotel.tag }}</div>
+          </sc-if>
+          <h4 style="font-family:'Playfair Display';font-weight:500;font-size:20px;color:#2F343A;margin-bottom:10px;">{{ travel.hotel.title }}</h4>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <sc-for list="{{ travel.hotel.body }}" as="p" hint-placeholder-count="3">
+              <p style="font-size:14.5px;line-height:1.7;color:#4A4E40;">{{ p }}</p>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- TRAVEL & GETTING HERE -->
+        <div style="text-align:center;margin:clamp(48px,7vw,80px) 0 14px;">
+          <sc-if value="{{ travel.getting.kicker }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:11px;letter-spacing:0.34em;text-transform:uppercase;color:#9AA17B;margin-bottom:14px;">{{ travel.getting.kicker }}</div>
+          </sc-if>
+          <h2 style="font-family:'Playfair Display';font-weight:500;font-size:clamp(28px,4vw,40px);color:#2F343A;">{{ travel.getting.heading }}</h2>
+        </div>
+
+        <div style="background:#FCFAF3;border:1px solid #E6DFD1;padding:clamp(24px,3.5vw,32px);margin-bottom:18px;text-align:center;">
+          <div style="font-size:10.5px;letter-spacing:0.24em;text-transform:uppercase;color:#6E7152;margin-bottom:8px;">{{ travel.getting.airportLabel }}</div>
+          <p style="font-size:15.5px;line-height:1.7;color:#5C6168;max-width:580px;margin:0 auto;">{{ travel.getting.airportBody }}</p>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <sc-for list="{{ travel.getting.options }}" as="o" hint-placeholder-count="3">
+            <div style="background:#FCFAF3;border:1px solid #E6DFD1;padding:clamp(24px,3.5vw,32px);display:grid;grid-template-columns:54px 1fr;gap:20px;align-items:start;">
+              <div style="font-family:'Playfair Display';font-style:italic;font-size:28px;color:#9AA17B;line-height:1;">{{ o.num }}</div>
+              <div>
+                <h4 style="font-family:'Playfair Display';font-weight:500;font-size:21px;color:#2F343A;margin-bottom:8px;">{{ o.name }}</h4>
+                <p style="font-size:15px;line-height:1.7;color:#5C6168;">{{ o.desc }}</p>
+                <sc-if value="{{ o.rentals }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px;border-top:1px solid #ECE6DA;padding-top:16px;">
+                    <sc-for list="{{ o.rentals }}" as="r" hint-placeholder-count="2">
+                      <div style="display:flex;gap:12px;align-items:flex-start;"><span style="width:5px;height:5px;border-radius:50%;background:#6E7152;margin-top:9px;flex-shrink:0;"></span><span style="font-size:14.5px;line-height:1.65;color:#5C6168;"><strong style="font-weight:700;color:#2F343A;">{{ r.name }}</strong> — {{ r.desc }}</span></div>
+                    </sc-for>
+                    <p style="font-size:13.5px;line-height:1.6;color:#8A8578;font-style:italic;margin-top:2px;">{{ o.rentalsOther }}</p>
+                  </div>
+                </sc-if>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <sc-if value="{{ travel.getting.closing }}" hint-placeholder-val="{{ false }}">
+          <p style="text-align:center;font-size:14.5px;line-height:1.7;color:#8A8578;font-style:italic;max-width:600px;margin:32px auto 0;">{{ travel.getting.closing }}</p>
+        </sc-if>
+
+        <!-- GOOD TO KNOW -->
+        <div style="margin-top:clamp(48px,7vw,80px);">
+          <div style="text-align:center;margin-bottom:22px;">
+            <h2 style="font-family:'Playfair Display';font-weight:500;font-size:clamp(28px,4vw,40px);color:#2F343A;">{{ travel.goodToKnow.heading }}</h2>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;">
+            <sc-for list="{{ travel.goodToKnow.cards }}" as="c" hint-placeholder-count="3">
+              <div style="background:#FCFAF3;border:1px solid #E6DFD1;border-top:3px solid #9AA17B;padding:clamp(22px,2.6vw,28px);">
+                <div style="font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#6E7152;margin-bottom:11px;">{{ c.label }}</div>
+                <p style="font-size:14.5px;line-height:1.72;color:#5C6168;">{{ c.body }}</p>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- MAP -->
+        <div style="margin-top:clamp(48px,7vw,80px);">
+          <div style="text-align:center;margin-bottom:22px;">
+            <sc-if value="{{ travel.mapKicker }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:11px;letter-spacing:0.34em;text-transform:uppercase;color:#9AA17B;margin-bottom:14px;">{{ travel.mapKicker }}</div>
+            </sc-if>
+            <h2 style="font-family:'Playfair Display';font-weight:500;font-size:clamp(28px,4vw,40px);color:#2F343A;">{{ travel.mapHeading }}</h2>
+          </div>
+          <div style="border:1px solid #E6DFD1;box-shadow:0 18px 40px -26px rgba(47,52,58,0.4);overflow:hidden;line-height:0;">
+            <iframe title="Four Seasons Astir Palace Athens — map" src="https://www.google.com/maps?q=Four%20Seasons%20Astir%20Palace%20Hotel%20Athens%2C%20Apollonos%2040%2C%20Vouliagmeni&output=embed" width="100%" height="380" style="border:0;display:block;filter:saturate(0.9);" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:14px;">
+            <div style="font-size:13.5px;color:#7A7E76;">{{ travel.mapAddress }}</div>
+            <a href="https://maps.google.com/?q=Four+Seasons+Astir+Palace+Hotel+Athens" target="_blank" rel="noopener noreferrer" style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#2F343A;border-bottom:1px solid #C8C0AF;padding-bottom:3px;text-decoration:none;white-space:nowrap;">{{ travel.mapCta }} →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ===================== REGISTRY ===================== -->
+  <sc-if value="{{ showRegistry }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Registry">
+    <div style="background:#F7F4ED;padding:clamp(70px,9vw,120px) 26px clamp(40px,5vw,56px);text-align:center;border-bottom:1px solid #E6DFD1;">
+      <div style="font-size:12px;letter-spacing:0.42em;text-transform:uppercase;color:#6E7152;margin-bottom:18px;">{{ registry.eyebrow }}</div>
+      <h1 style="font-family:'Playfair Display';font-weight:500;font-size:clamp(40px,7vw,72px);color:#2F343A;">{{ registry.title }}</h1>
+      <div style="max-width:680px;margin:30px auto 0;display:flex;flex-direction:column;gap:18px;text-align:left;">
+        <sc-for list="{{ registry.paras }}" as="p" hint-placeholder-count="3">
+          <p style="font-size:16.5px;line-height:1.8;color:#5C6168;">{{ p }}</p>
+        </sc-for>
+      </div>
+    </div>
+    <div style="background:#F3EFE6;padding:clamp(48px,6vw,80px) 26px clamp(64px,8vw,104px);display:flex;justify-content:center;">
+      <div style="background:#FCFAF3;border:1px solid #E6DFD1;border-top:3px solid #9AA17B;box-shadow:0 24px 60px -40px rgba(47,52,58,0.55);max-width:440px;width:100%;padding:clamp(34px,4vw,46px) clamp(28px,3.4vw,42px);text-align:center;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:#6E7152;margin-bottom:12px;">{{ registry.fund.label }}</div>
+        <div style="font-family:'Playfair Display';font-weight:500;font-size:clamp(24px,3.2vw,30px);color:#2F343A;line-height:1.2;">{{ registry.fund.name }}</div>
+        <div style="font-size:13px;letter-spacing:0.04em;color:#9A9484;margin-top:6px;">{{ registry.fund.via }}</div>
+
+        <a href="{{ registry.fund.url }}" target="_blank" rel="noopener noreferrer" style="display:block;margin:26px 0 0;background:#2F343A;color:#FBF8F1;text-decoration:none;font-family:'Mulish';font-size:13px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;padding:16px 22px;transition:background .2s;" style-hover="background:#454B45;">{{ registry.fund.button }}</a>
+
+        <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin:14px 0 4px;">
+          <span style="font-family:'Mulish';font-size:13px;color:#6B7178;letter-spacing:0.02em;">{{ registry.fund.handle }}</span>
+          <button onClick="{{ copyLink }}" style="background:none;border:1px solid #C8C0AF;cursor:pointer;font-family:'Mulish';font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;color:#6E7152;padding:6px 11px;transition:all .2s;" style-hover="background:#EFE9DC;">{{ copyLabel }}</button>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:16px;margin:26px 0 22px;">
+          <div style="flex:1;height:1px;background:#E6DFD1;"></div>
+          <span style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#B0AB9C;">{{ registry.fund.qrCaption }}</span>
+          <div style="flex:1;height:1px;background:#E6DFD1;"></div>
+        </div>
+        <div style="display:flex;justify-content:center;">
+          <div style="padding:14px;background:#FCFAF3;border:1px solid #E6DFD1;line-height:0;" ref="{{ qrRef }}"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </sc-if>
+  <!-- END REGISTRY -->
+
+  <!-- ===================== WHAT TO DO IN ATHENS ===================== -->
+  <sc-if value="{{ showAthens }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="What to Do in Athens">
+    <div style="background:#F7F4ED;padding:clamp(70px,9vw,120px) 26px clamp(40px,5vw,56px);text-align:center;border-bottom:1px solid #E6DFD1;">
+      <div style="font-size:12px;letter-spacing:0.42em;text-transform:uppercase;color:#6E7152;margin-bottom:18px;">{{ athens.eyebrow }}</div>
+      <h1 style="font-family:'Playfair Display';font-weight:500;font-size:clamp(40px,7vw,72px);color:#2F343A;">{{ athens.title }}</h1>
+      <p style="font-size:16px;line-height:1.75;color:#6B7178;max-width:640px;margin:22px auto 0;">{{ athens.intro }}</p>
+    </div>
+    <div style="background:#F3EFE6;padding:clamp(40px,6vw,72px) 26px clamp(64px,8vw,100px);">
+      <div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,6vw,76px);">
+        <sc-for list="{{ athens.sections }}" as="s" hint-placeholder-count="3">
+          <div>
+            <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:8px;">
+              <span style="font-family:'Playfair Display';font-style:italic;font-size:22px;color:#9AA17B;">{{ s.mark }}</span>
+              <h2 style="font-family:'Playfair Display';font-weight:500;font-size:clamp(26px,4vw,36px);color:#2F343A;">{{ s.label }}</h2>
+            </div>
+            <p style="font-size:14.5px;line-height:1.7;color:#7A7E76;margin-bottom:24px;max-width:560px;">{{ s.note }}</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:18px;">
+              <sc-for list="{{ s.items }}" as="o" hint-placeholder-count="3">
+                <div style="background:#FCFAF3;border:1px solid #E6DFD1;padding:26px 24px;display:flex;flex-direction:column;gap:8px;">
+                  <a href="{{ o.url }}" target="_blank" rel="noopener noreferrer" style="font-family:'Playfair Display';font-weight:500;font-size:21px;color:#2F343A;text-decoration:none;border-bottom:1px solid #C8C0AF;align-self:flex-start;padding-bottom:2px;transition:color .2s;" style-hover="color:#6E7152;">{{ o.name }}</a>
+                  <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#9AA17B;">{{ o.area }}</div>
+                  <p style="font-size:14.5px;line-height:1.7;color:#5C6168;">{{ o.desc }}</p>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="background:#EFF1E8;padding:clamp(48px,6vw,84px) 26px clamp(64px,8vw,104px);border-top:1px solid #E6DFD1;">
+      <div style="max-width:840px;margin:0 auto;">
+        <div style="text-align:center;margin-bottom:clamp(38px,5vw,58px);">
+          <div style="font-size:12px;letter-spacing:0.42em;text-transform:uppercase;color:#6E7152;margin-bottom:16px;">{{ athens.itinerary.eyebrow }}</div>
+          <h2 style="font-family:'Playfair Display';font-weight:500;font-size:clamp(30px,5vw,48px);color:#2F343A;">{{ athens.itinerary.heading }}</h2>
+          <p style="font-size:16px;line-height:1.78;color:#6B7178;max-width:620px;margin:20px auto 0;">{{ athens.itinerary.intro }}</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:clamp(42px,5vw,62px);">
+          <sc-for list="{{ athens.itinerary.days }}" as="d" hint-placeholder-count="3">
+            <div>
+              <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #D9D3C4;">
+                <span style="font-family:'Playfair Display';font-style:italic;font-size:20px;color:#9AA17B;white-space:nowrap;">{{ d.day }}</span>
+                <h3 style="font-family:'Playfair Display';font-weight:500;font-size:clamp(22px,3.2vw,31px);color:#2F343A;">{{ d.title }}</h3>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:24px;">
+                <sc-for list="{{ d.stops }}" as="st" hint-placeholder-count="5">
+                  <div style="display:grid;grid-template-columns:{{ itinColTemplate }};gap:clamp(6px,2.4vw,28px);align-items:start;">
+                    <div style="{{ itinTimeStyle }}">{{ st.time }}</div>
+                    <div>
+                      <div style="font-family:'Playfair Display';font-weight:500;font-size:19px;color:#2F343A;margin-bottom:6px;">{{ st.name }}</div>
+                      <p style="font-size:14.5px;line-height:1.74;color:#5C6168;">{{ st.desc }}</p>
+                      <sc-if value="{{ st.tip }}" hint-placeholder-val="{{ false }}">
+                        <div style="margin-top:12px;background:#FCFAF3;border-left:2px solid #9AA17B;padding:12px 16px;font-size:13.5px;line-height:1.62;color:#5C6168;">
+                          <span style="font-weight:700;letter-spacing:0.14em;text-transform:uppercase;font-size:10.5px;color:#6E7152;margin-right:8px;">{{ athens.itinerary.tipLabel }}</span>{{ st.tip }}
+                        </div>
+                      </sc-if>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ===================== FAQ ===================== -->
+  <sc-if value="{{ showFaq }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="FAQ">
+    <div style="background:#F7F4ED;padding:clamp(70px,9vw,120px) 26px clamp(40px,5vw,56px);text-align:center;border-bottom:1px solid #E6DFD1;">
+      <h1 style="font-family:'Playfair Display';font-weight:500;font-size:clamp(40px,7vw,72px);color:#2F343A;">{{ faq.title }}</h1>
+    </div>
+    <div style="background:#F3EFE6;padding:clamp(40px,6vw,72px) 26px clamp(64px,8vw,100px);">
+      <div style="max-width:760px;margin:0 auto;">
+        <sc-for list="{{ faq.items }}" as="q" hint-placeholder-count="6">
+          <div style="border-bottom:1px solid #E3DCCE;">
+            <button onClick="{{ q.onClick }}" style="width:100%;background:none;border:none;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 4px;">
+              <span style="font-family:'Playfair Display';font-size:clamp(19px,2.4vw,23px);color:#2F343A;">{{ q.q }}</span>
+              <span style="{{ q.iconStyle }}">+</span>
+            </button>
+            <div style="{{ q.answerStyle }}">
+              <div style="display:flex;flex-direction:column;gap:13px;padding:0 4px 26px;">
+                <sc-for list="{{ q.paras }}" as="p" hint-placeholder-count="2">
+                  <p style="{{ p.style }}">{{ p.text }}</p>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ===================== RSVP (shared, shown on home + via nav) ===================== -->
+  <sc-if value="{{ showRsvpSection }}" hint-placeholder-val="{{ true }}">
+  <section data-screen-label="RSVP" style="background:#F3EFE6;padding:clamp(40px,6vw,64px) 26px clamp(24px,4vw,40px);text-align:center;">
+    <div style="{{ hopeStyle }}">{{ rsvp.hope }}</div>
+    <p style="margin:14px auto 0;max-width:760px;font-family:'Mulish';font-size:clamp(16px,1.7vw,19px);line-height:1.6;color:#3A342C;">{{ rsvp.note }}</p>
+  </section>
+  <section style="position:relative;min-height:clamp(360px,42vw,620px);overflow:hidden;background-color:#2b2622;background-image:url('images/couple-sofa-cropped.png');background-size:cover;background-position:center 54%;">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,16,0.3) 0%,rgba(20,18,16,0.05) 40%,rgba(18,16,14,0.25) 100%);"></div>
+    <div style="position:absolute;inset:18px;border:1px solid rgba(247,244,237,0.4);pointer-events:none;"></div>
+  </section>
+  </sc-if>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer style="background:#2F343A;color:#CDD0CC;padding:clamp(48px,6vw,72px) 26px;text-align:center;">
+    <img src="images/logo-td-cream.svg" alt="Tatiana & Daniel" style="height:74px;width:auto;display:block;margin:0 auto 26px;opacity:0.92;" />
+    <div style="font-family:'Playfair Display';font-weight:600;font-size:30px;letter-spacing:0.06em;color:#F7F4ED;">{{ name1 }} <span style="font-style:italic;color:#9AA17B;">&amp;</span> {{ name2 }}</div>
+    <div style="font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:#9DA29D;margin-top:16px;">{{ footer.line }}</div>
+    <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:28px;">
+      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="5">
+        <button onClick="{{ item.onClick }}" style="background:none;border:none;cursor:pointer;font-family:'Mulish';font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#B7BAB4;padding:4px 0;" style-hover="color:#F7F4ED;">{{ item.label }}</button>
+      </sc-for>
+    </div>
+    <div style="font-size:12px;color:#7E827D;margin-top:26px;">{{ footer.tag }}</div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    page: 'home',
+    lang: 'en',
+    isMobile: (typeof window !== 'undefined' && window.innerWidth < 860),
+    menuOpen: false,
+    faqOpen: -1,
+    submitted: false,
+    formError: '',
+    copiedLink: false,
+    form: { name:'', email:'', attending:'', guests:'1', brunch:'', dietary:'', song:'', message:'' },
+  };
+
+  qrRef = React.createRef();
+
+  renderQR() {
+    const el = this.qrRef.current;
+    if (!el || el.dataset.done) return;
+    if (typeof window === 'undefined' || typeof window.QRCode === 'undefined') {
+      this._qrTimer = setTimeout(() => this.renderQR(), 150);
+      return;
+    }
+    el.innerHTML = '';
+    new window.QRCode(el, {
+      text: this.DATA.registry.fund.url,
+      width: 152, height: 152,
+      colorDark: '#2F343A', colorLight: '#FCFAF3',
+      correctLevel: window.QRCode.CorrectLevel.M,
+    });
+    el.dataset.done = '1';
+  }
+
+  componentDidUpdate() { this.renderQR(); }
+
+  componentDidMount() {
+    this.renderQR();
+    this._onResize = () => {
+      const m = window.innerWidth < 860;
+      this.setState(s => ({ isMobile: m, menuOpen: m ? s.menuOpen : false }));
+    };
+    window.addEventListener('resize', this._onResize);
+  }
+  componentWillUnmount() {
+    if (this._qrTimer) clearTimeout(this._qrTimer);
+    window.removeEventListener('resize', this._onResize);
+  }
+
+  resolve(node, L) {
+    if (node && typeof node === 'object' && !Array.isArray(node)
+        && Object.prototype.hasOwnProperty.call(node, 'en')
+        && Object.prototype.hasOwnProperty.call(node, 'ru')
+        && Object.keys(node).length === 2) {
+      return node[L];
+    }
+    if (Array.isArray(node)) return node.map(n => this.resolve(n, L));
+    if (node && typeof node === 'object') {
+      const o = {};
+      for (const k in node) o[k] = this.resolve(node[k], L);
+      return o;
+    }
+    return node;
+  }
+
+  go(id) { this.setState({ page: id, menuOpen: false }); if (typeof window !== 'undefined') window.scrollTo(0, 0); }
+
+  renderVals() {
+    const L = this.state.lang;
+    const v = this.resolve(this.DATA, L);
+    const page = this.state.page;
+    const mob = this.state.isMobile;
+
+    // nav
+    const ids = ['home','dress','travel','athens','registry','faq','rsvp'];
+    const labels = { home:v.nav.home, dress:v.nav.dress, travel:v.nav.travel, athens:v.nav.athens, registry:v.nav.registry, faq:v.nav.faq, rsvp:v.nav.rsvp };
+    const linkStyle = a => `background:none;border:none;cursor:pointer;font-family:'Mulish';font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:6px 0;transition:color .2s;color:${a?'#2F343A':'#85897F'};border-bottom:1px solid ${a?'#6E7152':'transparent'};`;
+    const mobileLinkStyle = a => `background:none;border:none;cursor:pointer;text-align:left;font-family:'Mulish';font-size:14px;letter-spacing:0.14em;text-transform:uppercase;padding:13px 2px;color:${a?'#2F343A':'#85897F'};border-bottom:1px solid #ECE6DA;`;
+    const navItems = ids.map(id => ({ id, label: labels[id], onClick: () => this.go(id), style: linkStyle(page===id), mobileStyle: mobileLinkStyle(page===id) }));
+
+    // teasers
+    const teasers = (v.teasers || []).map(t => ({ ...t, onClick: () => this.go(t.id) }));
+
+    // faq
+    const faqItems = (v.faq.items || []).map((q, i) => {
+      const open = this.state.faqOpen === i;
+      const paras = (q.paras || []).map(p => ({
+        text: p.text,
+        style: p.type === 'contact'
+          ? "font-size:14.5px;line-height:1.7;color:#4A4E40;background:#EFF1E8;border-left:2px solid #6E7152;padding:12px 16px;"
+          : (p.type === 'note'
+            ? "font-size:14.5px;line-height:1.7;color:#7A4034;font-style:italic;"
+            : "font-size:15.5px;line-height:1.75;color:#5C6168;"),
+      }));
+      return {
+        q: q.q,
+        paras,
+        onClick: () => this.setState(st => ({ faqOpen: st.faqOpen === i ? -1 : i })),
+        iconStyle: `font-family:'Mulish';font-size:24px;font-weight:300;color:#6E7152;transition:transform .25s;transform:rotate(${open?45:0}deg);flex-shrink:0;`,
+        answerStyle: `overflow:hidden;transition:max-height .45s ease,opacity .3s ease;max-height:${open?'1800px':'0'};opacity:${open?1:0};`,
+      };
+    });
+    const faq = { ...v.faq, items: faqItems };
+
+    // rsvp form
+    const f = this.state.form;
+    const att = f.attending;
+    const pillBase = 'cursor:pointer;font-family:Mulish;font-size:13px;letter-spacing:0.1em;padding:13px 22px;border:1px solid;transition:all .18s;flex:1;min-width:140px;';
+    const pillOn = c => `${pillBase}background:${c};color:#F7F4ED;border-color:${c};`;
+    const pillOff = `${pillBase}background:#FFFEFB;color:#5C6168;border-color:#DCD5C7;`;
+    const setForm = (k, val) => this.setState(st => ({ form: { ...st.form, [k]: val }, formError: '' }));
+
+    return {
+      ...v,
+      qrRef: this.qrRef,
+      copiedLink: this.state.copiedLink,
+      copyLabel: this.state.copiedLink ? v.registry.fund.copied : v.registry.fund.copy,
+      copyLink: () => {
+        const url = this.DATA.registry.fund.url;
+        const done = () => {
+          this.setState({ copiedLink: true });
+          clearTimeout(this._copyTimer);
+          this._copyTimer = setTimeout(() => this.setState({ copiedLink: false }), 2200);
+        };
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(url).then(done).catch(done);
+          } else { done(); }
+        } catch (e) { done(); }
+      },
+      name1: v.name1, name2: v.name2,
+      page,
+      isDesktop: !this.state.isMobile, isMobile: this.state.isMobile,
+      menuOpen: this.state.menuOpen,
+      // responsive (driven by window width via isMobile)
+      detailsBandStyle: mob
+        ? 'display:flex;flex-direction:column;align-items:center;gap:26px;'
+        : 'display:flex;justify-content:center;align-items:stretch;gap:clamp(28px,6vw,72px);flex-wrap:wrap;',
+      detailsDividerStyle: mob
+        ? 'width:64px;height:1px;background:#E0D8C8;'
+        : 'width:1px;background:#E0D8C8;align-self:stretch;',
+      scheduleRowStyle: mob
+        ? 'display:grid;grid-template-columns:1fr;gap:5px;padding:22px 0;border-bottom:1px solid #E3DCCE;'
+        : 'display:grid;grid-template-columns:142px 1px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid #E3DCCE;align-items:start;',
+      scheduleDividerStyle: mob ? 'display:none;' : 'background:#E0D8C8;width:1px;height:100%;',
+      scheduleTimeStyle: mob
+        ? "font-family:'Playfair Display';font-weight:600;font-size:17px;letter-spacing:0.02em;color:#5C6038;"
+        : "font-family:'Playfair Display';font-weight:600;font-size:clamp(18px,2.2vw,22px);color:#5C6038;padding-top:2px;line-height:1.3;",
+      dressTwoColStyle: mob
+        ? 'display:grid;grid-template-columns:1fr;gap:38px;align-items:start;'
+        : 'display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);align-items:start;',
+      wedGrid6Style: mob
+        ? 'display:grid;grid-template-columns:repeat(3,1fr);gap:8px;'
+        : 'display:grid;grid-template-columns:repeat(6,1fr);gap:8px;',
+      itinColTemplate: mob ? '1fr' : '132px 1fr',
+      itinTimeStyle: mob
+        ? 'font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#6E7152;'
+        : 'font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#6E7152;padding-top:5px;',
+      showHome: page === 'home', showDress: page === 'dress', showTravel: page === 'travel',
+      showAthens: page === 'athens',
+      showRegistry: page === 'registry', showFaq: page === 'faq',
+      showRsvpSection: page === 'home' || page === 'rsvp',
+      navItems, teasers, faq,
+      toplineStyle: L === 'en'
+        ? "font-family:'Pinyon Script',cursive;font-size:clamp(40px,6vw,60px);color:#F7F4ED;text-shadow:0 2px 18px rgba(0,0,0,0.6);line-height:1.1;"
+        : "font-family:'Playfair Display';font-style:italic;font-weight:500;font-size:clamp(24px,3.6vw,38px);color:#F7F4ED;text-shadow:0 2px 18px rgba(0,0,0,0.6);line-height:1.1;",
+      hopeStyle: L === 'en'
+        ? "font-family:'Pinyon Script',cursive;font-size:clamp(34px,4.8vw,54px);color:#4A4030;line-height:1.05;"
+        : "font-family:'Playfair Display';font-style:italic;font-weight:500;font-size:clamp(20px,3vw,32px);color:#4A4030;line-height:1.1;",
+      scrollToRsvp: () => {
+        const el = typeof document !== 'undefined' && document.getElementById('rsvp-form');
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 8, behavior: 'smooth' });
+      },
+      goHome: () => this.go('home'),
+      setEN: () => this.setState({ lang: 'en' }),
+      setRU: () => this.setState({ lang: 'ru' }),
+      enStyle: `background:none;border:none;cursor:pointer;font-family:'Mulish';font-size:12px;letter-spacing:0.12em;padding:2px;color:${L==='en'?'#2F343A':'#A8A496'};font-weight:${L==='en'?700:400};`,
+      ruStyle: `background:none;border:none;cursor:pointer;font-family:'Mulish';font-size:12px;letter-spacing:0.12em;padding:2px;color:${L==='ru'?'#2F343A':'#A8A496'};font-weight:${L==='ru'?700:400};`,
+      toggleMenu: () => this.setState(st => ({ menuOpen: !st.menuOpen })),
+      // form
+      form: f,
+      isAttending: att === 'yes',
+      notSubmitted: !this.state.submitted,
+      submitted: this.state.submitted,
+      formError: this.state.formError,
+      onName: e => setForm('name', e.target.value),
+      onEmail: e => setForm('email', e.target.value),
+      onGuests: e => setForm('guests', e.target.value),
+      onDietary: e => setForm('dietary', e.target.value),
+      onSong: e => setForm('song', e.target.value),
+      onMessage: e => setForm('message', e.target.value),
+      setAttendYes: () => setForm('attending', 'yes'),
+      setAttendNo: () => setForm('attending', 'no'),
+      setBrunchYes: () => setForm('brunch', 'yes'),
+      setBrunchNo: () => setForm('brunch', 'no'),
+      attendYesStyle: att === 'yes' ? pillOn('#6E7152') : pillOff,
+      attendNoStyle: att === 'no' ? pillOn('#8A8578') : pillOff,
+      brunchYesStyle: f.brunch === 'yes' ? pillOn('#6E7152') : pillOff,
+      brunchNoStyle: f.brunch === 'no' ? pillOn('#8A8578') : pillOff,
+      thanksMark: '✦',
+      thanksBody: (v.rsvp.thanksBody || '').replace('{name}', (f.name || '').split(' ')[0] || ''),
+      submit: () => {
+        const ff = this.state.form;
+        if (!ff.name.trim() || !ff.attending) {
+          this.setState({ formError: v.rsvp.error });
+          return;
+        }
+        this.setState({ submitted: true, formError: '' });
+        if (typeof window !== 'undefined') window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      },
+    };
+  }
+
+  DATA = {
+    name1: { en: 'Tatiana', ru: 'Татьяна' },
+    name2: { en: 'Daniel', ru: 'Дэниел' },
+    nav: {
+      home: { en: 'Home', ru: 'Главная' },
+      dress: { en: 'Dress Code', ru: 'Дресс-код' },
+      travel: { en: 'Travel & Stay', ru: 'Поездка' },
+      athens: { en: 'What to Do', ru: 'Чем заняться' },
+      registry: { en: 'Registry', ru: 'Подарки' },
+      faq: { en: 'FAQ', ru: 'Вопросы' },
+      rsvp: { en: 'RSVP', ru: 'RSVP' },
+    },
+    hero: {
+      eyebrow: { en: 'Together with their families', ru: 'Вместе со своими семьями' },
+      topline: { en: "We're getting married!", ru: 'С радостью сообщаем о нашей свадьбе!' },
+      date: { en: '19 June 2027 · Athens, Greece', ru: '19 июня 2027 · Афины, Греция' },
+      countdownLabel: { en: 'Counting down to the celebration', ru: 'До праздника осталось' },
+    },
+    countdown: {
+      days: { en: 'Days', ru: 'Дней' },
+      hours: { en: 'Hours', ru: 'Часов' },
+      minutes: { en: 'Minutes', ru: 'Минут' },
+      seconds: { en: 'Seconds', ru: 'Секунд' },
+    },
+    details: {
+      label: { en: 'The Place', ru: 'Место' },
+      whenLabel: { en: 'When', ru: 'Когда' },
+      date: { en: 'Saturday, 19 June 2027', ru: 'Суббота, 19 июня 2027' },
+      whereLabel: { en: 'Where', ru: 'Где' },
+      venue: { en: 'Four Seasons Astir Palace', ru: 'Four Seasons Astir Palace' },
+      loc: { en: 'Vouliagmeni · Athens · Greece', ru: 'Вульягмени · Афины · Греция' },
+      imgcap: { en: 'Vouliagmeni · The Athens Riviera', ru: 'Вульягмени · Афинская Ривьера' },
+      welcome: {
+        en: "We're so happy to invite you to celebrate our wedding on the Athens Riviera. Everything you need to know is here — explore the pages and send us your RSVP.",
+        ru: 'Мы счастливы пригласить вас отпраздновать нашу свадьбу на Афинской Ривьере. Здесь вы найдёте всё необходимое — загляните на страницы сайта и подтвердите своё участие.',
+      },
+    },
+    schedule: {
+      eyebrow: { en: 'The Day', ru: '' },
+      title: { en: 'Schedule', ru: 'Программа дня' },
+      items: [
+        { time: { en: '10:00 – 13:00', ru: '10:00 – 13:00' }, title: { en: 'Welcome Coffee & Brunch', ru: 'Кофе и Завтрак' }, desc: { en: 'A casual morning gathering to welcome everyone and kick off our wedding day in style.', ru: 'Утренняя встреча, чтобы поприветствовать гостей и начать свадебный день.' }, meta: [
+          { label: { en: 'Location', ru: 'Место' }, value: { en: 'Nafsika Venue — Four Seasons Astir Palace', ru: 'Nafsika Venue — Four Seasons Astir Palace' } },
+          { label: { en: 'Dress code', ru: 'Дресс-код' }, value: { en: 'Smart casual', ru: 'Smart casual' } },
+        ] },
+        { time: { en: '13:00 – 18:00', ru: '13:00 – 18:00' }, title: { en: 'Mesimeri (Greek Siesta!)', ru: 'Месимери (греческая сиеста!)' }, desc: { en: 'Time to rest, retreat from the midday heat, and refresh before the evening celebrations begin.', ru: 'Время отдохнуть от полуденной жары и набраться сил перед вечерним праздником.' } },
+        { time: { en: '18:00', ru: '18:00' }, title: { en: 'Arrival at the Venue', ru: 'Прибытие на вечернее мероприятие' }, desc: { en: 'We kindly ask all guests to arrive by 18:15 at the latest, as the ceremony will begin promptly at 18:30.', ru: 'Просим всех гостей приехать не позднее 18:15, так как церемония начнётся ровно в 18:30.' }, note: { en: 'Please note: no entry will be permitted once the ceremony has started.', ru: 'Обратите внимание: вход после начала церемонии будет невозможен.' }, meta: [
+          { label: { en: 'Location', ru: 'Место' }, value: { en: 'Nafsika Venue — Four Seasons Astir Palace, Athens, Greece', ru: 'Nafsika Venue — Four Seasons Astir Palace, Афины, Греция' } },
+          { label: { en: 'Dress code', ru: 'Дресс-код' }, value: { en: 'Formal', ru: 'Формальный' } },
+        ] },
+        { time: { en: '18:30 – 19:00', ru: '18:30 – 19:00' }, title: { en: 'Ceremony', ru: 'Церемония' }, desc: { en: 'Join us as we exchange vows and celebrate the beginning of our family.', ru: 'Разделите с нами момент бракосочетания.' } },
+        { time: { en: '19:00 – 20:00', ru: '19:00 – 20:00' }, title: { en: 'Drinks Reception', ru: 'Фуршет' }, desc: { en: 'Enjoy a glass of champagne as the sun sets over the Aegean Sea.', ru: 'Насладитесь бокалом шампанского, наблюдая закат над Эгейским морем.' } },
+        { time: { en: '20:00 – 22:30', ru: '20:00 – 22:30' }, title: { en: 'Dinner & Toasts', ru: 'Ужин и тосты' }, desc: { en: 'Gather around the table for a seated dinner featuring local flavours and heartfelt speeches.', ru: 'Праздничный ужин за столом с местными блюдами и тёплыми речами.' } },
+        { time: { en: '22:30 – 04:00', ru: '22:30 – 04:00' }, title: { en: 'Party', ru: 'Вечеринка' }, desc: { en: 'Join us on the dance floor as we celebrate late into the night.', ru: 'Танцпол и праздник до четырех утра.' } },
+      ],
+    },
+    teaserHead: {
+      eyebrow: { en: 'Explore', ru: 'Подробнее' },
+      title: { en: 'Everything you need', ru: 'Всё, что нужно знать' },
+    },
+    teasers: [
+      { id: 'dress', label: { en: 'Dress Code', ru: 'Дресс-код' }, title: { en: 'What to Wear', ru: 'Что надеть' }, desc: { en: 'Guidance for the brunch and the evening celebration.', ru: 'Рекомендации для бранча и вечернего праздника.' }, cta: { en: 'View', ru: 'Открыть' } },
+      { id: 'travel', label: { en: 'Travel & Stay', ru: 'Поездка' }, title: { en: 'Getting There', ru: 'Как добраться' }, desc: { en: 'Airport, the venue, and where to stay in Athens.', ru: 'Аэропорт, площадка и где остановиться в Афинах.' }, cta: { en: 'View', ru: 'Открыть' } },
+      { id: 'athens', label: { en: 'What to Do', ru: 'Чем заняться' }, title: { en: 'Explore Athens', ru: 'Афины' }, desc: { en: 'Our favourite restaurants, beach bars and sights.', ru: 'Наши любимые рестораны, пляжные бары и места.' }, cta: { en: 'View', ru: 'Открыть' } },
+      { id: 'registry', label: { en: 'Registry', ru: 'Подарки' }, title: { en: 'Gifts', ru: 'Подарки' }, desc: { en: 'Your presence is the greatest gift of all.', ru: 'Ваше присутствие — лучший подарок.' }, cta: { en: 'View', ru: 'Открыть' } },
+      { id: 'faq', label: { en: 'FAQ', ru: 'Вопросы' }, title: { en: 'Questions', ru: 'Вопросы' }, desc: { en: 'Timings, children, weather and more.', ru: 'Время, дети, погода и не только.' }, cta: { en: 'View', ru: 'Открыть' } },
+    ],
+    athens: {
+      eyebrow: { en: 'Beyond the wedding', ru: 'Помимо свадьбы' },
+      title: { en: 'What to do in Athens', ru: 'Чем заняться в Афинах' },
+      intro: {
+        en: 'A few of our favourite places to eat, swim and explore while you are in Athens.',
+        ru: 'Несколько наших любимых мест, где можно поесть, искупаться и погулять, пока вы в Афинах.',
+      },
+      sections: [
+        {
+          mark: { en: 'i', ru: 'i' },
+          label: { en: 'Where to Eat', ru: 'Где поесть' },
+          note: { en: 'Restaurants we love, from the Riviera to the city centre.', ru: 'Рестораны, которые мы любим — от Ривьеры до центра города.' },
+          items: [
+            { name: { en: 'Spondi', ru: 'Spondi' }, url: 'https://www.google.com/maps/search/?api=1&query=Spondi%20Restaurant%20Athens', area: { en: 'Pangrati', ru: 'Панграти' }, desc: { en: 'Refined one-Michelin-star dining for a special evening out.', ru: 'Изысканная кухня, одна звезда Мишлен — для особенного вечера.' } },
+            { name: { en: 'Ergon House Athens', ru: 'Ergon House Athens' }, url: 'https://www.google.com/maps/search/?api=1&query=Ergon%20House%20Athens', area: { en: 'Syntagma', ru: 'Синтагма' }, desc: { en: 'Buzzing all-day food hall, deli and restaurant in the heart of the city.', ru: 'Оживлённый гастрономический холл, деликатесная и ресторан в самом центре города.' } },
+            { name: { en: 'Strofi', ru: 'Strofi' }, url: 'https://www.google.com/maps/search/?api=1&query=Strofi%20Athenian%20Restaurant', area: { en: 'Makrygianni', ru: 'Макриянни' }, desc: { en: 'Classic taverna fare with a rooftop Acropolis view — book ahead.', ru: 'Классическая таверна с видом на Акрополь с крыши — бронируйте заранее.' } },
+            { name: { en: 'Moorings', ru: 'Moorings' }, url: 'https://www.google.com/maps/search/?api=1&query=Moorings%20Vouliagmeni', area: { en: 'Vouliagmeni', ru: 'Вульягмени' }, desc: { en: 'Seafood and cocktails right on the marina, minutes from the venue.', ru: 'Морепродукты и коктейли прямо у марины, в нескольких минутах от площадки.' } },
+            { name: { en: 'Papaioannou', ru: 'Papaioannou' }, url: 'https://www.google.com/maps/place/papaioannou+Restaurant+Vouliagmeni/data=!4m2!3m1!1s0x14a1953d46e94033:0x624879d4e763083f?sa=X&ved=1t:242&ictx=111', area: { en: 'Vouliagmeni', ru: 'Вульягмени' }, desc: { en: 'A local institution for fresh fish and seafood by the water.', ru: 'Легендарный местный ресторан свежей рыбы и морепродуктов у воды.' } },
+            { name: { en: 'Mani Mani', ru: 'Mani Mani' }, url: 'https://www.google.com/maps/search/?api=1&query=Mani%20Mani%20Restaurant%20Athens', area: { en: 'Koukaki', ru: 'Кукаки' }, desc: { en: 'Modern takes on hearty Messinian Greek cooking near the Acropolis.', ru: 'Современное прочтение мессинской кухни рядом с Акрополем.' } },
+          ],
+        },
+        {
+          mark: { en: 'ii', ru: 'ii' },
+          label: { en: 'Beach Bars', ru: 'Пляжные бары' },
+          note: { en: 'Spend a sunny afternoon along the Athens Riviera.', ru: 'Проведите солнечный день на Афинской Ривьере.' },
+          items: [
+            { name: { en: 'Astir Beach', ru: 'Astir Beach' }, url: 'https://www.google.com/maps/search/?api=1&query=Astir%20Beach%20Vouliagmeni', area: { en: 'Vouliagmeni', ru: 'Вульягмени' }, desc: { en: 'Organised beach with loungers, clear water and easy food.', ru: 'Обустроенный пляж с шезлонгами, чистой водой и лёгкими закусками.' } },
+            { name: { en: 'Bolivar Beach Bar', ru: 'Bolivar Beach Bar' }, url: 'https://www.google.com/maps/search/?api=1&query=Bolivar%20Beach%20Bar%20Alimos', area: { en: 'Alimos', ru: 'Алимос' }, desc: { en: 'Buzzing bar by day, music and cocktails into the evening.', ru: 'Оживлённый бар днём, музыка и коктейли вечером.' } },
+            { name: { en: 'Balux', ru: 'Balux' }, url: 'https://www.google.com/maps/search/?api=1&query=Balux%20House%20Project%20Glyfada', area: { en: 'Glyfada', ru: 'Глифада' }, desc: { en: 'Stylish all-day beach house with pools, food and drinks.', ru: 'Стильный пляжный клуб на весь день с бассейнами, едой и напитками.' } },
+            { name: { en: 'Krabo', ru: 'Krabo' }, url: 'https://www.google.com/maps/search/?api=1&query=Krabo%20Lake%20Vouliagmeni', area: { en: 'Lake Vouliagmeni', ru: 'Озеро Вульягмени' }, desc: { en: 'Relaxed lakeside spot for coffee, lunch or a sunset drink.', ru: 'Спокойное место у озера для кофе, обеда или закатного бокала.' } },
+          ],
+        },
+        {
+          mark: { en: 'iii', ru: 'iii' },
+          label: { en: 'Places to Visit', ru: 'Что посмотреть' },
+          note: { en: 'A little history and a lot of views.', ru: 'Немного истории и много прекрасных видов.' },
+          items: [
+            { name: { en: 'The Acropolis & Parthenon', ru: 'Акрополь и Парфенон' }, url: 'https://www.google.com/maps/search/?api=1&query=Acropolis%20of%20Athens', area: { en: 'City Centre', ru: 'Центр' }, desc: { en: 'Athens’ icon — go early to beat the heat and the crowds.', ru: 'Символ Афин — приходите рано, чтобы избежать жары и толп.' } },
+            { name: { en: 'Acropolis Museum', ru: 'Музей Акрополя' }, url: 'https://www.google.com/maps/search/?api=1&query=Acropolis%20Museum%20Athens', area: { en: 'Makrygianni', ru: 'Макриянни' }, desc: { en: 'Stunning modern museum with views up to the Parthenon.', ru: 'Впечатляющий современный музей с видом на Парфенон.' } },
+            { name: { en: 'Plaka & Anafiotika', ru: 'Плака и Анафиотика' }, url: 'https://www.google.com/maps/search/?api=1&query=Anafiotika%20Plaka%20Athens', area: { en: 'Old Town', ru: 'Старый город' }, desc: { en: 'Wander the old town’s lanes, cafés and island-style houses.', ru: 'Прогуляйтесь по улочкам старого города, кафе и домикам в островном стиле.' } },
+            { name: { en: 'Cape Sounion', ru: 'Мыс Сунион' }, url: 'https://www.google.com/maps/search/?api=1&query=Temple%20of%20Poseidon%20Cape%20Sounion', area: { en: 'Riviera', ru: 'Ривьера' }, desc: { en: 'The Temple of Poseidon at sunset, about an hour down the coast.', ru: 'Храм Посейдона на закате, примерно час по побережью.' } },
+          ],
+        },
+      ],
+      itinerary: {
+        eyebrow: { en: 'Staying a little longer?', ru: 'Остаётесь подольше?' },
+        heading: { en: 'Our Suggested Athens Itinerary', ru: 'Наш маршрут по Афинам' },
+        intro: {
+          en: 'If you would like to stay in Athens for a while to explore, here is the plan we would suggest — three unhurried days that cover the city’s ancient heart, its neighbourhoods, and the coast.',
+          ru: 'Если вы захотите задержаться в Афинах и погулять, вот маршрут, который мы бы посоветовали — три неспешных дня, охватывающих древнее сердце города, его районы и побережье.',
+        },
+        tipLabel: { en: 'Tip', ru: 'Совет' },
+        days: [
+          {
+            day: { en: 'Day One', ru: 'День первый' },
+            title: { en: 'Ancient Athens & the Historic Centre', ru: 'Древние Афины и исторический центр' },
+            stops: [
+              {
+                time: { en: 'Morning', ru: 'Утро' },
+                name: { en: 'Acropolis & Acropolis Museum', ru: 'Акрополь и Музей Акрополя' },
+                desc: { en: 'Start early (opens 8am) to beat both the heat and the crowds. Walk up to the Parthenon and the Erechtheion, then take in the sweeping views over the city. Afterwards, cross to the modern Acropolis Museum — its glass floors over active excavations and the top-floor Parthenon Gallery are highlights.', ru: 'Начните рано (открытие в 8:00), чтобы избежать жары и толп. Поднимитесь к Парфенону и Эрехтейону, полюбуйтесь панорамой города, а затем перейдите в современный Музей Акрополя — стеклянные полы над раскопками и Галерея Парфенона на верхнем этаже особенно впечатляют.' },
+                tip: { en: 'Buy tickets online in advance to skip the ticket line. A combined 5-day ticket (around €30) covers the Acropolis and several other ancient sites.', ru: 'Покупайте билеты онлайн заранее, чтобы не стоять в очереди. Единый билет на 5 дней (около €30) включает Акрополь и несколько других древних памятников.' },
+              },
+              {
+                time: { en: 'Midday', ru: 'Полдень' },
+                name: { en: 'Plaka & Anafiotika', ru: 'Плака и Анафиотика' },
+                desc: { en: 'Wander down into Plaka, the oldest neighbourhood in Athens, with its neoclassical houses and narrow lanes. Duck into Anafiotika, a tiny hillside pocket built by island craftsmen in the 19th century — all whitewashed walls and bougainvillea, it feels like a Cycladic village in the middle of the city.', ru: 'Спуститесь в Плаку — старейший район Афин с неоклассическими домами и узкими улочками. Загляните в Анафиотику, крошечный уголок на склоне, построенный островными мастерами в XIX веке — белёные стены и бугенвиллея делают его похожим на кикладскую деревушку посреди города.' },
+                tip: null,
+              },
+              {
+                time: { en: 'Lunch', ru: 'Обед' },
+                name: { en: 'Taverna in Plaka', ru: 'Таверна в Плаке' },
+                desc: { en: 'Stop for a relaxed Greek lunch — grilled fish or meat, a Greek salad, and fried courgette balls are always a safe bet. Look for tavernas slightly off the main tourist strip for better value and quality.', ru: 'Остановитесь на неспешный греческий обед — рыба или мясо на гриле, греческий салат и жареные кабачковые шарики всегда беспроигрышны. Ищите таверны чуть в стороне от главных туристических улиц — там вкуснее и выгоднее.' },
+                tip: null,
+              },
+              {
+                time: { en: 'Afternoon', ru: 'День' },
+                name: { en: 'Ancient Agora & Monastiraki', ru: 'Древняя Агора и Монастираки' },
+                desc: { en: 'Walk through the Ancient Agora, the heart of civic life in classical Athens, then continue to Monastiraki Square and its flea market for souvenirs, ceramics, and people-watching.', ru: 'Прогуляйтесь по Древней Агоре — центру общественной жизни классических Афин, затем выйдите на площадь Монастираки с её блошиным рынком: сувениры, керамика и наблюдение за людьми.' },
+                tip: null,
+              },
+              {
+                time: { en: 'Evening', ru: 'Вечер' },
+                name: { en: 'Sunset at Areopagus Hill', ru: 'Закат на холме Ареопаг' },
+                desc: { en: 'A short climb up the smooth marble rock next to the Acropolis rewards you with one of the best free sunset views in the city.', ru: 'Короткий подъём на гладкую мраморную скалу рядом с Акрополем подарит один из лучших бесплатных видов на закат в городе.' },
+                tip: null,
+              },
+              {
+                time: { en: 'Dinner', ru: 'Ужин' },
+                name: { en: 'Rooftop with a view', ru: 'Ужин на крыше с видом' },
+                desc: { en: 'Athens has no shortage of rooftop bars and restaurants with the illuminated Acropolis as a backdrop — perfect for a first-night dinner or a late drink.', ru: 'В Афинах множество баров и ресторанов на крышах с подсвеченным Акрополем на фоне — идеально для ужина в первый вечер или позднего бокала.' },
+                tip: null,
+              },
+            ],
+          },
+          {
+            day: { en: 'Day Two', ru: 'День второй' },
+            title: { en: 'Museums, Neighbourhoods & the Coast', ru: 'Музеи, районы и побережье' },
+            stops: [
+              {
+                time: { en: 'Morning', ru: 'Утро' },
+                name: { en: 'National Archaeological Museum', ru: 'Национальный археологический музей' },
+                desc: { en: 'Home to the world’s finest collection of ancient Greek art, including the Mask of Agamemnon and treasures from the Cycladic islands. Give it at least two hours.', ru: 'Здесь хранится лучшая в мире коллекция древнегреческого искусства, включая маску Агамемнона и сокровища Кикладских островов. Заложите хотя бы два часа.' },
+                tip: null,
+              },
+              {
+                time: { en: 'Midday', ru: 'Полдень' },
+                name: { en: 'Psyrri', ru: 'Псири' },
+                desc: { en: 'Explore Athens’ creative, bohemian side — street art, independent bookshops, and specialty coffee. Psyrri also has excellent lunch spots in restored neoclassical buildings.', ru: 'Откройте творческую, богемную сторону Афин — стрит-арт, независимые книжные и спешелти-кофе. В Псири также отличные места для обеда в отреставрированных неоклассических зданиях.' },
+                tip: null,
+              },
+              {
+                time: { en: 'Afternoon', ru: 'День' },
+                name: { en: 'Syntagma Square & the Changing of the Guard', ru: 'Площадь Синтагма и смена караула' },
+                desc: { en: 'Watch the Evzones (presidential guards) perform their ceremonial changing of the guard in front of the Parliament building, on the hour — the Sunday version at 11am is the most elaborate, with a full band.', ru: 'Посмотрите, как эвзоны (президентская гвардия) проводят церемониальную смену караула у здания Парламента, каждый час — воскресная в 11:00 самая торжественная, с оркестром.' },
+                tip: { en: 'If your visit includes a Sunday, plan this stop for 11am — it’s a striking, very photogenic tradition.', ru: 'Если ваша поездка выпадает на воскресенье, планируйте это на 11:00 — впечатляющая и очень фотогеничная традиция.' },
+              },
+              {
+                time: { en: 'Late Afternoon', ru: 'Ближе к вечеру' },
+                name: { en: 'Athens Riviera', ru: 'Афинская Ривьера' },
+                desc: { en: 'Take the tram or a taxi down to the coast — Glyfada or Vouliagmeni — for a swim and a completely different side of Athens: beach clubs, marinas, and sea breeze.', ru: 'Доберитесь на трамвае или такси до побережья — Глифада или Вульягмени — искупайтесь и откройте совсем другую сторону Афин: пляжные клубы, марины и морской бриз.' },
+                tip: null,
+              },
+              {
+                time: { en: 'Evening', ru: 'Вечер' },
+                name: { en: 'Seaside dinner', ru: 'Ужин у моря' },
+                desc: { en: 'Fresh fish tavernas line the coastal road — a lovely, unhurried way to end a day that’s covered a lot of ground.', ru: 'Вдоль прибрежной дороги тянутся рыбные таверны — прекрасный неспешный способ завершить насыщенный день.' },
+                tip: null,
+              },
+            ],
+          },
+          {
+            day: { en: 'Day Three', ru: 'День третий' },
+            title: { en: 'Modern Athens & Local Life', ru: 'Современные Афины и местная жизнь' },
+            stops: [
+              {
+                time: { en: 'Morning', ru: 'Утро' },
+                name: { en: 'Central Market & Monastiraki Food Walk', ru: 'Центральный рынок и гастропрогулка по Монастираки' },
+                desc: { en: 'Athens’ Varvakios Central Market is a lively, working meat-and-fish market — a great way to see local life. Nearby streets have excellent street food: souvlaki, gyro, and loukoumades (Greek honey doughnuts).', ru: 'Центральный рынок Варвакиос — живой, действующий мясной и рыбный рынок, отличный способ увидеть местную жизнь. На соседних улицах — прекрасный стрит-фуд: сувлаки, гирос и лукумадес (греческие медовые пончики).' },
+                tip: null,
+              },
+              {
+                time: { en: 'Midday', ru: 'Полдень' },
+                name: { en: 'National Garden & Panathenaic Stadium', ru: 'Национальный сад и Панафинейский стадион' },
+                desc: { en: 'Cool off under the trees of the National Garden, then walk to the Panathenaic Stadium — the only stadium in the world built entirely of marble, and host of the first modern Olympics in 1896.', ru: 'Отдохните в тени деревьев Национального сада, затем дойдите до Панафинейского стадиона — единственного в мире, целиком построенного из мрамора, где прошли первые современные Олимпийские игры 1896 года.' },
+                tip: null,
+              },
+              {
+                time: { en: 'Afternoon', ru: 'День' },
+                name: { en: 'Kolonaki & Lycabettus Hill', ru: 'Колонаки и холм Ликавит' },
+                desc: { en: 'Browse the boutiques and galleries of upscale Kolonaki, then take the funicular (or walk, if you’re up for it) to the top of Lycabettus Hill — the highest point in Athens, with panoramic views over the whole city and the sea beyond.', ru: 'Прогуляйтесь по бутикам и галереям престижного Колонаки, затем поднимитесь на фуникулёре (или пешком, если хватит сил) на вершину холма Ликавит — самую высокую точку Афин с панорамой всего города и моря за ним.' },
+                tip: null,
+              },
+              {
+                time: { en: 'Evening', ru: 'Вечер' },
+                name: { en: 'Farewell dinner in Koukaki or Pangrati', ru: 'Прощальный ужин в Кукаки или Панграти' },
+                desc: { en: 'These residential neighbourhoods near the Acropolis have some of the city’s best contemporary Greek restaurants — a relaxed, local way to close out your Athens stay before the celebrations begin.', ru: 'В этих жилых районах рядом с Акрополем — одни из лучших современных греческих ресторанов города. Спокойный, местный способ завершить пребывание в Афинах перед началом торжеств.' },
+                tip: null,
+              },
+            ],
+          },
+        ],
+      },
+    },
+    dress: {
+      eyebrow: { en: '', ru: '' },
+      title: { en: 'Dress Code', ru: 'Дресс-код' },
+      intro: {
+        en: 'Please feel free to wear something you already own and love, we want everyone to feel comfortable and themselves, rather than needing to purchase something new.',
+        ru: 'Нам важно, чтобы вы чувствовали себя комфортно и оставались собой, без необходимости покупать что-то новое — выбирайте то, в чём вам будет приятно и легко.',
+      },
+      palette: {
+        label: { en: 'Colour palette', ru: 'Цветовая палитра' },
+        value: { en: 'Open', ru: 'Свободная' },
+        desc: { en: 'Our colour palette is intentionally open, so guests have flexibility in choosing what feels best for them.', ru: 'Наша цветовая палитра намеренно не ограничена, поэтому каждый может выбрать то, что ему по душе.' },
+      },
+      fabrics: {
+        label: { en: 'Fabrics & styles', ru: 'Материалы' },
+        value: { en: 'Light & breathable', ru: 'Лёгкие и дышащие' },
+        desc: { en: 'As the wedding takes place in Greece in June, we recommend breathable fabrics and lighter, more relaxed styles suited to warm weather.', ru: 'Поскольку свадьба пройдёт в Греции в июне, мы рекомендуем одежду из дышащих и натуральных материалов, подходящую для тёплой погоды.' },
+      },
+      herLabel: { en: 'For Her', ru: 'Для неё' },
+      himLabel: { en: 'For Him', ru: 'Для него' },
+      brunch: {
+        kicker: { en: 'Daytime · 10:00–13:00', ru: 'Днём · 10:00–13:00' },
+        name: { en: 'Welcome Coffee & Brunch', ru: 'Кофе и Завтрак' },
+        code: { en: 'Smart Casual', ru: 'Smart casual' },
+        desc: {
+          en: 'For brunch, we invite guests to dress in smart casual attire — think chic daytime wear and polished summer looks suited for a relaxed morning celebration.',
+          ru: 'На утренний кофе и завтрак мы приглашаем в стиле smart casual — аккуратная и лёгкая летняя одежда для спокойного начала дня.',
+        },
+        note: {
+          en: 'We kindly ask guests to avoid white and shades close to white.',
+          ru: 'Мы любезно просим гостей воздержаться от белого и оттенков, близких к белому.',
+        },
+      },
+      wedding: {
+        kicker: { en: 'Evening · from 18:00', ru: 'Вечером · с 18:00' },
+        name: { en: 'The Wedding', ru: 'Свадебная церемония' },
+        code: { en: 'Formal', ru: 'Формальный' },
+        desc: {
+          en: 'We invite our guests to dress in formal attire for the celebration.',
+          ru: 'Мы приглашаем гостей на торжество в формальном дресс-коде.',
+        },
+        note: {
+          en: 'We kindly ask that guests avoid white and shades close to white.',
+          ru: 'Мы любезно просим гостей воздержаться от белого и оттенков, близких к белому.',
+        },
+        examples: {
+          en: 'A few examples of the overall style and level of formality can be found below.',
+          ru: 'Несколько примеров общего стиля и уровня формальности — ниже.',
+        },
+        perfectLabel: { en: 'Perfect', ru: 'То, что нужно' },
+        avoidLabel: { en: 'Please Avoid', ru: 'Лучше избегать' },
+        herPerfect: {
+          en: 'Think chic evening wear — flowing dresses, elegant sets and refined tailoring.',
+          ru: 'Изысканные вечерние образы — струящиеся платья, элегантные комплекты и утончённый крой.',
+        },
+        herAvoid: {
+          en: 'Please avoid overly casual or simple summer dresses, as well as white and shades close to white.',
+          ru: 'Пожалуйста, избегайте слишком повседневных или простых летних платьев, а также белого и близких к нему оттенков.',
+        },
+        himPerfect: {
+          en: 'Think formal evening attire — well-tailored suits in lighter fabrics and refined styling suited for a warm summer celebration.',
+          ru: 'Формальный вечерний образ — хорошо скроенные костюмы из лёгких тканей и утончённый стиль для тёплого летнего праздника.',
+        },
+        himAvoid: {
+          en: 'Please avoid sneakers and non-formal shoes, shorts, jeans, or overly casual attire.',
+          ru: 'Пожалуйста, избегайте кроссовок и неформальной обуви, шорт, джинсов и слишком повседневной одежды.',
+        },
+        avoidComing: { en: 'Examples coming soon', ru: 'Примеры скоро появятся' },
+      },
+    },
+    travel: {
+      eyebrow: { en: '', ru: '' },
+      title: { en: 'Travel & Stay', ru: 'Поездка и проживание' },
+      intro: { en: '', ru: '' },
+      mapAddress: { en: 'Four Seasons Astir Palace · Apollonos 40, Vouliagmeni 166 71, Greece', ru: 'Four Seasons Astir Palace · ул. Аполлонос 40, Вульягмени 166 71, Греция' },
+      mapKicker: { en: '', ru: '' },
+      mapHeading: { en: 'The Venue', ru: 'Место проведения' },
+      mapCta: { en: 'Open in Google Maps', ru: 'Открыть в Google Maps' },
+      stay: {
+        kicker: { en: '', ru: '' },
+        heading: { en: 'Where to Stay', ru: 'Где остановиться' },
+        intro: { en: '', ru: '' },
+        groups: [
+          {
+            label: { en: 'Beachside Stay', ru: 'У моря' },
+            sub: { en: 'The Athenian Riviera', ru: 'Афинская Ривьера' },
+            desc: {
+              en: 'To stay near the venue and enjoy the Greek sun and sea, we recommend these coastal areas.',
+              ru: 'Чтобы быть рядом с местом проведения и насладиться солнцем и морем, рекомендуем эти прибрежные районы.',
+            },
+            areas: [
+              { name: { en: 'Vouliagmeni', ru: 'Вульягмени (Vouliagmeni)' }, desc: { en: 'Elegant and peaceful, right by the water.', ru: 'Элегантный и спокойный, прямо у воды.' } },
+              { name: { en: 'Voula', ru: 'Вула (Voula)' }, desc: { en: 'Relaxed and residential, close to the beach.', ru: 'Спокойный жилой район рядом с пляжем.' } },
+              { name: { en: 'Glyfada', ru: 'Глифада (Glyfada)' }, desc: { en: 'Lively seaside area with shops, restaurants and nightlife.', ru: 'Оживлённый приморский район с магазинами, ресторанами и ночной жизнью.' } },
+            ],
+            note: {
+              en: 'All are along the coast with beautiful beaches, seaside dining and an authentic summer feel.',
+              ru: 'Все они вдоль побережья — прекрасные пляжи, рестораны у моря и настоящее лето.',
+            },
+          },
+          {
+            label: { en: 'City Centre Stay', ru: 'В центре города' },
+            sub: { en: 'Culture & Sightseeing', ru: 'Культура и осмотр' },
+            desc: {
+              en: 'If you’d rather explore Athens’ historic landmarks, monuments and museums, the city centre may be perfect.',
+              ru: 'Если хотите исследовать исторические памятники, достопримечательности и музеи Афин, центр города — отличный выбор.',
+            },
+            areas: [
+              { name: { en: 'Kolonaki', ru: 'Колонаки (Kolonaki)' }, desc: { en: 'Upscale and safe, close to museums and galleries.', ru: 'Престижный и безопасный, рядом с музеями и галереями.' } },
+              { name: { en: 'Syntagma', ru: 'Синтагма (Syntagma)' }, desc: { en: 'Central and convenient, near major historical sites.', ru: 'Центральный и удобный, рядом с главными историческими местами.' } },
+            ],
+            note: {
+              en: 'Both are well-located and safe, making it easy to explore Athens on foot.',
+              ru: 'Оба района удобно расположены и безопасны — Афины легко исследовать пешком.',
+            },
+          },
+        ],
+      },
+      warningLabel: { en: 'Important note:', ru: 'Важно:' },
+      warning: {
+        en: 'if you stay in the city centre, please do not book accommodation near Karaiskaki Square or Omonoia Square, as these areas are not recommended for visitors.',
+        ru: 'если вы остановитесь в центре, пожалуйста, не бронируйте жильё рядом с площадями Караискаки (Karaiskaki) и Омония (Omonoia) — эти районы не рекомендуются для туристов.',
+      },
+      hotel: {
+        tag: { en: '', ru: '' },
+        title: { en: 'Hotel near the wedding venue', ru: 'Отель рядом с местом проведения свадьбы' },
+        body: [
+          {
+            en: 'Our wedding planner, Victoria, is currently working hard to secure preferential rates with hotels close to the Four Seasons Astir Palace.',
+            ru: 'Наш свадебный организатор Виктория сейчас активно работает над тем, чтобы договориться о специальных тарифах с отелями рядом с Four Seasons Astir Palace.',
+          },
+          {
+            en: 'As summer is a very busy season in Greece, many hotels only release their rates and availability for the following year in October, which is when we expect to receive further details.',
+            ru: 'Поскольку лето — очень загруженный сезон в Греции, многие отели публикуют тарифы и наличие мест на следующий год только в октябре, когда мы и ожидаем получить более подробную информацию.',
+          },
+          {
+            en: 'If you would like recommendations for nearby accommodation and access to any negotiated discounts, please get in touch with Victoria around October, when we hope to have more information to share.',
+            ru: 'Если вам нужны рекомендации по размещению поблизости и доступ к согласованным скидкам, пожалуйста, свяжитесь с Викторией примерно в октябре, когда мы надеемся поделиться более подробной информацией.',
+          },
+        ],
+      },
+      getting: {
+        kicker: { en: '', ru: '' },
+        heading: { en: 'Travel & Getting Here', ru: 'Как добраться' },
+        airportLabel: { en: 'Nearest Airport', ru: 'Ближайший аэропорт' },
+        airportBody: {
+          en: 'Athens International Airport (ATH) is well connected with flights from across Europe and beyond.',
+          ru: 'Международный аэропорт Афин (ATH) хорошо связан рейсами со всей Европой и не только.',
+        },
+        options: [
+          {
+            num: { en: '01', ru: '01' },
+            name: { en: 'Taxi / Ride-Share', ru: 'Такси / Каршеринг' },
+            desc: {
+              en: 'The quickest and simplest option. Taxis wait outside Arrivals, and Uber and FreeNow operate in Athens for pre-booked rides. Metered taxis to Glyfada cost around €35–€55, varying by time of day.',
+              ru: 'Самый быстрый и простой вариант. Такси ждут у зоны прилёта, а Uber и FreeNow работают в Афинах для предзаказа. Поездка на обычном такси до Глифады стоит примерно €35–€55 в зависимости от времени суток.',
+            },
+          },
+          {
+            num: { en: '02', ru: '02' },
+            name: { en: 'Metro & Tram', ru: 'Метро и трамвай' },
+            desc: {
+              en: 'There’s no direct public transport from the airport to Glyfada/Vouliagmeni. Routes involve several changes and take 90+ minutes — typically airport metro to central Athens, then a local tram or bus toward the coast.',
+              ru: 'Прямого общественного транспорта от аэропорта до Глифады/Вульягмени нет. Маршруты с несколькими пересадками занимают 90+ минут — обычно метро до центра Афин, затем местный трамвай или автобус к побережью.',
+            },
+          },
+          {
+            num: { en: '03', ru: '03' },
+            name: { en: 'Car Rental', ru: 'Аренда авто' },
+            desc: {
+              en: 'Offers flexibility if you plan to explore more of Greece. Two reliable options at the airport:',
+              ru: 'Удобно, если планируете путешествовать по Греции. Два надёжных варианта в аэропорту:',
+            },
+            rentals: [
+              { name: { en: 'Sixt', ru: 'Sixt' }, desc: { en: 'well-rated international company with 24/7 pickup at ATH.', ru: 'известная международная компания с выдачей 24/7 в ATH.' } },
+              { name: { en: 'Avance Car Rental', ru: 'Avance Car Rental' }, desc: { en: 'highly rated local option with good availability and flexible service.', ru: 'высоко оценённый местный вариант с хорошей доступностью и гибким сервисом.' } },
+            ],
+            rentalsOther: {
+              en: 'Other options at or near ATH include Alamo, Hertz, Budget and Europcar.',
+              ru: 'Другие варианты в аэропорту и рядом: Alamo, Hertz, Budget и Europcar.',
+            },
+          },
+        ],
+        closing: { en: '', ru: '' },
+      },
+      goodToKnow: {
+        heading: { en: 'Good to Know', ru: 'Полезно знать' },
+        cards: [
+          {
+            label: { en: 'What to Wear', ru: 'Что надеть' },
+            body: {
+              en: 'Light, breathable fabrics for the daytime heat, with a layer for breezy evenings and air-conditioned spaces. Comfortable, closed-toe shoes are strongly recommended for ancient sites — paths are uneven and worn marble can be slippery.',
+              ru: 'Лёгкие дышащие ткани для дневной жары и лёгкий слой одежды для прохладных вечеров и кондиционированных помещений. Для древних памятников настоятельно рекомендуем удобную закрытую обувь — дорожки неровные, а стёртый мрамор бывает скользким.',
+            },
+          },
+          {
+            label: { en: 'Weather', ru: 'Погода' },
+            body: {
+              en: 'June in Athens is warm, sunny and almost rain-free, typically 26–32°C (79–90°F). Mornings and early evenings are loveliest — plan sightseeing before 11am or after 5pm, and keep water, sunscreen and a hat with you.',
+              ru: 'Июнь в Афинах тёплый, солнечный и почти без дождей, обычно 26–32°C (79–90°F). Приятнее всего утром и ранним вечером — планируйте прогулки до 11:00 или после 17:00 и держите при себе воду, солнцезащитный крем и головной убор.',
+            },
+          },
+          {
+            label: { en: 'Money', ru: 'Деньги' },
+            body: {
+              en: 'Cards are widely accepted, but it’s handy to carry some cash for small tavernas, markets and tips.',
+              ru: 'Карты принимают почти везде, но небольшую сумму наличными удобно иметь для маленьких таверн, рынков и чаевых.',
+            },
+          },
+        ],
+      },
+    },
+    registry: {
+      eyebrow: { en: '', ru: '' },
+      title: { en: 'Registry', ru: 'Подарки' },
+      intro: {
+        en: 'Your presence at our wedding is the greatest gift of all.',
+        ru: 'Ваше присутствие на нашей свадьбе — самый главный подарок.',
+      },
+      secondary: {
+        en: 'Should you wish to give something more, a contribution toward our honeymoon fund would be warmly appreciated.',
+        ru: 'Если вам захочется сделать что-то ещё, мы будем благодарны за вклад в фонд нашего свадебного путешествия.',
+      },
+      paras: [
+        { en: 'As this is a destination wedding, we know many of our guests are already making a significant effort to celebrate with us by travelling to Greece, and we truly appreciate the time, expense, and commitment.', ru: 'Поскольку это свадьба вдали от дома, мы понимаем, что многие из наших гостей уже прикладывают немалые усилия, чтобы отпраздновать с нами, приехав в Грецию, и мы искренне ценим это время, расходы и преданность.' },
+        { en: 'For those who have kindly asked about gifts and would still like to contribute something further, we would be incredibly grateful for a contribution towards our honeymoon fund.', ru: 'Тем, кто любезно спрашивал про подарки и всё же хотел бы внести что-то ещё, мы будем бесконечно благодарны за вклад в фонд нашего свадебного путешествия.' },
+      ],
+      fund: {
+        label: { en: 'Honeymoon Fund', ru: 'Фонд свадебного путешествия' },
+        name: { en: 'Tatiana & Daniel', ru: 'Татьяна и Дэниел' },
+        handle: 'revolut.me/tatiana08011',
+        url: 'https://revolut.me/tatiana08011',
+        via: { en: 'via Revolut', ru: 'через Revolut' },
+        button: { en: 'Open in Revolut', ru: 'Открыть в Revolut' },
+        qrCaption: { en: 'Or scan to contribute', ru: 'Или отсканируйте, чтобы внести вклад' },
+        copy: { en: 'Copy link', ru: 'Скопировать ссылку' },
+        copied: { en: 'Copied', ru: 'Скопировано' },
+      },
+      note: {
+        en: '',
+        ru: '',
+      },
+    },
+    faq: {
+      eyebrow: { en: 'Good to know', ru: 'Полезно знать' },
+      title: { en: 'Questions', ru: 'Вопросы' },
+      items: [
+        { q: { en: 'Who should I contact if I have any questions?', ru: 'К кому обращаться с вопросами?' }, paras: [
+          { text: { en: 'If you have any questions in the lead-up to the wedding, our wonderful wedding planner, Victoria Mouratidou, will be delighted to assist you.', ru: 'Если у вас возникнут вопросы в преддверии свадьбы, наш замечательный свадебный организатор Виктория Муратиду будет рада помочь.' } },
+          { type: 'contact', text: { en: 'Victoria Mouratidou — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr', ru: 'Виктория Муратиду — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr' } },
+          { text: { en: 'You are also very welcome to contact either of us directly:', ru: 'Вы также можете связаться напрямую с любым из нас:' } },
+          { type: 'contact', text: { en: 'Tatiana: +44 7557 977830 · Daniel: +44 7391 116516', ru: 'Татьяна: +44 7557 977830 · Дэниел: +44 7391 116516' } },
+          { type: 'note', text: { en: 'A small note from the couple: while both numbers are perfectly valid, Tatiana has been known to respond considerably faster than Daniel.', ru: 'Небольшая ремарка от пары: оба номера рабочие, но Татьяна обычно отвечает заметно быстрее Дэниела.' } },
+        ] },
+        { q: { en: 'Can I bring a +1 / extra guest?', ru: 'Можно ли прийти с +1 / дополнительным гостем?' }, paras: [
+          { text: { en: 'Our guest list has been thoughtfully curated, and your invitation will clearly indicate those who are invited, with all names listed on the invitation.', ru: 'Список гостей был тщательно составлен, и в приглашении будут чётко указаны все приглашённые — с именами на приглашении.' } },
+          { text: { en: 'As we have limited capacity, we kindly ask that only those named on the invitation attend. In exceptional circumstances, should you have any questions regarding an additional guest, please get in touch with either the bride or groom. While we will do our very best to accommodate requests, we cannot guarantee that any changes will be possible and, where they can be made, confirmation may only be possible closer to the wedding date.', ru: 'Поскольку количество мест ограничено, мы просим, чтобы присутствовали только те, кто указан в приглашении. В исключительных случаях, если у вас есть вопрос о дополнительном госте, пожалуйста, свяжитесь с невестой или женихом. Мы сделаем всё возможное, чтобы пойти навстречу, но не можем гарантировать, что изменения будут возможны, а если они всё же возможны — подтверждение может прийти только ближе к дате свадьбы.' } },
+        ] },
+        { q: { en: 'Will the events be held in both English and Russian?', ru: 'Будут ли мероприятия на английском и русском языках?' }, paras: [
+          { text: { en: 'Yes. As many of our guests speak either English or Russian, we want everyone to feel fully included throughout the celebrations. For this reason, the ceremony, speeches, and all key announcements will be delivered in both English and Russian.', ru: 'Да. Поскольку многие наши гости говорят на английском или русском, мы хотим, чтобы каждый чувствовал себя вовлечённым на протяжении всего праздника. Поэтому церемония, речи и все ключевые объявления будут на двух языках.' } },
+          { text: { en: 'A dedicated translator will be present at each event and will be seated near Tatiana\u2019s close family. Should you require any assistance with translation or wish to communicate with someone who speaks a different language, please feel free to approach them.', ru: 'На каждом мероприятии будет присутствовать переводчик, который будет сидеть рядом с близкими родственниками Татьяны. Если вам понадобится помощь с переводом или вы захотите пообщаться с кем-то, кто говорит на другом языке, смело обращайтесь к нему.' } },
+          { text: { en: 'In addition, many of our family members and friends are bilingual, including Tatiana\u2019s sister, and will be more than happy to help if needed.', ru: 'Кроме того, многие наши родные и друзья двуязычны, включая сестру Татьяны, и с радостью помогут при необходимости.' } },
+        ] },
+        { q: { en: 'What is the dress code?', ru: 'Какой дресс-код?' }, paras: [
+          { text: { en: 'Please refer to our dedicated Dress Code section for detailed guidance and inspiration, where you will find examples illustrating the desired style and level of formality for each event. Should you have any questions or require further clarification, please feel free to contact the bride.', ru: 'Пожалуйста, загляните в раздел «Дресс-код» — там подробные рекомендации и вдохновение, а также примеры желаемого стиля и уровня формальности для каждого события. Если возникнут вопросы, свяжитесь с невестой.' } },
+        ] },
+        { q: { en: 'What if I\u2019m running late?', ru: 'А если я опаздываю?' }, paras: [
+          { text: { en: 'We completely understand that unexpected delays can happen. However, we kindly ask all of our guests to make every effort to arrive on time for each event throughout the day.', ru: 'Мы прекрасно понимаем, что непредвиденные задержки случаются. Тем не менее мы просим всех гостей приложить все усилия, чтобы приходить вовремя на каждое событие дня.' } },
+          { text: { en: 'Please note that the timings indicated on your invitation and throughout this website are strict and offer very limited flexibility, particularly for the evening celebrations. Our schedule has been carefully planned around the sunset, photography, dinner service, and the comfort of all our guests.', ru: 'Обратите внимание: время, указанное в приглашении и на сайте, является строгим и допускает очень ограниченную гибкость, особенно для вечерних торжеств. Наше расписание тщательно выстроено вокруг заката, фотосъёмки, подачи ужина и комфорта всех гостей.' } },
+          { text: { en: 'To help make this as easy as possible, we have intentionally built a generous break between the morning brunch and the evening celebrations. This mesimeri (the traditional Greek siesta) provides plenty of time to return to your accommodation, avoid the midday heat, rest, change outfits, and travel back to the venue at a relaxed pace.', ru: 'Чтобы всё было проще, мы намеренно оставили большой перерыв между утренним бранчем и вечерним праздником. Эта месимери (традиционная греческая сиеста) даёт достаточно времени вернуться в отель, переждать дневную жару, отдохнуть, переодеться и неспешно вернуться на место проведения свадьбы.' } },
+          { text: { en: 'The morning Welcome Coffee & Brunch is informal, so if you happen to arrive a little later than planned, you are welcome to join us at any point during the event.', ru: 'Утренний приветственный кофе и бранч проходят неформально, поэтому если вы придёте чуть позже, вы можете присоединиться к нам в любой момент.' } },
+          { type: 'note', text: { en: 'The evening ceremony, however, is different. We kindly ask all guests to arrive by 18:15, as the ceremony will begin promptly at 18:30. Guests arriving after the ceremony has started will unfortunately not be admitted until it has concluded.', ru: 'Вечерняя церемония — другое дело. Мы просим всех гостей прибыть к 18:15, так как церемония начнётся ровно в 18:30. Гости, прибывшие после начала церемонии, к сожалению, не будут допущены до её завершения.' } },
+          { text: { en: 'If you believe you may be delayed, please contact our wedding planner, Victoria Mouratidou, as soon as possible. On the wedding day, Tatiana and Daniel will unfortunately be unavailable to answer calls or messages.', ru: 'Если вы предполагаете, что можете опоздать, как можно скорее свяжитесь с нашим организатором Викторией Муратиду. В день свадьбы Татьяна и Дэниел, к сожалению, не смогут отвечать на звонки и сообщения.' } },
+          { type: 'contact', text: { en: 'Victoria Mouratidou — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr', ru: 'Виктория Муратиду — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr' } },
+        ] },
+        { q: { en: 'Can I use my phone to take photos and videos?', ru: 'Можно ли снимать фото и видео на телефон?' }, paras: [
+          { text: { en: 'Absolutely! We would love for you to capture memories throughout the day and share in our celebrations. We simply ask that all mobile phones are kept on silent mode at all times.', ru: 'Конечно! Мы будем рады, если вы будете запечатлевать моменты дня и разделите с нами праздник. Просим лишь держать телефоны в беззвучном режиме всё время.' } },
+          { text: { en: 'If you choose to take photos or videos, we kindly request that you do so thoughtfully and with consideration for those around you. Please avoid blocking the view of other guests or interfering with the ceremony, speeches, or our professional photography and videography team.', ru: 'Если вы снимаете фото или видео, просим делать это деликатно и с уважением к окружающим. Пожалуйста, не загораживайте обзор другим гостям и не мешайте церемонии, речам и работе нашей профессиональной команды фото- и видеосъёмки.' } },
+          { text: { en: 'Most importantly, we encourage everyone to be fully present and enjoy the moment.', ru: 'И самое главное — будьте полностью в моменте и наслаждайтесь праздником.' } },
+          { text: { en: 'To ensure every special moment is beautifully captured, we will have two professional photographers and a dedicated videographer documenting the day. This allows you to relax, immerse yourself in the celebrations, and trust that the memories will be captured by the team of professionals.', ru: 'Чтобы каждый особенный момент был красиво запечатлён, день будут снимать два профессиональных фотографа и видеограф. Это позволит вам расслабиться, погрузиться в праздник и довериться команде профессионалов.' } },
+        ] },
+        { q: { en: 'Will there be a place to charge my phone?', ru: 'Можно ли будет зарядить телефон?' }, paras: [
+          { text: { en: 'Yes. Charging stations will be available throughout the celebrations, allowing you to recharge your phone or other devices at any time should you need to.', ru: 'Да. На протяжении всего торжества будут доступны зарядные станции, чтобы вы могли в любой момент зарядить телефон или другие устройства, если возникнет такая необходимость.' } },
+        ] },
+        { q: { en: 'Do you have a wedding gift registry?', ru: 'Есть ли у вас список свадебных подарков?' }, paras: [
+          { text: { en: 'As this is a destination wedding, we know many of our guests are already making a significant effort to celebrate with us by travelling to Greece, and we truly appreciate the time, expense, and commitment.', ru: 'Поскольку это свадьба за границей, мы понимаем, что многие гости уже прилагают значительные усилия, чтобы отпраздновать с нами в Греции, и искренне ценим ваше время, расходы и участие.' } },
+          { text: { en: 'For those who have kindly asked about gifts and would still like to contribute something further, we would be incredibly grateful for a contribution towards our honeymoon fund.', ru: 'Тем, кто спрашивал о подарках и всё же хотел бы внести вклад, мы будем безмерно благодарны за вклад в фонд нашего медового месяца.' } },
+        ] },
+        { q: { en: 'What is the weather like in Athens in June?', ru: 'Какая погода в Афинах в июне?' }, paras: [
+          { text: { en: 'In June, Athens tends to be warm and sunny during the day with mild evenings. We recommend light, breathable outfits for daytime and a light wrap for the evening.', ru: 'В июне в Афинах днём обычно тепло и солнечно, а вечера мягкие. Рекомендуем лёгкую дышащую одежду на день и лёгкую накидку на вечер.' } },
+        ] },
+        { q: { en: 'Do you have any dietary requirements options?', ru: 'Учитываются ли особенности питания?' }, paras: [
+          { text: { en: 'If you have any specific dietary requirements, please speak to our wedding planner, Victoria Mouratidou, who will be happy to make the necessary arrangements.', ru: 'Если у вас есть особые пожелания по питанию, пожалуйста, свяжитесь с нашим свадебным организатором Викторией Муратиду — она с радостью всё организует.' } },
+          { type: 'contact', text: { en: 'Victoria Mouratidou — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr', ru: 'Виктория Муратиду — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr' } },
+        ] },
+        { q: { en: 'Are children invited?', ru: 'Приглашены ли дети?' }, paras: [
+          { text: { en: 'We are delighted to welcome children aged 10 and above to join us in celebrating our special day. Any children who are invited will be clearly named on the invitation.', ru: 'Мы рады видеть детей от 10 лет на нашем празднике. Все приглашённые дети будут поимённо указаны в приглашении.' } },
+          { text: { en: 'Should you wish to bring a younger child who is not included on your invitation, we kindly ask that you get in touch with either the bride or groom in advance, and we will be happy to discuss the arrangements with you.', ru: 'Если вы хотите взять с собой ребёнка младше, не указанного в приглашении, просим заранее связаться с невестой или женихом — мы с радостью обсудим это с вами.' } },
+        ] },
+        { q: { en: 'What if I would like to book hair or makeup — where should I do it?', ru: 'А если я хочу заказать причёску или макияж — куда обращаться?' }, paras: [
+          { text: { en: 'If you would like to arrange hair and/or makeup for the wedding day, please contact our wedding planner, Victoria Mouratidou, who will be happy to assist you with all arrangements and recommendations.', ru: 'Если вы хотите организовать причёску и/или макияж в день свадьбы, пожалуйста, свяжитесь с нашим организатором Викторией Муратиду — она с радостью поможет со всеми деталями и рекомендациями.' } },
+          { type: 'contact', text: { en: 'Victoria Mouratidou — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr', ru: 'Виктория Муратиду — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr' } },
+        ] },
+        { q: { en: 'Is there parking at the venue?', ru: 'Есть ли парковка около мероприятия?' }, paras: [
+          { text: { en: 'If you require parking, we kindly ask that you let us know in advance by contacting our wedding planner, Victoria Mouratidou. This will allow us to make the necessary arrangements on your behalf.', ru: 'Если вам нужна парковка, просим сообщить заранее, связавшись с нашим свадебным организатором Викторией Муратиду. Это позволит нам всё организовать для вас.' } },
+          { type: 'contact', text: { en: 'Victoria Mouratidou — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr', ru: 'Виктория Муратиду — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr' } },
+        ] },
+      ],
+    },
+    rsvp: {
+      eyebrow: { en: 'Will you join us?', ru: 'Будете ли вы с нами?' },
+      hope: { en: 'We hope you can make it!', ru: 'Надеемся, вы сможете приехать!' },
+      note: { en: 'Victoria, our wedding planner, will be in touch with each guest personally to confirm your attendance and gather any necessary details ahead of the celebrations.', ru: 'Виктория, наш свадебный организатор, свяжется с каждым из гостей лично, чтобы подтвердить участие и уточнить все необходимые детали перед торжеством.' },
+      hopeCta: { en: 'RSVP', ru: 'Ответить' },
+      title: { en: 'RSVP', ru: 'Подтверждение' },
+      intro: { en: 'We would be honoured to have you with us. Please reply below.', ru: 'Для нас честь видеть вас рядом. Пожалуйста, ответьте ниже.' },
+      deadline: { en: 'Kindly respond by 1 March 2027', ru: 'Просим ответить до 1 марта 2027' },
+      nameLabel: { en: 'Full name', ru: 'Имя и фамилия' },
+      namePh: { en: 'Your name', ru: 'Ваше имя' },
+      emailLabel: { en: 'Email', ru: 'Эл. почта' },
+      emailPh: { en: 'you@email.com', ru: 'you@email.com' },
+      attendLabel: { en: 'Will you attend?', ru: 'Сможете ли вы прийти?' },
+      accept: { en: 'Joyfully accepts', ru: 'С радостью приду' },
+      decline: { en: 'Regretfully declines', ru: 'К сожалению, не смогу' },
+      guestsLabel: { en: 'Number of guests', ru: 'Количество гостей' },
+      brunchLabel: { en: 'Joining the Welcome Brunch?', ru: 'Придёте на приветственный бранч?' },
+      brunchYes: { en: 'Yes, count me in', ru: 'Да, буду' },
+      brunchNo: { en: 'Evening only', ru: 'Только вечером' },
+      dietLabel: { en: 'Dietary requirements', ru: 'Особенности питания' },
+      dietPh: { en: 'Allergies or preferences', ru: 'Аллергии или предпочтения' },
+      songLabel: { en: 'A song to get you dancing', ru: 'Песня, под которую вы пойдёте танцевать' },
+      songPh: { en: 'Your request', ru: 'Ваша заявка' },
+      msgLabel: { en: 'A note for us', ru: 'Сообщение для нас' },
+      msgPh: { en: 'Anything you would like us to know', ru: 'Всё, что хотите нам сообщить' },
+      submit: { en: 'Send RSVP', ru: 'Отправить ответ' },
+      error: { en: 'Please add your name and let us know if you can make it.', ru: 'Пожалуйста, укажите имя и сообщите, сможете ли вы прийти.' },
+      thanksTitle: { en: 'Thank you!', ru: 'Спасибо!' },
+      thanksBody: { en: 'Your RSVP is in, {name}. We cannot wait to celebrate with you in Athens.', ru: 'Ваш ответ получен, {name}. Не можем дождаться праздника с вами в Афинах.' },
+    },
+    footer: {
+      line: { en: '19 . 06 . 2027  ·  Athens, Greece', ru: '19 . 06 . 2027  ·  Афины, Греция' },
+      tag: { en: 'Made with love for our family & friends', ru: 'С любовью для нашей семьи и друзей' },
+    },
+  };
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tatiana &amp; Daniel — 19 June 2027, Athens, Greece</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Mulish:wght@300;400;500;600;700&family=Pinyon+Script&display=swap&subset=cyrillic,cyrillic-ext,latin,latin-ext" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-lang="en">
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <button class="nav-logo" id="goHomeBtn"><img src="images/logo-td-black.svg" alt="Tatiana & Daniel"></button>
+    <nav class="nav-desktop">
+      <button class="nav-link" data-page="home"><span class="en">Home</span><span class="ru">Главная</span></button><button class="nav-link" data-page="dress"><span class="en">Dress Code</span><span class="ru">Дресс-код</span></button><button class="nav-link" data-page="travel"><span class="en">Travel & Stay</span><span class="ru">Поездка</span></button><button class="nav-link" data-page="athens"><span class="en">What to Do</span><span class="ru">Чем заняться</span></button><button class="nav-link" data-page="registry"><span class="en">Registry</span><span class="ru">Подарки</span></button><button class="nav-link" data-page="faq"><span class="en">FAQ</span><span class="ru">Вопросы</span></button>
+      <div class="nav-sep"></div>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="en">EN</button><span>/</span><button class="lang-btn" data-lang="ru">RU</button>
+      </div>
+    </nav>
+    <div class="nav-mobile-controls">
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="en">EN</button><span>/</span><button class="lang-btn" data-lang="ru">RU</button>
+      </div>
+      <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="nav-mobile-menu" id="mobileMenu"><button class="nav-link nav-link-mobile" data-page="home"><span class="en">Home</span><span class="ru">Главная</span></button><button class="nav-link nav-link-mobile" data-page="dress"><span class="en">Dress Code</span><span class="ru">Дресс-код</span></button><button class="nav-link nav-link-mobile" data-page="travel"><span class="en">Travel & Stay</span><span class="ru">Поездка</span></button><button class="nav-link nav-link-mobile" data-page="athens"><span class="en">What to Do</span><span class="ru">Чем заняться</span></button><button class="nav-link nav-link-mobile" data-page="registry"><span class="en">Registry</span><span class="ru">Подарки</span></button><button class="nav-link nav-link-mobile" data-page="faq"><span class="en">FAQ</span><span class="ru">Вопросы</span></button></div>
+</header>
+
+
+<div class="page" data-page="home">
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-frame"></div>
+    <div class="hero-topline"><span class="en">We’re getting married!</span><span class="ru">С радостью сообщаем о нашей свадьбе!</span></div>
+    <div class="hero-content">
+      <h1 class="hero-names"><span class="name-en">Tatiana</span> <span class="amp">&amp;</span> <span class="name-en">Daniel</span></h1>
+      <div class="hero-date"><span class="en">19 June 2027 · Athens, Greece</span><span class="ru">19 июня 2027 · Афины, Греция</span></div>
+    </div>
+  </section>
+  <section class="countdown-section">
+    <div class="countdown-label"><span class="en">Counting down to the celebration</span><span class="ru">До праздника осталось</span></div>
+    <div class="countdown" id="countdown">
+      <div class="cd-unit"><div class="cd-num" id="cd-days">00</div><div class="cd-label"><span class="en">Days</span><span class="ru">Дней</span></div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-hours">00</div><div class="cd-label"><span class="en">Hours</span><span class="ru">Часов</span></div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-min">00</div><div class="cd-label"><span class="en">Minutes</span><span class="ru">Минут</span></div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-sec">00</div><div class="cd-label"><span class="en">Seconds</span><span class="ru">Секунд</span></div></div>
+    </div>
+  </section>
+  <section class="details-band">
+    <div class="details-inner">
+      <div class="kicker"><span class="en">The Place</span><span class="ru">Место</span></div>
+      <div class="details-row">
+        <div class="detail"><div class="detail-label"><span class="en">When</span><span class="ru">Когда</span></div><div class="detail-value"><span class="en">Saturday, 19 June 2027</span><span class="ru">Суббота, 19 июня 2027</span></div></div>
+        <div class="detail-divider"></div>
+        <div class="detail"><div class="detail-label"><span class="en">Where</span><span class="ru">Где</span></div><div class="detail-value">Four Seasons Astir Palace</div><div class="detail-sub"><span class="en">Vouliagmeni · Athens · Greece</span><span class="ru">Вульягмени · Афины · Греция</span></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="venue-band"></section>
+  <section class="schedule-section">
+    <div class="schedule-inner">
+      <div class="section-head">
+        <div class="kicker"><span class="en">The Day</span><span class="ru"></span></div>
+        <h2><span class="en">Schedule</span><span class="ru">Программа дня</span></h2>
+      </div>
+      
+    <div class="sched-row">
+      <div class="sched-time"><span class="en">10:00 – 13:00</span><span class="ru">10:00 – 13:00</span></div>
+      <div class="sched-divider"></div>
+      <div>
+        <div class="sched-title"><span class="en">Welcome Coffee & Brunch</span><span class="ru">Кофе и Завтрак</span></div>
+        <div class="sched-desc"><span class="en">A casual morning gathering to welcome everyone and kick off our wedding day in style.</span><span class="ru">Утренняя встреча, чтобы поприветствовать гостей и начать свадебный день.</span></div>
+        
+        <div class="sched-meta"><div class="meta-row"><span class="meta-label"><span class="en">Location</span><span class="ru">Место</span></span><span class="meta-value"><span class="en">Nafsika Venue — Four Seasons Astir Palace</span><span class="ru">Nafsika Venue — Four Seasons Astir Palace</span></span></div><div class="meta-row"><span class="meta-label"><span class="en">Dress code</span><span class="ru">Дресс-код</span></span><span class="meta-value"><span class="en">Smart casual</span><span class="ru">Smart casual</span></span></div></div>
+      </div>
+    </div>
+    <div class="sched-row">
+      <div class="sched-time"><span class="en">13:00 – 18:00</span><span class="ru">13:00 – 18:00</span></div>
+      <div class="sched-divider"></div>
+      <div>
+        <div class="sched-title"><span class="en">Mesimeri (Greek Siesta!)</span><span class="ru">Месимери (греческая сиеста!)</span></div>
+        <div class="sched-desc"><span class="en">Time to rest, retreat from the midday heat, and refresh before the evening celebrations begin.</span><span class="ru">Время отдохнуть от полуденной жары и набраться сил перед вечерним праздником.</span></div>
+        
+        
+      </div>
+    </div>
+    <div class="sched-row">
+      <div class="sched-time"><span class="en">18:00</span><span class="ru">18:00</span></div>
+      <div class="sched-divider"></div>
+      <div>
+        <div class="sched-title"><span class="en">Arrival at the Venue</span><span class="ru">Прибытие на вечернее мероприятие</span></div>
+        <div class="sched-desc"><span class="en">We kindly ask all guests to arrive by 18:15 at the latest, as the ceremony will begin promptly at 18:30.</span><span class="ru">Просим всех гостей приехать не позднее 18:15, так как церемония начнётся ровно в 18:30.</span></div>
+        <div class="sched-note"><span class="en">Please note: no entry will be permitted once the ceremony has started.</span><span class="ru">Обратите внимание: вход после начала церемонии будет невозможен.</span></div>
+        <div class="sched-meta"><div class="meta-row"><span class="meta-label"><span class="en">Location</span><span class="ru">Место</span></span><span class="meta-value"><span class="en">Nafsika Venue — Four Seasons Astir Palace, Athens, Greece</span><span class="ru">Nafsika Venue — Four Seasons Astir Palace, Афины, Греция</span></span></div><div class="meta-row"><span class="meta-label"><span class="en">Dress code</span><span class="ru">Дресс-код</span></span><span class="meta-value"><span class="en">Formal</span><span class="ru">Формальный</span></span></div></div>
+      </div>
+    </div>
+    <div class="sched-row">
+      <div class="sched-time"><span class="en">18:30 – 19:00</span><span class="ru">18:30 – 19:00</span></div>
+      <div class="sched-divider"></div>
+      <div>
+        <div class="sched-title"><span class="en">Ceremony</span><span class="ru">Церемония</span></div>
+        <div class="sched-desc"><span class="en">Join us as we exchange vows and celebrate the beginning of our family.</span><span class="ru">Разделите с нами момент бракосочетания.</span></div>
+        
+        
+      </div>
+    </div>
+    <div class="sched-row">
+      <div class="sched-time"><span class="en">19:00 – 20:00</span><span class="ru">19:00 – 20:00</span></div>
+      <div class="sched-divider"></div>
+      <div>
+        <div class="sched-title"><span class="en">Drinks Reception</span><span class="ru">Фуршет</span></div>
+        <div class="sched-desc"><span class="en">Enjoy a glass of champagne as the sun sets over the Aegean Sea.</span><span class="ru">Насладитесь бокалом шампанского, наблюдая закат над Эгейским морем.</span></div>
+        
+        
+      </div>
+    </div>
+    <div class="sched-row">
+      <div class="sched-time"><span class="en">20:00 – 22:30</span><span class="ru">20:00 – 22:30</span></div>
+      <div class="sched-divider"></div>
+      <div>
+        <div class="sched-title"><span class="en">Dinner & Toasts</span><span class="ru">Ужин и тосты</span></div>
+        <div class="sched-desc"><span class="en">Gather around the table for a seated dinner featuring local flavours and heartfelt speeches.</span><span class="ru">Праздничный ужин за столом с местными блюдами и тёплыми речами.</span></div>
+        
+        
+      </div>
+    </div>
+    <div class="sched-row">
+      <div class="sched-time"><span class="en">22:30 – 04:00</span><span class="ru">22:30 – 04:00</span></div>
+      <div class="sched-divider"></div>
+      <div>
+        <div class="sched-title"><span class="en">Party</span><span class="ru">Вечеринка</span></div>
+        <div class="sched-desc"><span class="en">Join us on the dance floor as we celebrate late into the night.</span><span class="ru">Танцпол и праздник до четырех утра.</span></div>
+        
+        
+      </div>
+    </div>
+    </div>
+  </section>
+</div>
+
+<div class="page" data-page="dress" hidden>
+  <div class="hero-band">
+    <img src="images/logo-td-black.svg" alt="Tatiana & Daniel" class="page-logo">
+    <h1><span class="en">Dress Code</span><span class="ru">Дресс-код</span></h1>
+    <p class="page-intro"><span class="en">Please feel free to wear something you already own and love, we want everyone to feel comfortable and themselves, rather than needing to purchase something new.</span><span class="ru">Нам важно, чтобы вы чувствовали себя комфортно и оставались собой, без необходимости покупать что-то новое — выбирайте то, в чём вам будет приятно и легко.</span></p>
+    <div class="info-cards">
+      <div class="info-card">
+        <div class="info-label"><span class="en">Colour palette</span><span class="ru">Цветовая палитра</span></div>
+        <div class="info-value"><span class="en">Open</span><span class="ru">Свободная</span></div>
+        <p><span class="en">Our colour palette is intentionally open, so guests have flexibility in choosing what feels best for them.</span><span class="ru">Наша цветовая палитра намеренно не ограничена, поэтому каждый может выбрать то, что ему по душе.</span></p>
+      </div>
+      <div class="info-card">
+        <div class="info-label"><span class="en">Fabrics & styles</span><span class="ru">Материалы</span></div>
+        <div class="info-value"><span class="en">Light & breathable</span><span class="ru">Лёгкие и дышащие</span></div>
+        <p><span class="en">As the wedding takes place in Greece in June, we recommend breathable fabrics and lighter, more relaxed styles suited to warm weather.</span><span class="ru">Поскольку свадьба пройдёт в Греции в июне, мы рекомендуем одежду из дышащих и натуральных материалов, подходящую для тёплой погоды.</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="section-alt">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="kicker"><span class="en">Daytime · 10:00–13:00</span><span class="ru">Днём · 10:00–13:00</span></div>
+        <h2><span class="en">Welcome Coffee & Brunch</span><span class="ru">Кофе и Завтрак</span></h2>
+        <div class="code-badge"><span class="en">Smart Casual</span><span class="ru">Smart casual</span></div>
+        <p><span class="en">For brunch, we invite guests to dress in smart casual attire — think chic daytime wear and polished summer looks suited for a relaxed morning celebration.</span><span class="ru">На утренний кофе и завтрак мы приглашаем в стиле smart casual — аккуратная и лёгкая летняя одежда для спокойного начала дня.</span></p>
+      </div>
+      <div class="note-box"><span class="en">We kindly ask guests to avoid white and shades close to white.</span><span class="ru">Мы любезно просим гостей воздержаться от белого и оттенков, близких к белому.</span></div>
+      <div class="two-col">
+        <div>
+          <div class="col-head"><span><span class="en">For Her</span><span class="ru">Для неё</span></span><span class="hr-line"></span></div>
+          <div class="img-grid"><div class="img-cell"><img src="images/look-her-yellow-dress.jpg" alt="Yellow ruffle sundress" loading="lazy"></div><div class="img-cell"><img src="images/look-her-bluedress.jpg" alt="Light blue midi sundress" loading="lazy"></div><div class="img-cell"><img src="images/look-her-olive.jpg" alt="Olive linen waistcoat and trousers" loading="lazy"></div><div class="img-cell"><img src="images/look-her-pink.jpg" alt="Blush strapless jumpsuit" loading="lazy"></div><div class="img-cell"><img src="images/look-her-yellow-set.jpg" alt="Pale yellow waistcoat and shorts" loading="lazy"></div><div class="img-cell"><img src="images/look-her-blue.jpg" alt="Light blue waistcoat and wide-leg trousers" loading="lazy"></div></div>
+        </div>
+        <div>
+          <div class="col-head"><span><span class="en">For Him</span><span class="ru">Для него</span></span><span class="hr-line"></span></div>
+          <div class="img-grid"><div class="img-cell"><img src="images/look-him-blue.jpg" alt="Blue linen shirt and chinos" loading="lazy"></div><div class="img-cell"><img src="images/look-him-bluelinen.jpg" alt="Light blue linen shirt and white trousers" loading="lazy"></div><div class="img-cell"><img src="images/look-him-navyshirt.jpg" alt="Navy linen shirt and stone chinos" loading="lazy"></div><div class="img-cell"><img src="images/look-him-bluechino.jpg" alt="Light blue shirt and beige chinos" loading="lazy"></div><div class="img-cell"><img src="images/look-him-brown.jpg" alt="Brown linen shirt and white pleated trousers" loading="lazy"></div><div class="img-cell"><img src="images/look-him-navyknitpolo.jpg" alt="Navy knit polo and cream trousers" loading="lazy"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section-plain">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="kicker"><span class="en">Evening · from 18:00</span><span class="ru">Вечером · с 18:00</span></div>
+        <h2><span class="en">The Wedding</span><span class="ru">Свадебная церемония</span></h2>
+        <div class="code-badge"><span class="en">Formal</span><span class="ru">Формальный</span></div>
+        <p><span class="en">We invite our guests to dress in formal attire for the celebration.</span><span class="ru">Мы приглашаем гостей на торжество в формальном дресс-коде.</span></p>
+      </div>
+      <div class="note-box"><span class="en">We kindly ask that guests avoid white and shades close to white.</span><span class="ru">Мы любезно просим гостей воздержаться от белого и оттенков, близких к белому.</span></div>
+      <div class="dress-block">
+        <div class="col-head"><span><span class="en">For Her</span><span class="ru">Для неё</span></span><span class="hr-line"></span></div>
+        <div class="tag-good">✓ <span class="en">Perfect</span><span class="ru">То, что нужно</span></div>
+        <p class="lead-p"><span class="en">Think chic evening wear — flowing dresses, elegant sets and refined tailoring.</span><span class="ru">Изысканные вечерние образы — струящиеся платья, элегантные комплекты и утончённый крой.</span></p>
+        <div class="img-grid"><div class="img-cell"><img src="images/ev-her-green.jpg" alt="Green satin halter gown" loading="lazy"></div><div class="img-cell"><img src="images/ev-her-blue.jpg" alt="Pale blue halter gown" loading="lazy"></div><div class="img-cell"><img src="images/ev-her-rose.jpg" alt="Rose satin halter midi dress" loading="lazy"></div><div class="img-cell"><img src="images/ev-her-yellow.jpg" alt="Pale yellow gown with sash" loading="lazy"></div><div class="img-cell"><img src="images/ev-her-burgundy.jpg" alt="Burgundy strapless jumpsuit" loading="lazy"></div><div class="img-cell"><img src="images/ev-her-sage.jpg" alt="Sage tailored trouser suit" loading="lazy"></div></div>
+        <div class="tag-avoid">✕ <span class="en">Please Avoid</span><span class="ru">Лучше избегать</span></div>
+        <p class="lead-p"><span class="en">Please avoid overly casual or simple summer dresses, as well as white and shades close to white.</span><span class="ru">Пожалуйста, избегайте слишком повседневных или простых летних платьев, а также белого и близких к нему оттенков.</span></p>
+        <div class="img-grid"><div class="img-cell avoid"><img src="images/ev-avoid-her-white.jpg" alt="White sundress" loading="lazy"></div><div class="img-cell avoid"><img src="images/ev-avoid-her-green.jpg" alt="Casual green mini dress" loading="lazy"></div><div class="img-cell avoid"><img src="images/ev-avoid-her-yellow.jpg" alt="Casual yellow sundress" loading="lazy"></div><div class="img-cell avoid"><img src="images/ev-avoid-her-pink.jpg" alt="Casual pink maxi sundress" loading="lazy"></div></div>
+      </div>
+      <div class="dress-block">
+        <div class="col-head"><span><span class="en">For Him</span><span class="ru">Для него</span></span><span class="hr-line"></span></div>
+        <div class="tag-good">✓ <span class="en">Perfect</span><span class="ru">То, что нужно</span></div>
+        <p class="lead-p"><span class="en">Think formal evening attire — well-tailored suits in lighter fabrics and refined styling suited for a warm summer celebration.</span><span class="ru">Формальный вечерний образ — хорошо скроенные костюмы из лёгких тканей и утончённый стиль для тёплого летнего праздника.</span></p>
+        <div class="img-grid"><div class="img-cell"><img src="images/ev-him-tan.jpg" alt="Tan summer suit" loading="lazy"></div><div class="img-cell"><img src="images/ev-him-sage.jpg" alt="Sage green suit" loading="lazy"></div><div class="img-cell"><img src="images/ev-him-navy.jpg" alt="Navy suit with tie" loading="lazy"></div><div class="img-cell"><img src="images/ev-him-navy3.jpg" alt="Navy three-piece suit" loading="lazy"></div><div class="img-cell"><img src="images/ev-him-grey.jpg" alt="Grey suit with navy tie" loading="lazy"></div><div class="img-cell"><img src="images/ev-him-tux.jpg" alt="Black tuxedo with bow tie" loading="lazy"></div></div>
+        <div class="tag-avoid">✕ <span class="en">Please Avoid</span><span class="ru">Лучше избегать</span></div>
+        <p class="lead-p"><span class="en">Please avoid sneakers and non-formal shoes, shorts, jeans, or overly casual attire.</span><span class="ru">Пожалуйста, избегайте кроссовок и неформальной обуви, шорт, джинсов и слишком повседневной одежды.</span></p>
+        <div class="img-grid"><div class="img-cell avoid"><img src="images/ev-avoid-him-shorts.jpg" alt="Polo and white shorts" loading="lazy"></div><div class="img-cell avoid"><img src="images/ev-avoid-him-jeans.jpg" alt="Shirt with jeans and sneakers" loading="lazy"></div><div class="img-cell avoid"><img src="images/ev-avoid-him-chinos.jpg" alt="Casual shirt and chinos with sneakers" loading="lazy"></div><div class="img-cell avoid"><img src="images/ev-avoid-him-polo.jpg" alt="Polo and chinos with sneakers" loading="lazy"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" data-page="travel" hidden>
+  <div class="hero-band">
+    <h1><span class="en">Travel & Stay</span><span class="ru">Поездка и проживание</span></h1>
+  </div>
+  <div class="section-alt">
+    <div class="section-inner">
+      <div class="section-head"><h2><span class="en">Where to Stay</span><span class="ru">Где остановиться</span></h2></div>
+      <div class="stay-grid">
+        <div class="stay-card">
+          <div class="info-label"><span class="en">Beachside Stay</span><span class="ru">У моря</span></div>
+          <h3><span class="en">The Athenian Riviera</span><span class="ru">Афинская Ривьера</span></h3>
+          <p><span class="en">To stay near the venue and enjoy the Greek sun and sea, we recommend these coastal areas.</span><span class="ru">Чтобы быть рядом с местом проведения и насладиться солнцем и морем, рекомендуем эти прибрежные районы.</span></p>
+          <div class="area-list">
+            <div class="area"><div class="area-name"><span class="en">Vouliagmeni</span><span class="ru">Вульягмени (Vouliagmeni)</span></div><div class="area-desc"><span class="en">Elegant and peaceful, right by the water.</span><span class="ru">Элегантный и спокойный, прямо у воды.</span></div></div>
+            <div class="area"><div class="area-name"><span class="en">Voula</span><span class="ru">Вула (Voula)</span></div><div class="area-desc"><span class="en">Relaxed and residential, close to the beach.</span><span class="ru">Спокойный жилой район рядом с пляжем.</span></div></div>
+            <div class="area"><div class="area-name"><span class="en">Glyfada</span><span class="ru">Глифада (Glyfada)</span></div><div class="area-desc"><span class="en">Lively seaside area with shops, restaurants and nightlife.</span><span class="ru">Оживлённый приморский район с магазинами, ресторанами и ночной жизнью.</span></div></div>
+          </div>
+          <p class="area-note"><span class="en">All are along the coast with beautiful beaches, seaside dining and an authentic summer feel.</span><span class="ru">Все они вдоль побережья — прекрасные пляжи, рестораны у моря и настоящее лето.</span></p>
+        </div>
+        <div class="stay-card">
+          <div class="info-label"><span class="en">City Centre Stay</span><span class="ru">В центре города</span></div>
+          <h3><span class="en">Culture & Sightseeing</span><span class="ru">Культура и осмотр</span></h3>
+          <p><span class="en">If you’d rather explore Athens’ historic landmarks, monuments and museums, the city centre may be perfect.</span><span class="ru">Если хотите исследовать исторические памятники, достопримечательности и музеи Афин, центр города — отличный выбор.</span></p>
+          <div class="area-list">
+            <div class="area"><div class="area-name"><span class="en">Kolonaki</span><span class="ru">Колонаки (Kolonaki)</span></div><div class="area-desc"><span class="en">Upscale and safe, close to museums and galleries.</span><span class="ru">Престижный и безопасный, рядом с музеями и галереями.</span></div></div>
+            <div class="area"><div class="area-name"><span class="en">Syntagma</span><span class="ru">Синтагма (Syntagma)</span></div><div class="area-desc"><span class="en">Central and convenient, near major historical sites.</span><span class="ru">Центральный и удобный, рядом с главными историческими местами.</span></div></div>
+          </div>
+          <p class="area-note"><span class="en">Both are well-located and safe, making it easy to explore Athens on foot.</span><span class="ru">Оба района удобно расположены и безопасны — Афины легко исследовать пешком.</span></p>
+        </div>
+      </div>
+      <div class="warn-box"><strong><span class="en">Important note:</span><span class="ru">Важно:</span></strong> <span class="en">if you stay in the city centre, please do not book accommodation near Karaiskaki Square or Omonoia Square, as these areas are not recommended for visitors.</span><span class="ru">если вы остановитесь в центре, пожалуйста, не бронируйте жильё рядом с площадями Караискаки (Karaiskaki) и Омония (Omonoia) — эти районы не рекомендуются для туристов.</span></div>
+      <div class="hint-box">
+        <h4><span class="en">Hotel near the wedding venue</span><span class="ru">Отель рядом с местом проведения свадьбы</span></h4>
+        <p><span class="en">Our wedding planner, Victoria, is currently working hard to secure preferential rates with hotels close to the Four Seasons Astir Palace.</span><span class="ru">Наш свадебный организатор Виктория сейчас активно работает над тем, чтобы договориться о специальных тарифах с отелями рядом с Four Seasons Astir Palace.</span></p>
+        <p><span class="en">As summer is a very busy season in Greece, many hotels only release their rates and availability for the following year in October, which is when we expect to receive further details.</span><span class="ru">Поскольку лето — очень загруженный сезон в Греции, многие отели публикуют тарифы и наличие мест на следующий год только в октябре, когда мы и ожидаем получить более подробную информацию.</span></p>
+        <p><span class="en">If you would like recommendations for nearby accommodation and access to any negotiated discounts, please get in touch with Victoria around October, when we hope to have more information to share.</span><span class="ru">Если вам нужны рекомендации по размещению поблизости и доступ к согласованным скидкам, пожалуйста, свяжитесь с Викторией примерно в октябре, когда мы надеемся поделиться более подробной информацией.</span></p>
+      </div>
+
+      <div class="section-head" style="margin-top:64px"><h2><span class="en">Travel & Getting Here</span><span class="ru">Как добраться</span></h2></div>
+      <div class="hint-box" style="text-align:center">
+        <div class="info-label"><span class="en">Nearest Airport</span><span class="ru">Ближайший аэропорт</span></div>
+        <p><span class="en">Athens International Airport (ATH) is well connected with flights from across Europe and beyond.</span><span class="ru">Международный аэропорт Афин (ATH) хорошо связан рейсами со всей Европой и не только.</span></p>
+      </div>
+      <div class="option-list">
+        <div class="option-row"><div class="option-num">01</div><div><h4><span class="en">Taxi / Ride-Share</span><span class="ru">Такси / Каршеринг</span></h4><p><span class="en">The quickest and simplest option. Taxis wait outside Arrivals, and Uber and FreeNow operate in Athens for pre-booked rides. Metered taxis to Glyfada cost around €35–€55, varying by time of day.</span><span class="ru">Самый быстрый и простой вариант. Такси ждут у зоны прилёта, а Uber и FreeNow работают в Афинах для предзаказа. Поездка на обычном такси до Глифады стоит примерно €35–€55 в зависимости от времени суток.</span></p></div></div>
+        <div class="option-row"><div class="option-num">02</div><div><h4><span class="en">Metro & Tram</span><span class="ru">Метро и трамвай</span></h4><p><span class="en">There’s no direct public transport from the airport to Glyfada/Vouliagmeni. Routes involve several changes and take 90+ minutes — typically airport metro to central Athens, then a local tram or bus toward the coast.</span><span class="ru">Прямого общественного транспорта от аэропорта до Глифады/Вульягмени нет. Маршруты с несколькими пересадками занимают 90+ минут — обычно метро до центра Афин, затем местный трамвай или автобус к побережью.</span></p></div></div>
+        <div class="option-row"><div class="option-num">03</div><div><h4><span class="en">Car Rental</span><span class="ru">Аренда авто</span></h4><p><span class="en">Offers flexibility if you plan to explore more of Greece. Two reliable options at the airport:</span><span class="ru">Удобно, если планируете путешествовать по Греции. Два надёжных варианта в аэропорту:</span></p>
+          <div class="rental-list">
+            <div>• <strong>Sixt</strong> — <span class="en">well-rated international company with 24/7 pickup at ATH.</span><span class="ru">известная международная компания с выдачей 24/7 в ATH.</span></div>
+            <div>• <strong>Avance Car Rental</strong> — <span class="en">highly rated local option with good availability and flexible service.</span><span class="ru">высоко оценённый местный вариант с хорошей доступностью и гибким сервисом.</span></div>
+          </div>
+          <p class="area-note"><span class="en">Other options at or near ATH include Alamo, Hertz, Budget and Europcar.</span><span class="ru">Другие варианты в аэропорту и рядом: Alamo, Hertz, Budget и Europcar.</span></p>
+        </div></div>
+      </div>
+
+      <div class="section-head" style="margin-top:64px"><h2><span class="en">Good to Know</span><span class="ru">Полезно знать</span></h2></div>
+      <div class="info-cards three">
+        <div class="info-card"><div class="info-label"><span class="en">What to Wear</span><span class="ru">Что надеть</span></div><p><span class="en">Light, breathable fabrics for the daytime heat, with a layer for breezy evenings and air-conditioned spaces. Comfortable, closed-toe shoes are strongly recommended for ancient sites — paths are uneven and worn marble can be slippery.</span><span class="ru">Лёгкие дышащие ткани для дневной жары и лёгкий слой одежды для прохладных вечеров и кондиционированных помещений. Для древних памятников настоятельно рекомендуем удобную закрытую обувь — дорожки неровные, а стёртый мрамор бывает скользким.</span></p></div>
+        <div class="info-card"><div class="info-label"><span class="en">Weather</span><span class="ru">Погода</span></div><p><span class="en">June in Athens is warm, sunny and almost rain-free, typically 26–32°C (79–90°F). Mornings and early evenings are loveliest — plan sightseeing before 11am or after 5pm, and keep water, sunscreen and a hat with you.</span><span class="ru">Июнь в Афинах тёплый, солнечный и почти без дождей, обычно 26–32°C (79–90°F). Приятнее всего утром и ранним вечером — планируйте прогулки до 11:00 или после 17:00 и держите при себе воду, солнцезащитный крем и головной убор.</span></p></div>
+        <div class="info-card"><div class="info-label"><span class="en">Money</span><span class="ru">Деньги</span></div><p><span class="en">Cards are widely accepted, but it’s handy to carry some cash for small tavernas, markets and tips.</span><span class="ru">Карты принимают почти везде, но небольшую сумму наличными удобно иметь для маленьких таверн, рынков и чаевых.</span></p></div>
+      </div>
+
+      <div class="section-head" style="margin-top:64px"><h2><span class="en">The Venue</span><span class="ru">Место проведения</span></h2></div>
+      <div class="map-box"><iframe title="map" src="https://www.google.com/maps?q=Four%20Seasons%20Astir%20Palace%20Hotel%20Athens%2C%20Apollonos%2040%2C%20Vouliagmeni&output=embed" width="100%" height="380" style="border:0" loading="lazy"></iframe></div>
+      <div class="map-foot"><div><span class="en">Four Seasons Astir Palace · Apollonos 40, Vouliagmeni 166 71, Greece</span><span class="ru">Four Seasons Astir Palace · ул. Аполлонос 40, Вульягмени 166 71, Греция</span></div><a href="https://maps.google.com/?q=Four+Seasons+Astir+Palace+Hotel+Athens" target="_blank" rel="noopener noreferrer"><span class="en">Open in Google Maps</span><span class="ru">Открыть в Google Maps</span> →</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="page" data-page="athens" hidden>
+  <div class="hero-band">
+    <div class="kicker"><span class="en">Beyond the wedding</span><span class="ru">Помимо свадьбы</span></div>
+    <h1><span class="en">What to do in Athens</span><span class="ru">Чем заняться в Афинах</span></h1>
+    <p class="page-intro"><span class="en">A few of our favourite places to eat, swim and explore while you are in Athens.</span><span class="ru">Несколько наших любимых мест, где можно поесть, искупаться и погулять, пока вы в Афинах.</span></p>
+  </div>
+  <div class="section-alt">
+    <div class="section-inner athens-sections">
+      <div>
+        <div class="athens-head"><span class="mark">i</span><h2><span class="en">Where to Eat</span><span class="ru">Где поесть</span></h2></div>
+        <p class="athens-note"><span class="en">Restaurants we love, from the Riviera to the city centre.</span><span class="ru">Рестораны, которые мы любим — от Ривьеры до центра города.</span></p>
+        <div class="place-grid">
+    <div class="place-card">
+      <a class="place-name" href="https://www.google.com/maps/search/?api=1&query=Spondi%20Restaurant%20Athens" target="_blank" rel="noopener noreferrer">Spondi</a>
+      <div class="place-area"><span class="en">Pangrati</span><span class="ru">Панграти</span></div>
+      <p class="place-desc"><span class="en">Refined one-Michelin-star dining for a special evening out.</span><span class="ru">Изысканная кухня, одна звезда Мишлен — для особенного вечера.</span></p>
+    </div>
+    <div class="place-card">
+      <a class="place-name" href="https://www.google.com/maps/search/?api=1&query=Ergon%20House%20Athens" target="_blank" rel="noopener noreferrer">Ergon House Athens</a>
+      <div class="place-area"><span class="en">Syntagma</span><span class="ru">Синтагма</span></div>
+      <p class="place-desc"><span class="en">Buzzing all-day food hall, deli and restaurant in the heart of the city.</span><span class="ru">Оживлённый гастрономический холл, деликатесная и ресторан в самом центре города.</span></p>
+    </div>
+    <div class="place-card">
+      <a class="place-name" href="https://www.google.com/maps/search/?api=1&query=Strofi%20Athenian%20Restaurant" target="_blank" rel="noopener noreferrer">Strofi</a>
+      <div class="place-area"><span class="en">Makrygianni</span><span class="ru">Макриянни</span></div>
+      <p class="place-desc"><span class="en">Classic taverna fare with a rooftop Acropolis view — book ahead.</span><span class="ru">Классическая таверна с видом на Акрополь с крыши — бронируйте заранее.</span></p>
+    </div>
+    <div class="place-card">
+      <a class="place-name" href="https://www.google.com/maps/search/?api=1&query=Moorings%20Vouliagmeni" target="_blank" rel="noopener noreferrer">Moorings</a>
+      <div class="place-area"><span class="en">Vouliagmeni</span><span class="ru">Вульягмени</span></div>
+      <p class="place-desc"><span class="en">Seafood and cocktails right on the marina, minutes from the venue.</span><span class="ru">Морепродукты и коктейли прямо у марины, в нескольких минутах от площадки.</span></p>
+    </div>
+    <div class="place-card">
+      <a class="place-name" href="https://www.google.com/maps/place/papaioannou+Restaurant+Vouliagmeni/data=!4m2!3m1!1s0x14a1953d46e94033:0x624879d4e763083f?sa=X&ved=1t:242&ictx=111" target="_blank" rel="noopener noreferrer">Papaioannou</a>
+      <div class="place-area"><span class="en">Vouliagmeni</span><span class="ru">Вульягмени</span></div>
+      <p class="place-desc"><span class="en">A local institution for fresh fish and seafood by the water.</span><span class="ru">Легендарный местный ресторан свежей рыбы и морепродуктов у воды.</span></p>
+    </div>
+    <div class="place-card">
+      <a class="place-name" href="https://www.google.com/maps/search/?api=1&query=Mani%20Mani%20Restaurant%20Athens" target="_blank" rel="noopener noreferrer">Mani Mani</a>
+      <div class="place-area"><span class="en">Koukaki</span><span class="ru">Кукаки</span></div>
+      <p class="place-desc"><span class="en">Modern takes on hearty Messinian Greek cooking near the Acropolis.</span><span class="ru">Современное прочтение мессинской кухни рядом с Акрополем.</span></p>
+    </div></div>
+      </div>
+      <div>
+        <div class="athens-head"><span class="mark">ii</span><h2><span class="en">Beach Bars</span><span class="ru">Пляжные бары</span></h2></div>
+        <p class="athens-note"><span class="en">Spend a sunny afternoon along the Athens Riviera.</span><span class="ru">Проведите солнечный день на Афинской Ривьере.</span></p>
+        <div class="place-grid">
+    <div class="place-card">
+      <a class="place-name" href="https://www.google.com/maps/search/?api=1&query=Astir%20Beach%20Vouliagmeni" target="_blank" rel="noopener noreferrer">Astir Beach</a>
+      <div class="place-area"><span class="en">Vouliagmeni</span><span class="ru">Вульягмени</span></div>
+      <p class="place-desc"><span class="en">Organised beach with loungers, clear water and easy food.</span><span class="ru">Обустроенный пляж с шезлонгами, чистой водой и лёгкими закусками.</span></p>
+    </div>
+    <div class="place-card">
+      <a class="place-name" href="https://www.google.com/maps/search/?api=1&query=Bolivar%20Beach%20Bar%20Alimos" target="_blank" rel="noopener noreferrer">Bolivar Beach Bar</a>
+      <div class="place-area"><span class="en">Alimos</span><span class="ru">Алимос</span></div>
+      <p class="place-desc"><span class="en">Buzzing bar by day, music and cocktails into the evening.</span><span class="ru">Оживлённый бар днём, музыка и коктейли вечером.</span></p>
+    </div>
+    <div class="place-card">
+      <a class="place-name" href="https://www.google.com/maps/search/?api=1&query=Balux%20House%20Project%20Glyfada" target="_blank" rel="noopener noreferrer">Balux</a>
+      <div class="place-area"><span class="en">Glyfada</span><span class="ru">Глифада</span></div>
+      <p class="place-desc"><span class="en">Stylish all-day beach house with pools, food and drinks.</span><span class="ru">Стильный пляжный клуб на весь день с бассейнами, едой и напитками.</span></p>
+    </div>
+    <div class="place-card">
+      <a class="place-name" href="https://www.google.com/maps/search/?api=1&query=Krabo%20Lake%20Vouliagmeni" target="_blank" rel="noopener noreferrer">Krabo</a>
+      <div class="place-area"><span class="en">Lake Vouliagmeni</span><span class="ru">Озеро Вульягмени</span></div>
+      <p class="place-desc"><span class="en">Relaxed lakeside spot for coffee, lunch or a sunset drink.</span><span class="ru">Спокойное место у озера для кофе, обеда или закатного бокала.</span></p>
+    </div></div>
+      </div>
+      <div>
+        <div class="athens-head"><span class="mark">iii</span><h2><span class="en">Places to Visit</span><span class="ru">Что посмотреть</span></h2></div>
+        <p class="athens-note"><span class="en">A little history and a lot of views.</span><span class="ru">Немного истории и много прекрасных видов.</span></p>
+        <div class="place-grid">
+    <div class="place-card">
+      <a class="place-name" href="https://www.google.com/maps/search/?api=1&query=Acropolis%20of%20Athens" target="_blank" rel="noopener noreferrer">The Acropolis & Parthenon</a>
+      <div class="place-area"><span class="en">City Centre</span><span class="ru">Центр</span></div>
+      <p class="place-desc"><span class="en">Athens’ icon — go early to beat the heat and the crowds.</span><span class="ru">Символ Афин — приходите рано, чтобы избежать жары и толп.</span></p>
+    </div>
+    <div class="place-card">
+      <a class="place-name" href="https://www.google.com/maps/search/?api=1&query=Acropolis%20Museum%20Athens" target="_blank" rel="noopener noreferrer">Acropolis Museum</a>
+      <div class="place-area"><span class="en">Makrygianni</span><span class="ru">Макриянни</span></div>
+      <p class="place-desc"><span class="en">Stunning modern museum with views up to the Parthenon.</span><span class="ru">Впечатляющий современный музей с видом на Парфенон.</span></p>
+    </div>
+    <div class="place-card">
+      <a class="place-name" href="https://www.google.com/maps/search/?api=1&query=Anafiotika%20Plaka%20Athens" target="_blank" rel="noopener noreferrer">Plaka & Anafiotika</a>
+      <div class="place-area"><span class="en">Old Town</span><span class="ru">Старый город</span></div>
+      <p class="place-desc"><span class="en">Wander the old town’s lanes, cafés and island-style houses.</span><span class="ru">Прогуляйтесь по улочкам старого города, кафе и домикам в островном стиле.</span></p>
+    </div>
+    <div class="place-card">
+      <a class="place-name" href="https://www.google.com/maps/search/?api=1&query=Temple%20of%20Poseidon%20Cape%20Sounion" target="_blank" rel="noopener noreferrer">Cape Sounion</a>
+      <div class="place-area"><span class="en">Riviera</span><span class="ru">Ривьера</span></div>
+      <p class="place-desc"><span class="en">The Temple of Poseidon at sunset, about an hour down the coast.</span><span class="ru">Храм Посейдона на закате, примерно час по побережью.</span></p>
+    </div></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-plain" style="background:#EFF1E8">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="kicker"><span class="en">Staying a little longer?</span><span class="ru">Остаётесь подольше?</span></div>
+        <h2><span class="en">Our Suggested Athens Itinerary</span><span class="ru">Наш маршрут по Афинам</span></h2>
+        <p><span class="en">If you would like to stay in Athens for a while to explore, here is the plan we would suggest — three unhurried days that cover the city’s ancient heart, its neighbourhoods, and the coast.</span><span class="ru">Если вы захотите задержаться в Афинах и погулять, вот маршрут, который мы бы посоветовали — три неспешных дня, охватывающих древнее сердце города, его районы и побережье.</span></p>
+      </div>
+      
+    <div class="itin-day">
+      <div class="itin-day-head"><span class="itin-day-mark"><span class="en">Day One</span><span class="ru">День первый</span></span><h3><span class="en">Ancient Athens & the Historic Centre</span><span class="ru">Древние Афины и исторический центр</span></h3></div>
+      <div class="itin-stops">
+        
+        <div class="itin-stop">
+          <div class="itin-time"><span class="en">Morning</span><span class="ru">Утро</span></div>
+          <div>
+            <div class="itin-name"><span class="en">Acropolis & Acropolis Museum</span><span class="ru">Акрополь и Музей Акрополя</span></div>
+            <p class="itin-desc"><span class="en">Start early (opens 8am) to beat both the heat and the crowds. Walk up to the Parthenon and the Erechtheion, then take in the sweeping views over the city. Afterwards, cross to the modern Acropolis Museum — its glass floors over active excavations and the top-floor Parthenon Gallery are highlights.</span><span class="ru">Начните рано (открытие в 8:00), чтобы избежать жары и толп. Поднимитесь к Парфенону и Эрехтейону, полюбуйтесь панорамой города, а затем перейдите в современный Музей Акрополя — стеклянные полы над раскопками и Галерея Парфенона на верхнем этаже особенно впечатляют.</span></p>
+            <div class="itin-tip"><span class="itin-tip-label"><span class="en">Tip</span><span class="ru">Совет</span></span><span class="en">Buy tickets online in advance to skip the ticket line. A combined 5-day ticket (around €30) covers the Acropolis and several other ancient sites.</span><span class="ru">Покупайте билеты онлайн заранее, чтобы не стоять в очереди. Единый билет на 5 дней (около €30) включает Акрополь и несколько других древних памятников.</span></div>
+          </div>
+        </div>
+        <div class="itin-stop">
+          <div class="itin-time"><span class="en">Midday</span><span class="ru">Полдень</span></div>
+          <div>
+            <div class="itin-name"><span class="en">Plaka & Anafiotika</span><span class="ru">Плака и Анафиотика</span></div>
+            <p class="itin-desc"><span class="en">Wander down into Plaka, the oldest neighbourhood in Athens, with its neoclassical houses and narrow lanes. Duck into Anafiotika, a tiny hillside pocket built by island craftsmen in the 19th century — all whitewashed walls and bougainvillea, it feels like a Cycladic village in the middle of the city.</span><span class="ru">Спуститесь в Плаку — старейший район Афин с неоклассическими домами и узкими улочками. Загляните в Анафиотику, крошечный уголок на склоне, построенный островными мастерами в XIX веке — белёные стены и бугенвиллея делают его похожим на кикладскую деревушку посреди города.</span></p>
+            
+          </div>
+        </div>
+        <div class="itin-stop">
+          <div class="itin-time"><span class="en">Lunch</span><span class="ru">Обед</span></div>
+          <div>
+            <div class="itin-name"><span class="en">Taverna in Plaka</span><span class="ru">Таверна в Плаке</span></div>
+            <p class="itin-desc"><span class="en">Stop for a relaxed Greek lunch — grilled fish or meat, a Greek salad, and fried courgette balls are always a safe bet. Look for tavernas slightly off the main tourist strip for better value and quality.</span><span class="ru">Остановитесь на неспешный греческий обед — рыба или мясо на гриле, греческий салат и жареные кабачковые шарики всегда беспроигрышны. Ищите таверны чуть в стороне от главных туристических улиц — там вкуснее и выгоднее.</span></p>
+            
+          </div>
+        </div>
+        <div class="itin-stop">
+          <div class="itin-time"><span class="en">Afternoon</span><span class="ru">День</span></div>
+          <div>
+            <div class="itin-name"><span class="en">Ancient Agora & Monastiraki</span><span class="ru">Древняя Агора и Монастираки</span></div>
+            <p class="itin-desc"><span class="en">Walk through the Ancient Agora, the heart of civic life in classical Athens, then continue to Monastiraki Square and its flea market for souvenirs, ceramics, and people-watching.</span><span class="ru">Прогуляйтесь по Древней Агоре — центру общественной жизни классических Афин, затем выйдите на площадь Монастираки с её блошиным рынком: сувениры, керамика и наблюдение за людьми.</span></p>
+            
+          </div>
+        </div>
+        <div class="itin-stop">
+          <div class="itin-time"><span class="en">Evening</span><span class="ru">Вечер</span></div>
+          <div>
+            <div class="itin-name"><span class="en">Sunset at Areopagus Hill</span><span class="ru">Закат на холме Ареопаг</span></div>
+            <p class="itin-desc"><span class="en">A short climb up the smooth marble rock next to the Acropolis rewards you with one of the best free sunset views in the city.</span><span class="ru">Короткий подъём на гладкую мраморную скалу рядом с Акрополем подарит один из лучших бесплатных видов на закат в городе.</span></p>
+            
+          </div>
+        </div>
+        <div class="itin-stop">
+          <div class="itin-time"><span class="en">Dinner</span><span class="ru">Ужин</span></div>
+          <div>
+            <div class="itin-name"><span class="en">Rooftop with a view</span><span class="ru">Ужин на крыше с видом</span></div>
+            <p class="itin-desc"><span class="en">Athens has no shortage of rooftop bars and restaurants with the illuminated Acropolis as a backdrop — perfect for a first-night dinner or a late drink.</span><span class="ru">В Афинах множество баров и ресторанов на крышах с подсвеченным Акрополем на фоне — идеально для ужина в первый вечер или позднего бокала.</span></p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="itin-day">
+      <div class="itin-day-head"><span class="itin-day-mark"><span class="en">Day Two</span><span class="ru">День второй</span></span><h3><span class="en">Museums, Neighbourhoods & the Coast</span><span class="ru">Музеи, районы и побережье</span></h3></div>
+      <div class="itin-stops">
+        
+        <div class="itin-stop">
+          <div class="itin-time"><span class="en">Morning</span><span class="ru">Утро</span></div>
+          <div>
+            <div class="itin-name"><span class="en">National Archaeological Museum</span><span class="ru">Национальный археологический музей</span></div>
+            <p class="itin-desc"><span class="en">Home to the world’s finest collection of ancient Greek art, including the Mask of Agamemnon and treasures from the Cycladic islands. Give it at least two hours.</span><span class="ru">Здесь хранится лучшая в мире коллекция древнегреческого искусства, включая маску Агамемнона и сокровища Кикладских островов. Заложите хотя бы два часа.</span></p>
+            
+          </div>
+        </div>
+        <div class="itin-stop">
+          <div class="itin-time"><span class="en">Midday</span><span class="ru">Полдень</span></div>
+          <div>
+            <div class="itin-name"><span class="en">Psyrri</span><span class="ru">Псири</span></div>
+            <p class="itin-desc"><span class="en">Explore Athens’ creative, bohemian side — street art, independent bookshops, and specialty coffee. Psyrri also has excellent lunch spots in restored neoclassical buildings.</span><span class="ru">Откройте творческую, богемную сторону Афин — стрит-арт, независимые книжные и спешелти-кофе. В Псири также отличные места для обеда в отреставрированных неоклассических зданиях.</span></p>
+            
+          </div>
+        </div>
+        <div class="itin-stop">
+          <div class="itin-time"><span class="en">Afternoon</span><span class="ru">День</span></div>
+          <div>
+            <div class="itin-name"><span class="en">Syntagma Square & the Changing of the Guard</span><span class="ru">Площадь Синтагма и смена караула</span></div>
+            <p class="itin-desc"><span class="en">Watch the Evzones (presidential guards) perform their ceremonial changing of the guard in front of the Parliament building, on the hour — the Sunday version at 11am is the most elaborate, with a full band.</span><span class="ru">Посмотрите, как эвзоны (президентская гвардия) проводят церемониальную смену караула у здания Парламента, каждый час — воскресная в 11:00 самая торжественная, с оркестром.</span></p>
+            <div class="itin-tip"><span class="itin-tip-label"><span class="en">Tip</span><span class="ru">Совет</span></span><span class="en">If your visit includes a Sunday, plan this stop for 11am — it’s a striking, very photogenic tradition.</span><span class="ru">Если ваша поездка выпадает на воскресенье, планируйте это на 11:00 — впечатляющая и очень фотогеничная традиция.</span></div>
+          </div>
+        </div>
+        <div class="itin-stop">
+          <div class="itin-time"><span class="en">Late Afternoon</span><span class="ru">Ближе к вечеру</span></div>
+          <div>
+            <div class="itin-name"><span class="en">Athens Riviera</span><span class="ru">Афинская Ривьера</span></div>
+            <p class="itin-desc"><span class="en">Take the tram or a taxi down to the coast — Glyfada or Vouliagmeni — for a swim and a completely different side of Athens: beach clubs, marinas, and sea breeze.</span><span class="ru">Доберитесь на трамвае или такси до побережья — Глифада или Вульягмени — искупайтесь и откройте совсем другую сторону Афин: пляжные клубы, марины и морской бриз.</span></p>
+            
+          </div>
+        </div>
+        <div class="itin-stop">
+          <div class="itin-time"><span class="en">Evening</span><span class="ru">Вечер</span></div>
+          <div>
+            <div class="itin-name"><span class="en">Seaside dinner</span><span class="ru">Ужин у моря</span></div>
+            <p class="itin-desc"><span class="en">Fresh fish tavernas line the coastal road — a lovely, unhurried way to end a day that’s covered a lot of ground.</span><span class="ru">Вдоль прибрежной дороги тянутся рыбные таверны — прекрасный неспешный способ завершить насыщенный день.</span></p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="itin-day">
+      <div class="itin-day-head"><span class="itin-day-mark"><span class="en">Day Three</span><span class="ru">День третий</span></span><h3><span class="en">Modern Athens & Local Life</span><span class="ru">Современные Афины и местная жизнь</span></h3></div>
+      <div class="itin-stops">
+        
+        <div class="itin-stop">
+          <div class="itin-time"><span class="en">Morning</span><span class="ru">Утро</span></div>
+          <div>
+            <div class="itin-name"><span class="en">Central Market & Monastiraki Food Walk</span><span class="ru">Центральный рынок и гастропрогулка по Монастираки</span></div>
+            <p class="itin-desc"><span class="en">Athens’ Varvakios Central Market is a lively, working meat-and-fish market — a great way to see local life. Nearby streets have excellent street food: souvlaki, gyro, and loukoumades (Greek honey doughnuts).</span><span class="ru">Центральный рынок Варвакиос — живой, действующий мясной и рыбный рынок, отличный способ увидеть местную жизнь. На соседних улицах — прекрасный стрит-фуд: сувлаки, гирос и лукумадес (греческие медовые пончики).</span></p>
+            
+          </div>
+        </div>
+        <div class="itin-stop">
+          <div class="itin-time"><span class="en">Midday</span><span class="ru">Полдень</span></div>
+          <div>
+            <div class="itin-name"><span class="en">National Garden & Panathenaic Stadium</span><span class="ru">Национальный сад и Панафинейский стадион</span></div>
+            <p class="itin-desc"><span class="en">Cool off under the trees of the National Garden, then walk to the Panathenaic Stadium — the only stadium in the world built entirely of marble, and host of the first modern Olympics in 1896.</span><span class="ru">Отдохните в тени деревьев Национального сада, затем дойдите до Панафинейского стадиона — единственного в мире, целиком построенного из мрамора, где прошли первые современные Олимпийские игры 1896 года.</span></p>
+            
+          </div>
+        </div>
+        <div class="itin-stop">
+          <div class="itin-time"><span class="en">Afternoon</span><span class="ru">День</span></div>
+          <div>
+            <div class="itin-name"><span class="en">Kolonaki & Lycabettus Hill</span><span class="ru">Колонаки и холм Ликавит</span></div>
+            <p class="itin-desc"><span class="en">Browse the boutiques and galleries of upscale Kolonaki, then take the funicular (or walk, if you’re up for it) to the top of Lycabettus Hill — the highest point in Athens, with panoramic views over the whole city and the sea beyond.</span><span class="ru">Прогуляйтесь по бутикам и галереям престижного Колонаки, затем поднимитесь на фуникулёре (или пешком, если хватит сил) на вершину холма Ликавит — самую высокую точку Афин с панорамой всего города и моря за ним.</span></p>
+            
+          </div>
+        </div>
+        <div class="itin-stop">
+          <div class="itin-time"><span class="en">Evening</span><span class="ru">Вечер</span></div>
+          <div>
+            <div class="itin-name"><span class="en">Farewell dinner in Koukaki or Pangrati</span><span class="ru">Прощальный ужин в Кукаки или Панграти</span></div>
+            <p class="itin-desc"><span class="en">These residential neighbourhoods near the Acropolis have some of the city’s best contemporary Greek restaurants — a relaxed, local way to close out your Athens stay before the celebrations begin.</span><span class="ru">В этих жилых районах рядом с Акрополем — одни из лучших современных греческих ресторанов города. Спокойный, местный способ завершить пребывание в Афинах перед началом торжеств.</span></p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" data-page="registry" hidden>
+  <div class="hero-band">
+    <div class="kicker"><span class="en"></span><span class="ru"></span></div>
+    <h1><span class="en">Registry</span><span class="ru">Подарки</span></h1>
+    <div class="registry-paras">
+      <p><span class="en">As this is a destination wedding, we know many of our guests are already making a significant effort to celebrate with us by travelling to Greece, and we truly appreciate the time, expense, and commitment.</span><span class="ru">Поскольку это свадьба вдали от дома, мы понимаем, что многие из наших гостей уже прикладывают немалые усилия, чтобы отпраздновать с нами, приехав в Грецию, и мы искренне ценим это время, расходы и преданность.</span></p>
+      <p><span class="en">For those who have kindly asked about gifts and would still like to contribute something further, we would be incredibly grateful for a contribution towards our honeymoon fund.</span><span class="ru">Тем, кто любезно спрашивал про подарки и всё же хотел бы внести что-то ещё, мы будем бесконечно благодарны за вклад в фонд нашего свадебного путешествия.</span></p>
+    </div>
+  </div>
+  <div class="section-alt" style="display:flex;justify-content:center">
+    <div class="fund-card">
+      <div class="info-label"><span class="en">Honeymoon Fund</span><span class="ru">Фонд свадебного путешествия</span></div>
+      <div class="fund-name"><span class="en">Tatiana & Daniel</span><span class="ru">Татьяна и Дэниел</span></div>
+      <div class="fund-via"><span class="en">via Revolut</span><span class="ru">через Revolut</span></div>
+      <a class="fund-btn" href="https://revolut.me/tatiana08011" target="_blank" rel="noopener noreferrer"><span class="en">Open in Revolut</span><span class="ru">Открыть в Revolut</span></a>
+      <div class="fund-handle-row">
+        <span class="fund-handle">revolut.me/tatiana08011</span>
+        <button class="copy-btn" id="copyLinkBtn"><span class="en">Copy link</span><span class="ru">Скопировать ссылку</span></button>
+      </div>
+      <div class="qr-divider"><span></span><span class="qr-caption"><span class="en">Or scan to contribute</span><span class="ru">Или отсканируйте, чтобы внести вклад</span></span><span></span></div>
+      <div class="qr-wrap"><div id="qrcode"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="page" data-page="faq" hidden>
+  <div class="hero-band"><h1><span class="en">Questions</span><span class="ru">Вопросы</span></h1></div>
+  <div class="section-alt"><div class="section-inner faq-list">
+    <div class="faq-item">
+      <button class="faq-q" data-idx="0"><span><span class="en">Who should I contact if I have any questions?</span><span class="ru">К кому обращаться с вопросами?</span></span><span class="faq-icon">+</span></button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          <p class="faq-p faq-p"><span class="en">If you have any questions in the lead-up to the wedding, our wonderful wedding planner, Victoria Mouratidou, will be delighted to assist you.</span><span class="ru">Если у вас возникнут вопросы в преддверии свадьбы, наш замечательный свадебный организатор Виктория Муратиду будет рада помочь.</span></p><p class="faq-p faq-contact"><span class="en">Victoria Mouratidou — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr</span><span class="ru">Виктория Муратиду — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr</span></p><p class="faq-p faq-p"><span class="en">You are also very welcome to contact either of us directly:</span><span class="ru">Вы также можете связаться напрямую с любым из нас:</span></p><p class="faq-p faq-contact"><span class="en">Tatiana: +44 7557 977830 · Daniel: +44 7391 116516</span><span class="ru">Татьяна: +44 7557 977830 · Дэниел: +44 7391 116516</span></p><p class="faq-p faq-note"><span class="en">A small note from the couple: while both numbers are perfectly valid, Tatiana has been known to respond considerably faster than Daniel.</span><span class="ru">Небольшая ремарка от пары: оба номера рабочие, но Татьяна обычно отвечает заметно быстрее Дэниела.</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" data-idx="1"><span><span class="en">Can I bring a +1 / extra guest?</span><span class="ru">Можно ли прийти с +1 / дополнительным гостем?</span></span><span class="faq-icon">+</span></button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          <p class="faq-p faq-p"><span class="en">Our guest list has been thoughtfully curated, and your invitation will clearly indicate those who are invited, with all names listed on the invitation.</span><span class="ru">Список гостей был тщательно составлен, и в приглашении будут чётко указаны все приглашённые — с именами на приглашении.</span></p><p class="faq-p faq-p"><span class="en">As we have limited capacity, we kindly ask that only those named on the invitation attend. In exceptional circumstances, should you have any questions regarding an additional guest, please get in touch with either the bride or groom. While we will do our very best to accommodate requests, we cannot guarantee that any changes will be possible and, where they can be made, confirmation may only be possible closer to the wedding date.</span><span class="ru">Поскольку количество мест ограничено, мы просим, чтобы присутствовали только те, кто указан в приглашении. В исключительных случаях, если у вас есть вопрос о дополнительном госте, пожалуйста, свяжитесь с невестой или женихом. Мы сделаем всё возможное, чтобы пойти навстречу, но не можем гарантировать, что изменения будут возможны, а если они всё же возможны — подтверждение может прийти только ближе к дате свадьбы.</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" data-idx="2"><span><span class="en">Will the events be held in both English and Russian?</span><span class="ru">Будут ли мероприятия на английском и русском языках?</span></span><span class="faq-icon">+</span></button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          <p class="faq-p faq-p"><span class="en">Yes. As many of our guests speak either English or Russian, we want everyone to feel fully included throughout the celebrations. For this reason, the ceremony, speeches, and all key announcements will be delivered in both English and Russian.</span><span class="ru">Да. Поскольку многие наши гости говорят на английском или русском, мы хотим, чтобы каждый чувствовал себя вовлечённым на протяжении всего праздника. Поэтому церемония, речи и все ключевые объявления будут на двух языках.</span></p><p class="faq-p faq-p"><span class="en">A dedicated translator will be present at each event and will be seated near Tatiana’s close family. Should you require any assistance with translation or wish to communicate with someone who speaks a different language, please feel free to approach them.</span><span class="ru">На каждом мероприятии будет присутствовать переводчик, который будет сидеть рядом с близкими родственниками Татьяны. Если вам понадобится помощь с переводом или вы захотите пообщаться с кем-то, кто говорит на другом языке, смело обращайтесь к нему.</span></p><p class="faq-p faq-p"><span class="en">In addition, many of our family members and friends are bilingual, including Tatiana’s sister, and will be more than happy to help if needed.</span><span class="ru">Кроме того, многие наши родные и друзья двуязычны, включая сестру Татьяны, и с радостью помогут при необходимости.</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" data-idx="3"><span><span class="en">What is the dress code?</span><span class="ru">Какой дресс-код?</span></span><span class="faq-icon">+</span></button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          <p class="faq-p faq-p"><span class="en">Please refer to our dedicated Dress Code section for detailed guidance and inspiration, where you will find examples illustrating the desired style and level of formality for each event. Should you have any questions or require further clarification, please feel free to contact the bride.</span><span class="ru">Пожалуйста, загляните в раздел «Дресс-код» — там подробные рекомендации и вдохновение, а также примеры желаемого стиля и уровня формальности для каждого события. Если возникнут вопросы, свяжитесь с невестой.</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" data-idx="4"><span><span class="en">What if I’m running late?</span><span class="ru">А если я опаздываю?</span></span><span class="faq-icon">+</span></button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          <p class="faq-p faq-p"><span class="en">We completely understand that unexpected delays can happen. However, we kindly ask all of our guests to make every effort to arrive on time for each event throughout the day.</span><span class="ru">Мы прекрасно понимаем, что непредвиденные задержки случаются. Тем не менее мы просим всех гостей приложить все усилия, чтобы приходить вовремя на каждое событие дня.</span></p><p class="faq-p faq-p"><span class="en">Please note that the timings indicated on your invitation and throughout this website are strict and offer very limited flexibility, particularly for the evening celebrations. Our schedule has been carefully planned around the sunset, photography, dinner service, and the comfort of all our guests.</span><span class="ru">Обратите внимание: время, указанное в приглашении и на сайте, является строгим и допускает очень ограниченную гибкость, особенно для вечерних торжеств. Наше расписание тщательно выстроено вокруг заката, фотосъёмки, подачи ужина и комфорта всех гостей.</span></p><p class="faq-p faq-p"><span class="en">To help make this as easy as possible, we have intentionally built a generous break between the morning brunch and the evening celebrations. This mesimeri (the traditional Greek siesta) provides plenty of time to return to your accommodation, avoid the midday heat, rest, change outfits, and travel back to the venue at a relaxed pace.</span><span class="ru">Чтобы всё было проще, мы намеренно оставили большой перерыв между утренним бранчем и вечерним праздником. Эта месимери (традиционная греческая сиеста) даёт достаточно времени вернуться в отель, переждать дневную жару, отдохнуть, переодеться и неспешно вернуться на место проведения свадьбы.</span></p><p class="faq-p faq-p"><span class="en">The morning Welcome Coffee & Brunch is informal, so if you happen to arrive a little later than planned, you are welcome to join us at any point during the event.</span><span class="ru">Утренний приветственный кофе и бранч проходят неформально, поэтому если вы придёте чуть позже, вы можете присоединиться к нам в любой момент.</span></p><p class="faq-p faq-note"><span class="en">The evening ceremony, however, is different. We kindly ask all guests to arrive by 18:15, as the ceremony will begin promptly at 18:30. Guests arriving after the ceremony has started will unfortunately not be admitted until it has concluded.</span><span class="ru">Вечерняя церемония — другое дело. Мы просим всех гостей прибыть к 18:15, так как церемония начнётся ровно в 18:30. Гости, прибывшие после начала церемонии, к сожалению, не будут допущены до её завершения.</span></p><p class="faq-p faq-p"><span class="en">If you believe you may be delayed, please contact our wedding planner, Victoria Mouratidou, as soon as possible. On the wedding day, Tatiana and Daniel will unfortunately be unavailable to answer calls or messages.</span><span class="ru">Если вы предполагаете, что можете опоздать, как можно скорее свяжитесь с нашим организатором Викторией Муратиду. В день свадьбы Татьяна и Дэниел, к сожалению, не смогут отвечать на звонки и сообщения.</span></p><p class="faq-p faq-contact"><span class="en">Victoria Mouratidou — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr</span><span class="ru">Виктория Муратиду — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" data-idx="5"><span><span class="en">Can I use my phone to take photos and videos?</span><span class="ru">Можно ли снимать фото и видео на телефон?</span></span><span class="faq-icon">+</span></button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          <p class="faq-p faq-p"><span class="en">Absolutely! We would love for you to capture memories throughout the day and share in our celebrations. We simply ask that all mobile phones are kept on silent mode at all times.</span><span class="ru">Конечно! Мы будем рады, если вы будете запечатлевать моменты дня и разделите с нами праздник. Просим лишь держать телефоны в беззвучном режиме всё время.</span></p><p class="faq-p faq-p"><span class="en">If you choose to take photos or videos, we kindly request that you do so thoughtfully and with consideration for those around you. Please avoid blocking the view of other guests or interfering with the ceremony, speeches, or our professional photography and videography team.</span><span class="ru">Если вы снимаете фото или видео, просим делать это деликатно и с уважением к окружающим. Пожалуйста, не загораживайте обзор другим гостям и не мешайте церемонии, речам и работе нашей профессиональной команды фото- и видеосъёмки.</span></p><p class="faq-p faq-p"><span class="en">Most importantly, we encourage everyone to be fully present and enjoy the moment.</span><span class="ru">И самое главное — будьте полностью в моменте и наслаждайтесь праздником.</span></p><p class="faq-p faq-p"><span class="en">To ensure every special moment is beautifully captured, we will have two professional photographers and a dedicated videographer documenting the day. This allows you to relax, immerse yourself in the celebrations, and trust that the memories will be captured by the team of professionals.</span><span class="ru">Чтобы каждый особенный момент был красиво запечатлён, день будут снимать два профессиональных фотографа и видеограф. Это позволит вам расслабиться, погрузиться в праздник и довериться команде профессионалов.</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" data-idx="6"><span><span class="en">Will there be a place to charge my phone?</span><span class="ru">Можно ли будет зарядить телефон?</span></span><span class="faq-icon">+</span></button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          <p class="faq-p faq-p"><span class="en">Yes. Charging stations will be available throughout the celebrations, allowing you to recharge your phone or other devices at any time should you need to.</span><span class="ru">Да. На протяжении всего торжества будут доступны зарядные станции, чтобы вы могли в любой момент зарядить телефон или другие устройства, если возникнет такая необходимость.</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" data-idx="7"><span><span class="en">Do you have a wedding gift registry?</span><span class="ru">Есть ли у вас список свадебных подарков?</span></span><span class="faq-icon">+</span></button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          <p class="faq-p faq-p"><span class="en">As this is a destination wedding, we know many of our guests are already making a significant effort to celebrate with us by travelling to Greece, and we truly appreciate the time, expense, and commitment.</span><span class="ru">Поскольку это свадьба за границей, мы понимаем, что многие гости уже прилагают значительные усилия, чтобы отпраздновать с нами в Греции, и искренне ценим ваше время, расходы и участие.</span></p><p class="faq-p faq-p"><span class="en">For those who have kindly asked about gifts and would still like to contribute something further, we would be incredibly grateful for a contribution towards our honeymoon fund.</span><span class="ru">Тем, кто спрашивал о подарках и всё же хотел бы внести вклад, мы будем безмерно благодарны за вклад в фонд нашего медового месяца.</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" data-idx="8"><span><span class="en">What is the weather like in Athens in June?</span><span class="ru">Какая погода в Афинах в июне?</span></span><span class="faq-icon">+</span></button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          <p class="faq-p faq-p"><span class="en">In June, Athens tends to be warm and sunny during the day with mild evenings. We recommend light, breathable outfits for daytime and a light wrap for the evening.</span><span class="ru">В июне в Афинах днём обычно тепло и солнечно, а вечера мягкие. Рекомендуем лёгкую дышащую одежду на день и лёгкую накидку на вечер.</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" data-idx="9"><span><span class="en">Do you have any dietary requirements options?</span><span class="ru">Учитываются ли особенности питания?</span></span><span class="faq-icon">+</span></button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          <p class="faq-p faq-p"><span class="en">If you have any specific dietary requirements, please speak to our wedding planner, Victoria Mouratidou, who will be happy to make the necessary arrangements.</span><span class="ru">Если у вас есть особые пожелания по питанию, пожалуйста, свяжитесь с нашим свадебным организатором Викторией Муратиду — она с радостью всё организует.</span></p><p class="faq-p faq-contact"><span class="en">Victoria Mouratidou — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr</span><span class="ru">Виктория Муратиду — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" data-idx="10"><span><span class="en">Are children invited?</span><span class="ru">Приглашены ли дети?</span></span><span class="faq-icon">+</span></button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          <p class="faq-p faq-p"><span class="en">We are delighted to welcome children aged 10 and above to join us in celebrating our special day. Any children who are invited will be clearly named on the invitation.</span><span class="ru">Мы рады видеть детей от 10 лет на нашем празднике. Все приглашённые дети будут поимённо указаны в приглашении.</span></p><p class="faq-p faq-p"><span class="en">Should you wish to bring a younger child who is not included on your invitation, we kindly ask that you get in touch with either the bride or groom in advance, and we will be happy to discuss the arrangements with you.</span><span class="ru">Если вы хотите взять с собой ребёнка младше, не указанного в приглашении, просим заранее связаться с невестой или женихом — мы с радостью обсудим это с вами.</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" data-idx="11"><span><span class="en">What if I would like to book hair or makeup — where should I do it?</span><span class="ru">А если я хочу заказать причёску или макияж — куда обращаться?</span></span><span class="faq-icon">+</span></button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          <p class="faq-p faq-p"><span class="en">If you would like to arrange hair and/or makeup for the wedding day, please contact our wedding planner, Victoria Mouratidou, who will be happy to assist you with all arrangements and recommendations.</span><span class="ru">Если вы хотите организовать причёску и/или макияж в день свадьбы, пожалуйста, свяжитесь с нашим организатором Викторией Муратиду — она с радостью поможет со всеми деталями и рекомендациями.</span></p><p class="faq-p faq-contact"><span class="en">Victoria Mouratidou — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr</span><span class="ru">Виктория Муратиду — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" data-idx="12"><span><span class="en">Is there parking at the venue?</span><span class="ru">Есть ли парковка около мероприятия?</span></span><span class="faq-icon">+</span></button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          <p class="faq-p faq-p"><span class="en">If you require parking, we kindly ask that you let us know in advance by contacting our wedding planner, Victoria Mouratidou. This will allow us to make the necessary arrangements on your behalf.</span><span class="ru">Если вам нужна парковка, просим сообщить заранее, связавшись с нашим свадебным организатором Викторией Муратиду. Это позволит нам всё организовать для вас.</span></p><p class="faq-p faq-contact"><span class="en">Victoria Mouratidou — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr</span><span class="ru">Виктория Муратиду — WhatsApp: +30 6944 391 737 · Email: victoria@vmevents.gr</span></p>
+        </div>
+      </div>
+    </div></div></div>
+</div>
+
+<section class="rsvp-section" id="rsvpShared">
+  <div class="rsvp-note-band">
+    <div class="rsvp-hope"><span class="en">We hope you can make it!</span><span class="ru">Надеемся, вы сможете приехать!</span></div>
+    <p class="rsvp-note"><span class="en">Victoria, our wedding planner, will be in touch with each guest personally to confirm your attendance and gather any necessary details ahead of the celebrations.</span><span class="ru">Виктория, наш свадебный организатор, свяжется с каждым из гостей лично, чтобы подтвердить участие и уточнить все необходимые детали перед торжеством.</span></p>
+  </div>
+  <div class="rsvp-photo"></div>
+</section>
+
+<footer class="site-footer">
+  <img src="images/logo-td-cream.svg" alt="Tatiana & Daniel" class="footer-logo">
+  <div class="footer-names">Tatiana <span class="amp">&amp;</span> Daniel</div>
+  <div class="footer-line"><span class="en">19 . 06 . 2027  ·  Athens, Greece</span><span class="ru">19 . 06 . 2027  ·  Афины, Греция</span></div>
+  <nav class="footer-nav"><button class="nav-link" data-page="home"><span class="en">Home</span><span class="ru">Главная</span></button><button class="nav-link" data-page="dress"><span class="en">Dress Code</span><span class="ru">Дресс-код</span></button><button class="nav-link" data-page="travel"><span class="en">Travel & Stay</span><span class="ru">Поездка</span></button><button class="nav-link" data-page="athens"><span class="en">What to Do</span><span class="ru">Чем заняться</span></button><button class="nav-link" data-page="registry"><span class="en">Registry</span><span class="ru">Подарки</span></button><button class="nav-link" data-page="faq"><span class="en">FAQ</span><span class="ru">Вопросы</span></button></nav>
+  <div class="footer-tag"><span class="en">Made with love for our family & friends</span><span class="ru">С любовью для нашей семьи и друзей</span></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
