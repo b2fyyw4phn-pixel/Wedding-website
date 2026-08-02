@@ -176,7 +176,6 @@
     <div style="background:#F7F4ED;padding:clamp(32px,4vw,48px) 26px clamp(40px,5vw,56px);text-align:center;border-bottom:1px solid #E6DFD1;">
       <img src="images/logo-td-black.svg" alt="Tatiana & Daniel" style="height:108px;width:auto;display:block;margin:0 auto 18px;" />
       <h1 style="font-family:'Playfair Display';font-weight:500;font-size:clamp(40px,7vw,72px);color:#2F343A;">{{ dress.title }}</h1>
-      <p style="font-size:16px;line-height:1.75;color:#5C6168;max-width:560px;margin:24px auto 0;">{{ dress.intro }}</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:18px;max-width:640px;margin:36px auto 0;text-align:left;">
         <div style="background:#FCFAF3;border:1px solid #E6DFD1;border-top:3px solid #9AA17B;padding:24px 26px;box-shadow:0 12px 30px -24px rgba(47,52,58,0.5);">
           <div style="font-size:11px;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:#6E7152;margin-bottom:10px;">{{ dress.palette.label }}</div>
@@ -202,36 +201,32 @@
         <div style="max-width:640px;margin:24px auto 40px;padding:16px 24px;background:#F4EAE7;border-left:2px solid #B26152;text-align:center;">
           <p style="font-size:14.5px;line-height:1.6;color:#7A4034;">{{ dress.brunch.note }}</p>
         </div>
-        <div style="{{ dressTwoColStyle }}">
-          <!-- HER -->
-          <div>
-            <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px;">
-              <span style="font-family:'Playfair Display';font-style:italic;font-size:24px;color:#2F343A;white-space:nowrap;">{{ dress.herLabel }}</span>
-              <span style="flex:1;height:1px;background:#DCD5C7;"></span>
-            </div>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
-              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-her-yellow-dress.jpg" alt="Yellow ruffle sundress" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
-              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-her-bluedress.jpg" alt="Light blue midi sundress" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
-              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-her-olive.jpg" alt="Olive linen waistcoat and trousers" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
-              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-her-pink.jpg" alt="Blush strapless jumpsuit" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
-              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-her-yellow-set.jpg" alt="Pale yellow waistcoat and shorts" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
-              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-her-blue.jpg" alt="Light blue waistcoat and wide-leg trousers" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
-            </div>
+        <div style="margin-bottom:clamp(40px,5vw,60px);">
+          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:22px;">
+            <span style="font-family:'Playfair Display';font-style:italic;font-size:28px;color:#2F343A;white-space:nowrap;">{{ dress.herLabel }}</span>
+            <span style="flex:1;height:1px;background:#DCD5C7;"></span>
           </div>
-          <!-- HIM -->
-          <div>
-            <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px;">
-              <span style="font-family:'Playfair Display';font-style:italic;font-size:24px;color:#2F343A;white-space:nowrap;">{{ dress.himLabel }}</span>
-              <span style="flex:1;height:1px;background:#DCD5C7;"></span>
-            </div>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
-              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-him-blue.jpg" alt="Blue linen shirt and chinos" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
-              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-him-bluelinen.jpg" alt="Light blue linen shirt and white trousers" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
-              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-him-navyshirt.jpg" alt="Navy linen shirt and stone chinos" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
-              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-him-bluechino.jpg" alt="Light blue shirt and beige chinos" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
-              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-him-brown.jpg" alt="Brown linen shirt and white pleated trousers" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
-              <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-him-navyknitpolo.jpg" alt="Navy knit polo and cream trousers" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
-            </div>
+          <div style="{{ wedGrid6Style }}">
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-her-yellow-dress.jpg" alt="Yellow ruffle sundress" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-her-bluedress.jpg" alt="Light blue midi sundress" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-her-olive.jpg" alt="Olive linen waistcoat and trousers" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-her-pink.jpg" alt="Blush strapless jumpsuit" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-her-yellow-set.jpg" alt="Pale yellow waistcoat and shorts" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-her-blue.jpg" alt="Light blue waistcoat and wide-leg trousers" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:22px;">
+            <span style="font-family:'Playfair Display';font-style:italic;font-size:28px;color:#2F343A;white-space:nowrap;">{{ dress.himLabel }}</span>
+            <span style="flex:1;height:1px;background:#DCD5C7;"></span>
+          </div>
+          <div style="{{ wedGrid6Style }}">
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-him-green-suit.jpg" alt="Olive green suit with white shirt" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-him-lightblue-set.jpg" alt="Light blue shirt and matching trousers" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-him-navy-set.jpg" alt="Navy shirt and matching trouser set" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-him-linen-olive.jpg" alt="Beige linen shirt with olive trousers" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-him-brown.jpg" alt="Brown linen shirt and white pleated trousers" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
+            <div style="aspect-ratio:3/4;overflow:hidden;box-shadow:0 10px 24px -16px rgba(47,52,58,0.5);"><img src="images/look-him-navyknitpolo.jpg" alt="Navy knit polo and cream trousers" style="width:100%;height:100%;object-fit:contain;background:#F1EDE3;display:block;" /></div>
           </div>
         </div>
       </div>
@@ -498,6 +493,7 @@
       <div style="font-size:12px;letter-spacing:0.42em;text-transform:uppercase;color:#6E7152;margin-bottom:18px;">{{ athens.eyebrow }}</div>
       <h1 style="font-family:'Playfair Display';font-weight:500;font-size:clamp(40px,7vw,72px);color:#2F343A;">{{ athens.title }}</h1>
       <p style="font-size:16px;line-height:1.75;color:#6B7178;max-width:640px;margin:22px auto 0;">{{ athens.intro }}</p>
+      <div style="max-width:640px;margin:24px auto 0;padding:16px 24px;background:#F4EAE7;border-left:2px solid #B26152;text-align:center;font-size:14.5px;line-height:1.6;color:#7A4034;">{{ athens.mapNote }}</div>
     </div>
     <div style="background:#F3EFE6;padding:clamp(40px,6vw,72px) 26px clamp(64px,8vw,100px);">
       <div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,6vw,76px);">
@@ -869,7 +865,7 @@ class Component extends DCLogic {
       items: [
         { time: { en: '10:00 – 13:00', ru: '10:00 – 13:00' }, title: { en: 'Welcome Coffee & Brunch', ru: 'Кофе и Завтрак' }, desc: { en: 'A casual morning gathering to welcome everyone and kick off our wedding day in style.', ru: 'Утренняя встреча, чтобы поприветствовать гостей и начать свадебный день.' }, meta: [
           { label: { en: 'Location', ru: 'Место' }, value: { en: 'Nafsika Venue — Four Seasons Astir Palace', ru: 'Nafsika Venue — Four Seasons Astir Palace' } },
-          { label: { en: 'Dress code', ru: 'Дресс-код' }, value: { en: 'Smart casual', ru: 'Smart casual' } },
+          { label: { en: 'Dress code', ru: 'Дресс-код' }, value: { en: 'Smart casual', ru: 'Смарт-кэжуал' } },
         ] },
         { time: { en: '13:00 – 18:00', ru: '13:00 – 18:00' }, title: { en: 'Mesimeri (Greek Siesta!)', ru: 'Месимери (греческая сиеста!)' }, desc: { en: 'Time to rest, retreat from the midday heat, and refresh before the evening celebrations begin.', ru: 'Время отдохнуть от полуденной жары и набраться сил перед вечерним праздником.' } },
         { time: { en: '18:00', ru: '18:00' }, title: { en: 'Arrival at the Venue', ru: 'Прибытие на вечернее мероприятие' }, desc: { en: 'We kindly ask all guests to arrive by 18:15 at the latest, as the ceremony will begin promptly at 18:30.', ru: 'Просим всех гостей приехать не позднее 18:15, так как церемония начнётся ровно в 18:30.' }, note: { en: 'Please note: no entry will be permitted once the ceremony has started.', ru: 'Обратите внимание: вход после начала церемонии будет невозможен.' }, meta: [
@@ -900,6 +896,10 @@ class Component extends DCLogic {
         en: 'A few of our favourite places to eat, swim and explore while you are in Athens.',
         ru: 'Несколько наших любимых мест, где можно поесть, искупаться и погулять, пока вы в Афинах.',
       },
+      mapNote: {
+        en: 'Please note: every listing includes a Google Maps link for easy navigation.',
+        ru: 'Обратите внимание: у каждого места есть ссылка на Google Maps для удобной навигации.',
+      },
       sections: [
         {
           mark: { en: 'i', ru: 'i' },
@@ -908,7 +908,7 @@ class Component extends DCLogic {
           items: [
             { name: { en: 'Spondi', ru: 'Spondi' }, url: 'https://www.google.com/maps/search/?api=1&query=Spondi%20Restaurant%20Athens', area: { en: 'Pangrati', ru: 'Панграти' }, desc: { en: 'Refined one-Michelin-star dining for a special evening out.', ru: 'Изысканная кухня, одна звезда Мишлен — для особенного вечера.' } },
             { name: { en: 'Ergon House Athens', ru: 'Ergon House Athens' }, url: 'https://www.google.com/maps/search/?api=1&query=Ergon%20House%20Athens', area: { en: 'Syntagma', ru: 'Синтагма' }, desc: { en: 'Buzzing all-day food hall, deli and restaurant in the heart of the city.', ru: 'Оживлённый гастрономический холл, деликатесная и ресторан в самом центре города.' } },
-            { name: { en: 'Strofi', ru: 'Strofi' }, url: 'https://www.google.com/maps/search/?api=1&query=Strofi%20Athenian%20Restaurant', area: { en: 'Makrygianni', ru: 'Макриянни' }, desc: { en: 'Classic taverna fare with a rooftop Acropolis view — book ahead.', ru: 'Классическая таверна с видом на Акрополь с крыши — бронируйте заранее.' } },
+            { name: { en: 'Strofi', ru: 'Strofi' }, url: 'https://www.google.com/maps/search/?api=1&query=Strofi%20Athenian%20Restaurant', area: { en: 'Makrygianni', ru: 'Макриянни' }, desc: { en: 'Classic taverna fare with a rooftop Acropolis view. Book ahead.', ru: 'Классическая таверна с видом на Акрополь с крыши — бронируйте заранее.' } },
             { name: { en: 'Moorings', ru: 'Moorings' }, url: 'https://www.google.com/maps/search/?api=1&query=Moorings%20Vouliagmeni', area: { en: 'Vouliagmeni', ru: 'Вульягмени' }, desc: { en: 'Seafood and cocktails right on the marina, minutes from the venue.', ru: 'Морепродукты и коктейли прямо у марины, в нескольких минутах от площадки.' } },
             { name: { en: 'Papaioannou', ru: 'Papaioannou' }, url: 'https://www.google.com/maps/place/papaioannou+Restaurant+Vouliagmeni/data=!4m2!3m1!1s0x14a1953d46e94033:0x624879d4e763083f?sa=X&ved=1t:242&ictx=111', area: { en: 'Vouliagmeni', ru: 'Вульягмени' }, desc: { en: 'A local institution for fresh fish and seafood by the water.', ru: 'Легендарный местный ресторан свежей рыбы и морепродуктов у воды.' } },
             { name: { en: 'Mani Mani', ru: 'Mani Mani' }, url: 'https://www.google.com/maps/search/?api=1&query=Mani%20Mani%20Restaurant%20Athens', area: { en: 'Koukaki', ru: 'Кукаки' }, desc: { en: 'Modern takes on hearty Messinian Greek cooking near the Acropolis.', ru: 'Современное прочтение мессинской кухни рядом с Акрополем.' } },
@@ -930,7 +930,7 @@ class Component extends DCLogic {
           label: { en: 'Places to Visit', ru: 'Что посмотреть' },
           note: { en: 'A little history and a lot of views.', ru: 'Немного истории и много прекрасных видов.' },
           items: [
-            { name: { en: 'The Acropolis & Parthenon', ru: 'Акрополь и Парфенон' }, url: 'https://www.google.com/maps/search/?api=1&query=Acropolis%20of%20Athens', area: { en: 'City Centre', ru: 'Центр' }, desc: { en: 'Athens’ icon — go early to beat the heat and the crowds.', ru: 'Символ Афин — приходите рано, чтобы избежать жары и толп.' } },
+            { name: { en: 'The Acropolis & Parthenon', ru: 'Акрополь и Парфенон' }, url: 'https://www.google.com/maps/search/?api=1&query=Acropolis%20of%20Athens', area: { en: 'City Centre', ru: 'Центр' }, desc: { en: 'Athens’ icon. Go early to beat the heat and the crowds.', ru: 'Символ Афин — приходите рано, чтобы избежать жары и толп.' } },
             { name: { en: 'Acropolis Museum', ru: 'Музей Акрополя' }, url: 'https://www.google.com/maps/search/?api=1&query=Acropolis%20Museum%20Athens', area: { en: 'Makrygianni', ru: 'Макриянни' }, desc: { en: 'Stunning modern museum with views up to the Parthenon.', ru: 'Впечатляющий современный музей с видом на Парфенон.' } },
             { name: { en: 'Plaka & Anafiotika', ru: 'Плака и Анафиотика' }, url: 'https://www.google.com/maps/search/?api=1&query=Anafiotika%20Plaka%20Athens', area: { en: 'Old Town', ru: 'Старый город' }, desc: { en: 'Wander the old town’s lanes, cafés and island-style houses.', ru: 'Прогуляйтесь по улочкам старого города, кафе и домикам в островном стиле.' } },
             { name: { en: 'Cape Sounion', ru: 'Мыс Сунион' }, url: 'https://www.google.com/maps/search/?api=1&query=Temple%20of%20Poseidon%20Cape%20Sounion', area: { en: 'Riviera', ru: 'Ривьера' }, desc: { en: 'The Temple of Poseidon at sunset, about an hour down the coast.', ru: 'Храм Посейдона на закате, примерно час по побережью.' } },
@@ -941,7 +941,7 @@ class Component extends DCLogic {
         eyebrow: { en: 'Staying a little longer?', ru: 'Остаётесь подольше?' },
         heading: { en: 'Our Suggested Athens Itinerary', ru: 'Наш маршрут по Афинам' },
         intro: {
-          en: 'If you would like to stay in Athens for a while to explore, here is the plan we would suggest — three unhurried days that cover the city’s ancient heart, its neighbourhoods, and the coast.',
+          en: 'If you would like to stay in Athens for a while to explore, here is the plan we would suggest: three unhurried days that cover the city’s ancient heart, its neighbourhoods, and the coast.',
           ru: 'Если вы захотите задержаться в Афинах и погулять, вот маршрут, который мы бы посоветовали — три неспешных дня, охватывающих древнее сердце города, его районы и побережье.',
         },
         tipLabel: { en: 'Tip', ru: 'Совет' },
@@ -953,19 +953,19 @@ class Component extends DCLogic {
               {
                 time: { en: 'Morning', ru: 'Утро' },
                 name: { en: 'Acropolis & Acropolis Museum', ru: 'Акрополь и Музей Акрополя' },
-                desc: { en: 'Start early (opens 8am) to beat both the heat and the crowds. Walk up to the Parthenon and the Erechtheion, then take in the sweeping views over the city. Afterwards, cross to the modern Acropolis Museum — its glass floors over active excavations and the top-floor Parthenon Gallery are highlights.', ru: 'Начните рано (открытие в 8:00), чтобы избежать жары и толп. Поднимитесь к Парфенону и Эрехтейону, полюбуйтесь панорамой города, а затем перейдите в современный Музей Акрополя — стеклянные полы над раскопками и Галерея Парфенона на верхнем этаже особенно впечатляют.' },
+                desc: { en: 'Start early (opens 8am) to beat both the heat and the crowds. Walk up to the Parthenon and the Erechtheion, then take in the sweeping views over the city. Afterwards, cross to the modern Acropolis Museum. Its glass floors over active excavations and the top-floor Parthenon Gallery are highlights.', ru: 'Начните рано (открытие в 8:00), чтобы избежать жары и толп. Поднимитесь к Парфенону и Эрехтейону, полюбуйтесь панорамой города, а затем перейдите в современный Музей Акрополя — стеклянные полы над раскопками и Галерея Парфенона на верхнем этаже особенно впечатляют.' },
                 tip: { en: 'Buy tickets online in advance to skip the ticket line. A combined 5-day ticket (around €30) covers the Acropolis and several other ancient sites.', ru: 'Покупайте билеты онлайн заранее, чтобы не стоять в очереди. Единый билет на 5 дней (около €30) включает Акрополь и несколько других древних памятников.' },
               },
               {
                 time: { en: 'Midday', ru: 'Полдень' },
                 name: { en: 'Plaka & Anafiotika', ru: 'Плака и Анафиотика' },
-                desc: { en: 'Wander down into Plaka, the oldest neighbourhood in Athens, with its neoclassical houses and narrow lanes. Duck into Anafiotika, a tiny hillside pocket built by island craftsmen in the 19th century — all whitewashed walls and bougainvillea, it feels like a Cycladic village in the middle of the city.', ru: 'Спуститесь в Плаку — старейший район Афин с неоклассическими домами и узкими улочками. Загляните в Анафиотику, крошечный уголок на склоне, построенный островными мастерами в XIX веке — белёные стены и бугенвиллея делают его похожим на кикладскую деревушку посреди города.' },
+                desc: { en: 'Wander down into Plaka, the oldest neighbourhood in Athens, with its neoclassical houses and narrow lanes. Duck into Anafiotika, a tiny hillside pocket built by island craftsmen in the 19th century: all whitewashed walls and bougainvillea, it feels like a Cycladic village in the middle of the city.', ru: 'Спуститесь в Плаку — старейший район Афин с неоклассическими домами и узкими улочками. Загляните в Анафиотику, крошечный уголок на склоне, построенный островными мастерами в XIX веке — белёные стены и бугенвиллея делают его похожим на кикладскую деревушку посреди города.' },
                 tip: null,
               },
               {
                 time: { en: 'Lunch', ru: 'Обед' },
                 name: { en: 'Taverna in Plaka', ru: 'Таверна в Плаке' },
-                desc: { en: 'Stop for a relaxed Greek lunch — grilled fish or meat, a Greek salad, and fried courgette balls are always a safe bet. Look for tavernas slightly off the main tourist strip for better value and quality.', ru: 'Остановитесь на неспешный греческий обед — рыба или мясо на гриле, греческий салат и жареные кабачковые шарики всегда беспроигрышны. Ищите таверны чуть в стороне от главных туристических улиц — там вкуснее и выгоднее.' },
+                desc: { en: 'Stop for a relaxed Greek lunch: grilled fish or meat, a Greek salad, and fried courgette balls are always a safe bet. Look for tavernas slightly off the main tourist strip for better value and quality.', ru: 'Остановитесь на неспешный греческий обед — рыба или мясо на гриле, греческий салат и жареные кабачковые шарики всегда беспроигрышны. Ищите таверны чуть в стороне от главных туристических улиц — там вкуснее и выгоднее.' },
                 tip: null,
               },
               {
@@ -983,7 +983,7 @@ class Component extends DCLogic {
               {
                 time: { en: 'Dinner', ru: 'Ужин' },
                 name: { en: 'Rooftop with a view', ru: 'Ужин на крыше с видом' },
-                desc: { en: 'Athens has no shortage of rooftop bars and restaurants with the illuminated Acropolis as a backdrop — perfect for a first-night dinner or a late drink.', ru: 'В Афинах множество баров и ресторанов на крышах с подсвеченным Акрополем на фоне — идеально для ужина в первый вечер или позднего бокала.' },
+                desc: { en: 'Athens has no shortage of rooftop bars and restaurants with the illuminated Acropolis as a backdrop, perfect for a first-night dinner or a late drink.', ru: 'В Афинах множество баров и ресторанов на крышах с подсвеченным Акрополем на фоне — идеально для ужина в первый вечер или позднего бокала.' },
                 tip: null,
               },
             ],
@@ -1001,25 +1001,25 @@ class Component extends DCLogic {
               {
                 time: { en: 'Midday', ru: 'Полдень' },
                 name: { en: 'Psyrri', ru: 'Псири' },
-                desc: { en: 'Explore Athens’ creative, bohemian side — street art, independent bookshops, and specialty coffee. Psyrri also has excellent lunch spots in restored neoclassical buildings.', ru: 'Откройте творческую, богемную сторону Афин — стрит-арт, независимые книжные и спешелти-кофе. В Псири также отличные места для обеда в отреставрированных неоклассических зданиях.' },
+                desc: { en: 'Explore Athens’ creative, bohemian side: street art, independent bookshops, and specialty coffee. Psyrri also has excellent lunch spots in restored neoclassical buildings.', ru: 'Откройте творческую, богемную сторону Афин — стрит-арт, независимые книжные и спешелти-кофе. В Псири также отличные места для обеда в отреставрированных неоклассических зданиях.' },
                 tip: null,
               },
               {
                 time: { en: 'Afternoon', ru: 'День' },
                 name: { en: 'Syntagma Square & the Changing of the Guard', ru: 'Площадь Синтагма и смена караула' },
-                desc: { en: 'Watch the Evzones (presidential guards) perform their ceremonial changing of the guard in front of the Parliament building, on the hour — the Sunday version at 11am is the most elaborate, with a full band.', ru: 'Посмотрите, как эвзоны (президентская гвардия) проводят церемониальную смену караула у здания Парламента, каждый час — воскресная в 11:00 самая торжественная, с оркестром.' },
-                tip: { en: 'If your visit includes a Sunday, plan this stop for 11am — it’s a striking, very photogenic tradition.', ru: 'Если ваша поездка выпадает на воскресенье, планируйте это на 11:00 — впечатляющая и очень фотогеничная традиция.' },
+                desc: { en: 'Watch the Evzones (presidential guards) perform their ceremonial changing of the guard in front of the Parliament building, on the hour. The Sunday version at 11am is the most elaborate, with a full band.', ru: 'Посмотрите, как эвзоны (президентская гвардия) проводят церемониальную смену караула у здания Парламента, каждый час — воскресная в 11:00 самая торжественная, с оркестром.' },
+                tip: { en: 'If your visit includes a Sunday, plan this stop for 11am: it’s a striking, very photogenic tradition.', ru: 'Если ваша поездка выпадает на воскресенье, планируйте это на 11:00 — впечатляющая и очень фотогеничная традиция.' },
               },
               {
                 time: { en: 'Late Afternoon', ru: 'Ближе к вечеру' },
                 name: { en: 'Athens Riviera', ru: 'Афинская Ривьера' },
-                desc: { en: 'Take the tram or a taxi down to the coast — Glyfada or Vouliagmeni — for a swim and a completely different side of Athens: beach clubs, marinas, and sea breeze.', ru: 'Доберитесь на трамвае или такси до побережья — Глифада или Вульягмени — искупайтесь и откройте совсем другую сторону Афин: пляжные клубы, марины и морской бриз.' },
+                desc: { en: 'Take the tram or a taxi down to the coast (Glyfada or Vouliagmeni) for a swim and a completely different side of Athens: beach clubs, marinas, and sea breeze.', ru: 'Доберитесь на трамвае или такси до побережья — Глифада или Вульягмени — искупайтесь и откройте совсем другую сторону Афин: пляжные клубы, марины и морской бриз.' },
                 tip: null,
               },
               {
                 time: { en: 'Evening', ru: 'Вечер' },
                 name: { en: 'Seaside dinner', ru: 'Ужин у моря' },
-                desc: { en: 'Fresh fish tavernas line the coastal road — a lovely, unhurried way to end a day that’s covered a lot of ground.', ru: 'Вдоль прибрежной дороги тянутся рыбные таверны — прекрасный неспешный способ завершить насыщенный день.' },
+                desc: { en: 'Fresh fish tavernas line the coastal road, a lovely, unhurried way to end a day that’s covered a lot of ground.', ru: 'Вдоль прибрежной дороги тянутся рыбные таверны — прекрасный неспешный способ завершить насыщенный день.' },
                 tip: null,
               },
             ],
@@ -1031,25 +1031,25 @@ class Component extends DCLogic {
               {
                 time: { en: 'Morning', ru: 'Утро' },
                 name: { en: 'Central Market & Monastiraki Food Walk', ru: 'Центральный рынок и гастропрогулка по Монастираки' },
-                desc: { en: 'Athens’ Varvakios Central Market is a lively, working meat-and-fish market — a great way to see local life. Nearby streets have excellent street food: souvlaki, gyro, and loukoumades (Greek honey doughnuts).', ru: 'Центральный рынок Варвакиос — живой, действующий мясной и рыбный рынок, отличный способ увидеть местную жизнь. На соседних улицах — прекрасный стрит-фуд: сувлаки, гирос и лукумадес (греческие медовые пончики).' },
+                desc: { en: 'Athens’ Varvakios Central Market is a lively, working meat-and-fish market, a great way to see local life. Nearby streets have excellent street food: souvlaki, gyro, and loukoumades (Greek honey doughnuts).', ru: 'Центральный рынок Варвакиос — живой, действующий мясной и рыбный рынок, отличный способ увидеть местную жизнь. На соседних улицах — прекрасный стрит-фуд: сувлаки, гирос и лукумадес (греческие медовые пончики).' },
                 tip: null,
               },
               {
                 time: { en: 'Midday', ru: 'Полдень' },
                 name: { en: 'National Garden & Panathenaic Stadium', ru: 'Национальный сад и Панафинейский стадион' },
-                desc: { en: 'Cool off under the trees of the National Garden, then walk to the Panathenaic Stadium — the only stadium in the world built entirely of marble, and host of the first modern Olympics in 1896.', ru: 'Отдохните в тени деревьев Национального сада, затем дойдите до Панафинейского стадиона — единственного в мире, целиком построенного из мрамора, где прошли первые современные Олимпийские игры 1896 года.' },
+                desc: { en: 'Cool off under the trees of the National Garden, then walk to the Panathenaic Stadium, the only stadium in the world built entirely of marble and host of the first modern Olympics in 1896.', ru: 'Отдохните в тени деревьев Национального сада, затем дойдите до Панафинейского стадиона — единственного в мире, целиком построенного из мрамора, где прошли первые современные Олимпийские игры 1896 года.' },
                 tip: null,
               },
               {
                 time: { en: 'Afternoon', ru: 'День' },
                 name: { en: 'Kolonaki & Lycabettus Hill', ru: 'Колонаки и холм Ликавит' },
-                desc: { en: 'Browse the boutiques and galleries of upscale Kolonaki, then take the funicular (or walk, if you’re up for it) to the top of Lycabettus Hill — the highest point in Athens, with panoramic views over the whole city and the sea beyond.', ru: 'Прогуляйтесь по бутикам и галереям престижного Колонаки, затем поднимитесь на фуникулёре (или пешком, если хватит сил) на вершину холма Ликавит — самую высокую точку Афин с панорамой всего города и моря за ним.' },
+                desc: { en: 'Browse the boutiques and galleries of upscale Kolonaki, then take the funicular (or walk, if you’re up for it) to the top of Lycabettus Hill, the highest point in Athens, with panoramic views over the whole city and the sea beyond.', ru: 'Прогуляйтесь по бутикам и галереям престижного Колонаки, затем поднимитесь на фуникулёре (или пешком, если хватит сил) на вершину холма Ликавит — самую высокую точку Афин с панорамой всего города и моря за ним.' },
                 tip: null,
               },
               {
                 time: { en: 'Evening', ru: 'Вечер' },
                 name: { en: 'Farewell dinner in Koukaki or Pangrati', ru: 'Прощальный ужин в Кукаки или Панграти' },
-                desc: { en: 'These residential neighbourhoods near the Acropolis have some of the city’s best contemporary Greek restaurants — a relaxed, local way to close out your Athens stay before the celebrations begin.', ru: 'В этих жилых районах рядом с Акрополем — одни из лучших современных греческих ресторанов города. Спокойный, местный способ завершить пребывание в Афинах перед началом торжеств.' },
+                desc: { en: 'These residential neighbourhoods near the Acropolis have some of the city’s best contemporary Greek restaurants, a relaxed, local way to close out your Athens stay before the celebrations begin.', ru: 'В этих жилых районах рядом с Акрополем — одни из лучших современных греческих ресторанов города. Спокойный, местный способ завершить пребывание в Афинах перед началом торжеств.' },
                 tip: null,
               },
             ],
@@ -1079,14 +1079,14 @@ class Component extends DCLogic {
       brunch: {
         kicker: { en: 'Daytime · 10:00–13:00', ru: 'Днём · 10:00–13:00' },
         name: { en: 'Welcome Coffee & Brunch', ru: 'Кофе и Завтрак' },
-        code: { en: 'Smart Casual', ru: 'Smart casual' },
+        code: { en: 'Smart Casual', ru: 'Смарт-кэжуал' },
         desc: {
           en: 'For brunch, we invite guests to dress in smart casual attire — think chic daytime wear and polished summer looks suited for a relaxed morning celebration.',
           ru: 'На утренний кофе и завтрак мы приглашаем в стиле smart casual — аккуратная и лёгкая летняя одежда для спокойного начала дня.',
         },
         note: {
-          en: 'We kindly ask guests to avoid white and shades close to white.',
-          ru: 'Мы любезно просим гостей воздержаться от белого и оттенков, близких к белому.',
+          en: 'We kindly ask guests to avoid white.',
+          ru: 'Мы любезно просим гостей воздержаться от белого.',
         },
       },
       wedding: {
@@ -1098,8 +1098,8 @@ class Component extends DCLogic {
           ru: 'Мы приглашаем гостей на торжество в формальном дресс-коде.',
         },
         note: {
-          en: 'We kindly ask that guests avoid white and shades close to white.',
-          ru: 'Мы любезно просим гостей воздержаться от белого и оттенков, близких к белому.',
+          en: 'We kindly ask that guests avoid white.',
+          ru: 'Мы любезно просим гостей воздержаться от белого.',
         },
         examples: {
           en: 'A few examples of the overall style and level of formality can be found below.',
