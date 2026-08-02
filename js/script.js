@@ -30,10 +30,13 @@
   langBtns.forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.lang); }); });
   var savedLang = 'en';
   try { savedLang = localStorage.getItem('td_lang') || 'en'; } catch(e){}
+  var qLang = new URLSearchParams(location.search).get('lang');
+  if (qLang === 'en' || qLang === 'ru') savedLang = qLang;
   setLang(savedLang);
 
   // init default page/nav active state
-  showPage('home');
+  var qPage = new URLSearchParams(location.search).get('page');
+  showPage(qPage || 'home');
 
   // countdown
   var target = new Date('2027-06-19T18:30:00+03:00').getTime();

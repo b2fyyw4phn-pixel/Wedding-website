@@ -169,10 +169,12 @@ body[data-lang="ru"] .hero-topline{font-family:'Playfair Display';font-style:ita
 .hero-names{font-family:'Playfair Display';font-weight:500;font-size:clamp(48px,9vw,104px);line-height:1.0;color:#F7F4ED;text-shadow:0 2px 38px rgba(0,0,0,0.5);}
 .hero-names .amp{font-style:italic;font-weight:400;color:#EBD3B4;}
 .hero-date{font-size:clamp(11px,2.4vw,13px);letter-spacing:0.3em;text-transform:uppercase;color:rgba(247,244,237,0.92);margin-top:20px;text-shadow:0 1px 16px rgba(0,0,0,0.45);}
+.hero-break{display:none;}
 @media (max-width:480px){
-  .hero{min-height:100vh;}
-  .hero-topline{font-size:26px;}
-  body[data-lang="ru"] .hero-topline{font-size:19px;}
+  .hero{min-height:100vh;background-position:center 55%;}
+  .hero-topline{font-size:56px;top:clamp(50px,10vh,90px);}
+  body[data-lang="ru"] .hero-topline{font-size:32px;}
+  .hero-break{display:inline;}
   .hero-names{font-size:15vw;}
   .hero-date{margin-top:12px;}
 }
