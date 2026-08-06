@@ -126,8 +126,10 @@ body[data-lang="ru"] .en{display:none;}
 .athens-note{font-size:14.5px;line-height:1.7;color:#7A7E76;margin-bottom:24px;max-width:560px;}
 .place-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:18px;}
 .place-card{background:#FCFAF3;border:1px solid #E6DFD1;padding:26px 24px;display:flex;flex-direction:column;gap:8px;}
-.place-name{font-family:'Playfair Display';font-weight:500;font-size:21px;color:#2F343A;text-decoration:none;border-bottom:1px solid #C8C0AF;align-self:flex-start;padding-bottom:2px;transition:color .2s;}
+.place-name{font-family:'Playfair Display';font-weight:500;font-size:21px;color:#2F343A;text-decoration:none;border-bottom:1px solid #C8C0AF;align-self:flex-start;padding-bottom:2px;display:inline-flex;align-items:baseline;gap:6px;transition:color .2s;}
 .place-name:hover{color:#6E7152;}
+.place-name::after{content:"↗";font-family:inherit;font-size:14px;color:#9AA17B;transition:color .2s;}
+.place-name:hover::after{color:#6E7152;}
 .place-area{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#9AA17B;}
 .place-desc{font-size:14.5px;line-height:1.7;color:#5C6168;}
 
